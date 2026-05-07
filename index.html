@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EnsembleFans ✦ Ensemble Stars! Fan Gallery</title>
+  <meta name="description" content="Ensemble Stars! fan art gallery — curated by Xianyu. Fan artworks organized by unit and character, all credited to original artists.">
+  <meta property="og:title" content="EnsembleFans ✦ Ensemble Stars! Fan Gallery">
+  <meta property="og:description" content="A curated fan art gallery for Ensemble Stars!, maintained with love by Xianyu.">
+  <meta property="og:url" content="https://xianyulazy.github.io/ensemblefans/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div class="stars-bg"></div>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header>
+  <div class="header-inner">
+    <a class="site-logo" onclick="showPage('home')">
+      <span class="logo-star">✦</span>
+      EnsembleFans
+    </a>
+    <nav>
+      <button class="nav-btn active" id="nav-home"       onclick="showPage('home')">首頁</button>
+      <button class="nav-btn"        id="nav-units"      onclick="showPage('units')">偶像團體</button>
+      <button class="nav-btn"        id="nav-artists"    onclick="showPage('artists')">畫師牆</button>
+      <button class="nav-btn"        id="nav-about"      onclick="showPage('about')">關於</button>
+      <button class="nav-btn"        id="nav-disclaimer" onclick="showPage('disclaimer')">版權聲明</button>
+    </nav>
+    <div class="lang-switcher">
+      <button class="lang-btn"        id="lang-zh-CN" onclick="setLang('zh-CN')">简体</button>
+      <button class="lang-btn active" id="lang-zh-TW" onclick="setLang('zh-TW')">繁體</button>
+      <button class="lang-btn"        id="lang-en"    onclick="setLang('en')">EN</button>
+    </div>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     PAGE: HOME
+══════════════════════════════════════════ -->
+<div id="page-home" class="page active">
+<main>
+  <div class="hero">
+    <p class="hero-eyebrow" id="t-eyebrow">✦ Ensemble Stars! Fan Gallery ✦</p>
+    <h1 class="hero-title" id="t-hero-title">璀璨星辰<br><em>偶像二創畫廊</em></h1>
+    <p class="hero-sub" id="t-hero-desc"></p>
+    <div class="hero-divider"></div>
+
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="search-input" placeholder="搜索角色、繪師、偶像團體…" oninput="filterGallery(this.value)">
+    </div>
+
+    <div class="unit-chips" id="filter-chips">
+      <button class="unit-chip active" id="chip-all"
+        style="color:#f5d77a;border-color:#f5d77a;"
+        data-unit="all" onclick="filterUnit('all',this)">全部</button>
+      <button class="unit-chip" style="color:#ff6b9d;border-color:#ff6b9d;" data-unit="Crazy:B"   onclick="filterUnit('Crazy:B',this)">Crazy:B</button>
+      <button class="unit-chip" style="color:#a78bfa;border-color:#a78bfa;" data-unit="ALKALOID"  onclick="filterUnit('ALKALOID',this)">ALKALOID</button>
+      <button class="unit-chip" style="color:#34d399;border-color:#34d399;" data-unit="Valkyrie"  onclick="filterUnit('Valkyrie',this)">Valkyrie</button>
+      <button class="unit-chip" style="color:#fbbf24;border-color:#fbbf24;" data-unit="Eden"      onclick="filterUnit('Eden',this)">Eden</button>
+      <button class="unit-chip" style="color:#f9a8d4;border-color:#f9a8d4;" data-unit="Ra*bits"   onclick="filterUnit('Ra*bits',this)">Ra*bits</button>
+      <button class="unit-chip" style="color:#6ee7b7;border-color:#6ee7b7;" data-unit="Knights"   onclick="filterUnit('Knights',this)">Knights</button>
+      <button class="unit-chip" style="color:#93c5fd;border-color:#93c5fd;" data-unit="RYUSEITAI" onclick="filterUnit('RYUSEITAI',this)">RYUSEITAI</button>
+      <button class="unit-chip" style="color:#fde68a;border-color:#fde68a;" data-unit="fine"      onclick="filterUnit('fine',this)">fine</button>
+    </div>
+  </div>
+
+  <div class="section-header">
+    <h2 class="section-title" id="t-recent">近期新增</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="art-grid" id="gallery-grid"></div>
+
+  <div class="section-header">
+    <h2 class="section-title" id="t-picks">✦ 咸魚推薦</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="art-grid" id="picks-grid"></div>
+
+  <div class="cta-row">
+    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="cta-btn cta-gold">
+      ✉ <span id="t-cta-submit">推薦一幅作品</span>
+    </a>
+    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="cta-btn cta-rose">
+      💬 <span id="t-cta-request">請求更多角色作品</span>
+    </a>
+    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="cta-btn cta-bili">
+      📺 <span id="t-cta-bili">B站：下辈子当咸鱼</span>
+    </a>
+  </div>
+</main>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PAGE: UNITS
+══════════════════════════════════════════ -->
+<div id="page-units" class="page">
+<main>
+  <div class="hero" style="padding:2rem 0 2rem;">
+    <p class="hero-eyebrow">✦ IDOL UNITS ✦</p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.5rem);" id="t-units-title">偶像團體</h1>
+    <p class="hero-sub" id="t-units-desc">點擊任意一個團體，查看成員及相關同人美術作品。</p>
+  </div>
+  <div class="units-grid" id="units-grid"></div>
+</main>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PAGE: ARTIST WALL
+══════════════════════════════════════════ -->
+<div id="page-artists" class="page">
+<main>
+  <div class="hero" style="padding:2rem 0 2rem;">
+    <p class="hero-eyebrow">✦ ARTIST WALL ✦</p>
+    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.5rem);" id="t-artists-title">畫師牆</h1>
+    <p class="hero-sub" id="t-artists-desc">感謝所有允許收錄作品的創作者。點擊名字即可前往其主頁。</p>
+    <div class="hero-divider"></div>
+  </div>
+  <div class="artist-grid" id="artist-wall"></div>
+</main>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PAGE: ABOUT
+══════════════════════════════════════════ -->
+<div id="page-about" class="page">
+<main>
+  <div class="about-prose">
+    <h2 id="t-about-title">關於本站</h2>
+    <div id="t-about-content"></div>
+    <div class="about-card">
+      <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px;" id="t-contact-label">聯絡 / 投稿 / 版權問題：</p>
+      <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="bili-link">
+        📺 <span id="t-bili-label">B站：下辈子当咸鱼</span>
+      </a>
+    </div>
+  </div>
+</main>
+</div>
+
+<!-- ══════════════════════════════════════════
+     PAGE: DISCLAIMER
+══════════════════════════════════════════ -->
+<div id="page-disclaimer" class="page">
+<main>
+  <div class="hero" style="padding:2rem 0 2rem;">
+    <p class="hero-eyebrow">✦</p>
+    <h1 class="hero-title" style="font-size:clamp(1.8rem,4vw,3rem);" id="t-disclaimer-title">版權聲明</h1>
+  </div>
+  <div id="t-disclaimer-content"></div>
+</main>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">✦ EnsembleFans ✦</div>
+  <div id="t-footer-text">本站為非商業性質的同人愛好者網站，所有作品版權歸原創者所有。</div>
+  <div style="margin-top:6px;">
+    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" id="t-footer-bili">B站：下辈子当咸鱼</a>
+    &nbsp;｜&nbsp;
+    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" id="t-footer-contact">聯繫站長申請下架</a>
+  </div>
+  <div style="margin-top:8px;font-size:.72rem;color:#4a5568;" id="t-footer-copy">© 2025 EnsembleFans · 站點更新通知請關注B站動態</div>
+</footer>
+
+<!-- Scripts: data first, then translations, then app logic -->
+<script src="js/data.js"></script>
+<script src="js/i18n.js"></script>
+<script src="js/app.js"></script>
+
+</body>
+</html>
