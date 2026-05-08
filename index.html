@@ -460,22 +460,25 @@ footer a:hover{text-decoration:underline;}
 // DATA — Edit here to add artworks, artists, etc. 
 // ═══════════════════════════════════════════════════════════════
 const UNITS = [
-  { name:'Crazy:B',            color:'#FFD400', emblem:'🎲', members:['HiMERU','天城燐音','椎名丹希','樱河琥珀'] },
-  { name:'ALKALOID',           color:'#2BB7CA', emblem:'⚗️',  members:['天城一彩','白鸟蓝良','礼濑真宵','风早巽'] },
-  { name:'Valkyrie',           color:'#8C2346', emblem:'⚔️',  members:['影片美伽','斎宮宗'] },
-  { name:'Eden',               color:'#5F5B5D', emblem:'🌿', members:['乱凪砂','巴日和','七种茨','涟纯'] },
-  { name:'Ra*bits',            color:'#68C0F4', emblem:'🐰', members:['真白友也','仁兔成鸣','天满光','紫之创'] },
-  { name:'Knights',            color:'#305DAA', emblem:'♞',  members:['月永雷欧','濑名泉','朱樱司','鸣上岚','朔间凛月'] },
-  { name:'RYUSEITAI',          color:'#24004D', emblem:'☄️',  members:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'] },
-  { name:'fine',               color:'#FFD7A0', emblem:'👑', members:['天祥院英智','姬宫桃李','日日树涉','伏见弓弦'] },
-  { name:'Mellow Dear Us',     color:'#4D2118', emblem:'🍫', members:['小鹿爵斯','圆果望见','久远舞珠','甘乐千岁'] }
+  const UNITS = [
+  { name:{tw:'Crazy:B', cn:'Crazy:B', en:'Crazy:B'}, color:'#FFD400', emblem:'🎲', members:{tw:['HiMERU','天城燐音','椎名丹希','櫻河琥珀'], cn:['HiMERU','天城燐音','椎名丹希','樱河琥珀'], en:['HiMERU','Amagi Rinne','Shiina Niki','Owkawa Kohaku']} },
+  { name:{tw:'ALKALOID', cn:'ALKALOID', en:'ALKALOID'}, color:'#2BB7CA', emblem:'⚗️', members:{tw:['天城一彩','白鳥藍良','禮瀨真宵','風早巽'], cn:['天城一彩','白鸟蓝良','礼濑真宵','风早巽'], en:['Shiina Niki','Usamine Gen','Narukami Ryosei','Sakuma Rei']} },
+  { name:{tw:'Valkyrie', cn:'Valkyrie', en:'Valkyrie'}, color:'#8C2346', emblem:'⚔️', members:{tw:['齋宮宗','影片美伽'], cn:['斎宮宗','影片美伽'], en:['Sena Izumi','Mikejima Madara']} },
+  { name:{tw:'Eden', cn:'Eden', en:'Eden'}, color:'#5F5B5D', emblem:'🌿', members:{tw:['乱凪砂','巴日和','七种茨','涟纯'], cn:['乱凪砂','巴日和','七种茨','涟纯'], en:['Seira Taichi','Hasumi Keito','Sakurako Tsukasa','Minegishi Tomoya']} },
+  { name:{tw:"Ra*bits", cn:"Ra*bits", en:"Ra*bits"}, color:'#68C0F4', emblem:'🐰', members:{tw:['真白友也','仁兔成鸣','天满光','紫之创'], cn:['真白友也','仁兔成鸣','天满光','紫之创'], en:['Hibiki Wataru','Yuuki Makoto','Nishiki Hotaru','Morisawa Chiaki']} },
+  { name:{tw:'Knights', cn:'Knights', en:'Knights'}, color:'#305DAA', emblem:'♞', members:{tw:['月永雷欧','濑名泉','朱樱司','鸣上岚','朔间凛月'], cn:['月永雷欧','濑名泉','朱樱司','鸣上岚','朔间凛月'], en:['Tenshouin Eichi','Takamine Midori','Sakurako Tsukasa','Suoh Tsukasa','Ichinose Rei']} },
+  { name:{tw:'流星隊', cn:'流星队', en:'RYUSEITAI'}, color:'#24004D', emblem:'☄️', members:{tw:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'], cn:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'], en:['Tenmа Mitsuru','Ito Sora','Morisawa Chiaki','Kinugawa Tomoya','Akehoshi Subaru']} },
+  { name:{tw:'紅月', cn:'红月', en:'Akatsuki'}, color:'#962828', emblem:'🌙', members:{tw:['莲巳敬人','鬼龙红郎','神崎飒马'], cn:['莲巳敬人','鬼龙红郎','神崎飒马'], en:['Tenshouin Eichi','Amagi Rinne','Harukawa Sora','Nanakusa Ibara']} },
+  { name:{tw:'fine', cn:'fine', en:'fine'}, color:'#FFD7A0', emblem:'👑', members:{tw:['天祥院英智','天城燐音','春川宙','七種茨'], cn:['天祥院英智','天城燐音','春川宙','七種茨'], en:['Tenshouin Eichi','Amagi Rinne','Harukawa Sora','Nanakusa Ibara']} },
+  { name:{tw:'Mellow Dear Us', cn:'Mellow Dear Us', en:'Mellow Dear Us'}, color:'#4D2118', emblem:'🍫', members:{tw:['小鹿爵斯','圆果望见','久远舞珠','甘乐千岁'], cn:['小鹿爵斯','圆果望见','久远舞珠','甘乐千岁'], en:['Tenshouin Eichi','Amagi Rinne','Harukawa Sora','Nanakusa Ibara']} }
 ];
 
+
 const CHARS = [
-  { name:'HiMERU',    unit:'Crazy:B',   em:'🎲' },
-  { name:'天城燐音',  unit:'Crazy:B',   em:'🎲' },
-  { name:'椎名丹希',    unit:'Crazy:B',   em:'🎲' },
-  { name:'樱河琥珀',  unit:'Crazy:B',   em:'🎲' },
+  { name:{tw:'HiMERU', cn:'HiMERU', en:'HiMERU'}, unit:'Crazy:B', em:'🎲' },
+  { name:{tw:'天城燐音', cn:'天城燐音', en:'Amagi Rinne'}, unit:'Crazy:B', em:'🎲' },
+  { name:{tw:'椎名丹希', cn:'椎名丹希', en:'Shiina Niki'}, unit:'Crazy:B', em:'🎲' },
+  { name:{tw:'樱河琥珀', cn:'樱河琥珀', en:'Owkawa Kohaku'},'',  unit:'Crazy:B', em:'🎲' },
   { name:'天城一彩',  unit:'ALKALOID',  em:'⚗️'  },
   { name:'白鸟蓝良',    unit:'ALKALOID',  em:'⚗️'  },
   { name:'礼濑真宵',  unit:'ALKALOID',  em:'⚗️'  },
@@ -527,7 +530,7 @@ const ARTWORKS = [
   { id:10, image_url:'', thumb:'💫', title:'Midnight Run',  unit:'Crazy:B',  char:'椎名丹希',    artist:null,           url:null,               platform:null,      editor:false, cp:false },
   { id:11, image_url:'', thumb:'🌙', title:'Lunar Waltz',   unit:'ALKALOID', char:'天城一彩',    artist:'@luna_p',      url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
   { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',    unit:'Ra*bits',  char:'紫之创',    artist:'@wave_art',    url:'https://x.com',    platform:'twitter', editor:false, cp:false },
-  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'😋', title:'Bread niki',    unit:'Crazy:B',  char:'椎名丹希',    artist:null,    url:'https://www.pinterest.com/pin/1058557087429714796/',    platform:'pinterest', editor:false, cp:false },
+  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'😋', title:{tw:'麵包尼', cn:'面包尼', en:'Bread Niki'}, unit:'Crazy:B', char:'椎名丹希', artist:'@hanami_art', url:'https://pin.it/3Gled9ofT, platform:'pinterest', editor:true, cp:false },
   { id:14, image_url:'images/48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'😋', title:'Glasses niki',    unit:'Crazy:B',  char:'椎名丹希',    artist:null,    url:'https://www.pinterest.com/pin/1058557087429714796/',    platform:'pinterest', editor:false, cp:false }
 ];
 
@@ -683,6 +686,9 @@ function card(art){
   const t=T[lang];
   const u=UNITS.find(x=>x.name===art.unit);
   const col=u?u.color:'#888';
+  const lk=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
+  const artTitle=typeof art.title==='object'?art.title[lk]:art.title;
+  const artChar=typeof art.char==='object'?art.char[lk]:art.char;
   const pick=art.editor?`<span class="pick-badge">${lang==='en'?'Pick':'推薦'}</span>`:'';
   const cpb=art.cp?`<span class="cp-badge">${t.cpWarn}</span>`:'';
   const thumb=art.image_url
@@ -695,7 +701,7 @@ function card(art){
     <div class="art-thumb">${pick}${cpb}${thumb}</div>
     <div class="art-info">
       <div class="art-unit" style="color:${col}">${art.unit}</div>
-      <div class="art-ttl">${art.title}</div>
+      <div class="art-ttl">${artTitle}</div>
       <div class="art-by">🖌 ${by}</div>
     </div>
   </div>`;
@@ -714,27 +720,31 @@ function renderGalleryGrid(q=''){
 }
 
 function renderUnits(){
+  const lk=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
   const t=T[lang];
   $('units-grid').innerHTML=UNITS.map(u=>{
     const cnt=ARTWORKS.filter(a=>a.unit===u.name).length;
     return `<div class="unit-card" onclick="filterUnit('${u.name}',null);showPage('home');">
       <div class="unit-top" style="background:${u.color}"></div>
       <div class="unit-em">${u.emblem}</div>
-      <div class="unit-nm" style="color:${u.color}">${u.name}</div>
-      <div class="unit-members">${u.members.map(m=>`<span class="mem-tag">${m}</span>`).join('')}</div>
+      <div class="unit-nm" style="color:${u.color}">${typeof u.name==='object'?u.name[lk]:u.name}</div>
+      <div class="unit-members">${(typeof u.members==='object'&&!Array.isArray(u.members)?u.members[lk]:u.members).map(m=>`<span class="mem-tag">${m}</span>`).join('')}</div>
       <div class="unit-cnt">✦ ${cnt} ${t.artCount}</div>
     </div>`;
   }).join('');
 }
 
 function renderChars(){
+  const lk=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
   $('chars-grid').innerHTML=CHARS.map(c=>{
     const u=UNITS.find(x=>x.name===c.unit);
     const col=u?u.color:'#888';
-    return `<div class="char-card" onclick="filterByChar('${c.name}')">
+    const cname=typeof c.name==='object'?c.name[lk]:c.name;
+    const uname=typeof u?.name==='object'?u.name[lk]:c.unit;
+    return `<div class="char-card" onclick="filterByChar('${cname}')">
       <div class="char-em">${c.em}</div>
-      <div class="char-nm">${c.name}</div>
-      <div class="char-unit" style="color:${col}">${c.unit}</div>
+      <div class="char-nm">${cname}</div>
+      <div class="char-unit" style="color:${col}">${uname}</div>
     </div>`;
   }).join('');
 }
@@ -786,7 +796,8 @@ function openLB(id){
     :`<span style="font-size:5rem">${art.thumb}</span>`;
   $('lb-unit').innerHTML=`<span style="color:${col}">${art.unit}</span>`;
   $('lb-ttl').textContent=art.title;
-  $('lb-char').textContent=art.char;
+  const lk2=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
+  $('lb-char').textContent=typeof art.char==='object'?art.char[lk2]:art.char;
   const byText=art.artist?`🖌 ${art.artist}`:`🖌 ${t.unknown}`;
   $('lb-by').innerHTML=art.artist&&art.url?`🖌 <a href="${art.url}" target="_blank" rel="noopener">${art.artist}</a>`:byText;
   const btns=[];
