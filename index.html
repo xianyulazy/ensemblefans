@@ -364,22 +364,22 @@ footer a:hover{text-decoration:underline;}
 // DATA — Edit here to add artworks, artists, etc.
 // ═══════════════════════════════════════════════════════════════
 const UNITS = [
-  { name:'Crazy:B',   color:'#ff6b9d', emblem:'🎲', members:['HiMERU','天城燐音','乙桐柊','氷鷹北斗'] },
-  { name:'ALKALOID',  color:'#a78bfa', emblem:'⚗️',  members:['椎名丹希','碓冰弦','鳴上嶺二','朔間零'] },
+  { name:'Crazy:B',   color:'#ff6b9d', emblem:'🎲', members:['HiMERU','天城燐音','椎名丹希','樱河琥珀'] },
+  { name:'ALKALOID',  color:'#a78bfa', emblem:'⚗️',  members:['天城一彩','碓冰弦','鳴上嶺二','朔間零'] },
   { name:'Valkyrie',  color:'#34d399', emblem:'⚔️',  members:['瀬名泉','斎宮宗'] },
   { name:'Eden',      color:'#fbbf24', emblem:'🌿', members:['聖良太一','蓮巳敬人','朱桜司','峰ヶ谷桃季'] },
   { name:'Ra*bits',   color:'#f9a8d4', emblem:'🐰', members:['日々樹渉','遊木民','西木蛍','守沢千秋'] },
   { name:'Knights',   color:'#6ee7b7', emblem:'♞',  members:['天祥院英智','高峰翠','朱桜司','周防桃李','一ノ瀬怜'] },
   { name:'RYUSEITAI', color:'#93c5fd', emblem:'☄️',  members:['天満光','伊東状','守沢千秋','衣更真緒','明星スバル'] },
-  { name:'fine',      color:'#fde68a', emblem:'👑', members:['天祥院英智','天城燐音','春川宙','七種茨'] },
+  { name:'fine',      color:'#fde68a', emblem:'👑', members:['天祥院英智','姬宫桃李','春川宙','七種茨'] },
 ];
 
 const CHARS = [
   { name:'HiMERU',    unit:'Crazy:B',   em:'🎲' },
   { name:'天城燐音',  unit:'Crazy:B',   em:'🎲' },
-  { name:'乙桐柊',    unit:'Crazy:B',   em:'🎲' },
-  { name:'氷鷹北斗',  unit:'Crazy:B',   em:'🎲' },
-  { name:'椎名丹希',  unit:'ALKALOID',  em:'⚗️'  },
+  { name:'椎名丹希',    unit:'Crazy:B',   em:'🎲' },
+  { name:'樱河琥珀',  unit:'Crazy:B',   em:'🎲' },
+  { name:'天城一彩',  unit:'ALKALOID',  em:'⚗️'  },
   { name:'碓冰弦',    unit:'ALKALOID',  em:'⚗️'  },
   { name:'鳴上嶺二',  unit:'ALKALOID',  em:'⚗️'  },
   { name:'朔間零',    unit:'ALKALOID',  em:'⚗️'  },
@@ -401,7 +401,7 @@ const CHARS = [
   { name:'伊東状',    unit:'RYUSEITAI', em:'☄️'  },
   { name:'衣更真緒',  unit:'RYUSEITAI', em:'☄️'  },
   { name:'明星スバル',unit:'RYUSEITAI', em:'☄️'  },
-  { name:'天城燐音',  unit:'fine',      em:'👑' },
+  { name:'姬宫桃李',  unit:'fine',      em:'👑' },
   { name:'春川宙',    unit:'fine',      em:'👑' },
   { name:'七種茨',    unit:'fine',      em:'👑' },
 ];
@@ -420,11 +420,11 @@ const ARTWORKS = [
   { id:7,  image_url:'', thumb:'☄️', title:'Comet Fall',   unit:'RYUSEITAI', char:'天満光',    artist:'@ryusei_p',    url:'https://x.com',    platform:'twitter', editor:true,  cp:false },
   { id:8,  image_url:'', thumb:'✨', title:'Fine Dining',  unit:'fine',      char:'天祥院英智',artist:'@eichi_fan',   url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
   { id:9,  image_url:'', thumb:'🎭', title:'Crimson Drama', unit:'Valkyrie', char:'斎宮宗',    artist:'@drama_brush', url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
-  { id:10, image_url:'', thumb:'💫', title:'Midnight Run',  unit:'Crazy:B',  char:'乙桐柊',    artist:null,           url:null,               platform:null,      editor:false, cp:false },
+  { id:10, image_url:'', thumb:'💫', title:'Midnight Run',  unit:'Crazy:B',  char:'椎名丹希',    artist:null,           url:null,               platform:null,      editor:false, cp:false },
   { id:11, image_url:'', thumb:'🌙', title:'Lunar Waltz',   unit:'ALKALOID', char:'朔間零',    artist:'@luna_p',      url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
   { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',    unit:'Ra*bits',  char:'遊木民',    artist:'@wave_art',    url:'https://x.com',    platform:'twitter', editor:false, cp:false },
-  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'😋', title:'Bread niki',    unit:'Ra*bits',  char:'遊木民',    artist:null,    url:'https://www.pinterest.com/pin/1058557087429714796/',    platform:'pinterest', editor:false, cp:false },
-  { id:14, image_url:'images/48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'😋', title:'Glasses niki',    unit:'Ra*bits',  char:'遊木民',    artist:null,    url:'https://www.pinterest.com/pin/1058557087429714796/',    platform:'pinterest', editor:false, cp:false }
+  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'😋', title:'Bread niki',    unit:'Crazy:B',  char:'椎名丹希',    artist:null,    url:'https://www.pinterest.com/pin/1058557087429714796/',    platform:'pinterest', editor:false, cp:false },
+  { id:14, image_url:'images/48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'😋', title:'Glasses niki',    unit:'Ra*bits',  char:'椎名丹希',    artist:null,    url:'https://www.pinterest.com/pin/1058557087429714796/',    platform:'pinterest', editor:false, cp:false }
 ];
 
 // ─── ADD YOUR ARTISTS HERE ─────────────────────────────────────
