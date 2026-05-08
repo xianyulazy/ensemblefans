@@ -214,7 +214,8 @@ footer a:hover{text-decoration:underline;}
       <button class="nav-btn"        id="nav-units"      onclick="showPage('units')">偶像團體</button>
       <button class="nav-btn"        id="nav-chars"      onclick="showPage('chars')">角色</button>
       <button class="nav-btn"        id="nav-artists"    onclick="showPage('artists')">畫師牆</button>
-      <button class="nav-btn"        id="nav-about"      onclick="showPage('about')">關於</button>
+      <button class="nav-btn"        id="nav-about"      onclick="showPage('about')">關於</button>       
+      <button class="nav-btn"        id="nav-xianyu"     onclick="showPage('xianyu')">關於咸魚</button>
       <button class="nav-btn"        id="nav-disclaimer" onclick="showPage('disclaimer')">版權</button>
     </nav>
     <div class="lang-sw">
@@ -329,6 +330,108 @@ footer a:hover{text-decoration:underline;}
   <div class="artist-grid" id="artist-wall"></div>
 </main></div>
 
+<!-- ══ PAGE: XIANYU ══ -->
+<div id="page-xianyu" class="page"><main>
+  <div class="hero" style="padding:2rem 0 1.5rem;">
+    <p class="hero-eye">✦ ABOUT ME ✦</p>
+    <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3rem);" id="t-xytitle">關於咸魚</h1>
+  </div>
+
+  <div style="max-width:780px;margin:0 auto;">
+
+    <!-- Language toggle -->
+    <div style="display:flex;gap:8px;margin-bottom:2rem;">
+      <button onclick="xyLang('tw')" id="xy-btn-tw" style="padding:6px 18px;border-radius:16px;border:1px solid rgba(201,169,110,0.4);color:var(--gold);background:rgba(201,169,110,0.25);cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.82rem;">繁體</button>
+      <button onclick="xyLang('cn')" id="xy-btn-cn" style="padding:6px 18px;border-radius:16px;border:1px solid rgba(201,169,110,0.4);color:var(--gold);background:none;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.82rem;">简体</button>
+      <button onclick="xyLang('en')" id="xy-btn-en" style="padding:6px 18px;border-radius:16px;border:1px solid rgba(201,169,110,0.4);color:var(--gold);background:none;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.82rem;">EN</button>
+    </div>
+
+    <!-- Traditional Chinese -->
+    <div id="xy-tw" style="display:block;">
+      <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:2rem 2.2rem;line-height:2.1;color:var(--soft);font-size:.95rem;">
+        <p style="font-size:1.1rem;color:var(--champagne);margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;">大家好，這裡是咸魚！🐟</p>
+        <p style="margin-bottom:1rem;">做了這個網站真的讓咸魚超~級開心！這是我人生中（在AI工具輔助下製作的）第一個網站（鼓掌！），雖然因為是自學技術，可能還有不少缺陷（悲），但能做成現在這樣我已經很自豪啦（笑）！如果大家在使用時遇到任何故障，請務必告訴我哦！</p>
+        <p style="margin-bottom:1rem;">咸魚常駐B站，ID是<a href="https://space.bilibili.com/" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);">【下輩子當咸魚】</a>，歡迎大家來私訊我（擴列！），或是在影片留言區找我玩！如果有老師願意合作，或是想投稿畫作，也隨時歡迎來聯絡咸魚！另外，所有的重大更新或通知，我也會第一時間在B站動態裡說，記得關注哦www</p>
+        <p style="margin-bottom:1rem;">因為還是學生黨，這個網站會不定時更新。但如果大家有特別想看到的角色，也可以告訴咸魚，我可以優先安排上！</p>
+        <div style="background:rgba(232,164,184,0.07);border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+          <p style="color:var(--rose);font-size:.85rem;margin-bottom:.6rem;letter-spacing:.08em;">關於初衷</p>
+          <p style="font-size:.92rem;">其實沒什麼特別偉大的理由，就是單純地喜歡小偶像們（本人是ES全員推！），不知不覺在各種地方存了很多好看的畫作。於是就想著整理一下，統一放在這裡，順便開放給大家一起欣賞。當然，如果大家也能喜歡的話，咸魚會超榮幸的！( •̀ ω •́ )✧</p>
+        </div>
+        <div style="background:rgba(147,197,253,0.06);border-left:3px solid #93c5fd;border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+          <p style="font-size:.92rem;">對了因爲咸魚是香港人，所以有繁簡英的選擇，方便大家看！(/≧▽≦)／（雖然想整個廣東話版，但 ES 實在係太冷門喇，都冇見過玩 ES 嘅香港人。如果有人睇到嘅話可以 be friend 嗎哈哈哈）</p>
+        </div>
+        <p style="margin-top:1rem;color:var(--champagne);">最後，感謝大家的瀏覽！祝各位製作人運気暴漲，抽卡永遠不歪，自推多出好卡！那麼，咸魚先告辭！🐟✨</p>
+      </div>
+    </div>
+
+    <!-- Simplified Chinese -->
+    <div id="xy-cn" style="display:none;">
+      <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:2rem 2.2rem;line-height:2.1;color:var(--soft);font-size:.95rem;">
+        <p style="font-size:1.1rem;color:var(--champagne);margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;">大家好，这里是咸鱼！🐟</p>
+        <p style="margin-bottom:1rem;">做了这个网站真的让咸鱼超~级开心！这是我人生中（在AI工具辅助下制作的）第一个网站（鼓掌！），虽然因为是自学技术，可能还有不少缺陷（悲），但能做成现在这样我已经很自豪啦（笑）！如果大家在使用时遇到任何故障，请务必告诉我哦！</p>
+        <p style="margin-bottom:1rem;">咸鱼常驻B站，ID是<a href="https://space.bilibili.com/" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);">【下辈子当咸鱼】</a>，欢迎大家来私信我（扩列！），或者在视频评论区找我玩！如果有老师愿意合作，或者想投稿画作，也随时欢迎来联络咸鱼！另外，所有的重大更新或通知，我也会第一时间在B站动态里说，记得关注哦www</p>
+        <p style="margin-bottom:1rem;">因为还是学生党，这个网站会不定时更新。但如果大家有特别想看到的角色，也可以告诉咸鱼，我可以优先安排上哦！</p>
+        <div style="background:rgba(232,164,184,0.07);border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+          <p style="color:var(--rose);font-size:.85rem;margin-bottom:.6rem;letter-spacing:.08em;">关于初衷</p>
+          <p style="font-size:.92rem;">其实没什么特别伟大的理由，就是单纯地喜欢小偶像们（本人是ES全员推！），不知不觉在各种地方存了好多好看的画作。于是就想着整理一下，统一放在这里，顺便开放给大家一起欣赏。当然，如果大家也能喜欢的话，咸鱼会超级荣幸的！( •̀ ω •́ )✧</p>
+        </div>
+        <p style="margin-top:1rem;color:var(--champagne);">最后，感谢大家的浏览！祝各位制作人运気暴漲，抽卡永远不歪，自推多出好卡！那么，咸鱼先告辞啦！🐟✨</p>
+      </div>
+    </div>
+
+    <!-- English -->
+    <div id="xy-en" style="display:none;">
+      <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:2rem 2.2rem;line-height:2.1;color:var(--soft);font-size:.95rem;">
+        <p style="font-size:1.1rem;color:var(--champagne);margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;">Hi everyone, this is Xianyu! 🐟</p>
+        <p style="margin-bottom:1rem;">I'm over the moon to finally launch this website! This is my very first web project made with the help of AI tools! (self-applause ✋) Since I taught myself how to make it, there might still be some imperfections here and there, but I'm pretty proud of how it turned out! :D If you encounter any bugs or issues, please do let me know!</p>
+        <p style="margin-bottom:1rem;">I'm usually hanging out on Bilibili (basically Chinese YouTube) under <a href="https://space.bilibili.com/" target="_blank" style="color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,169,110,0.3);">【下辈子当咸鱼】</a> (it means "I'm gonna be a lazy fish in my next lifetime" lmao). Feel free to DM me there or chat in the comments — I'd love to meet some ES friends! Also, if any creators are interested in collaborations or want to submit artwork, don't hesitate to reach out! For major updates I'll be posting on my Bilibili feed, so stay tuned!</p>
+        <p style="margin-bottom:1rem;">Since I'm still a student, updates might be a bit irregular. But if you have any characters you'd really love to see featured, tell me and I'll try to prioritize them! (my English sounds like Chinglish I'm so sorry I'm trying இ௰இ)</p>
+        <div style="background:rgba(232,164,184,0.07);border-left:3px solid var(--rose);border-radius:0 10px 10px 0;padding:1rem 1.3rem;margin:1.2rem 0;">
+          <p style="color:var(--rose);font-size:.85rem;margin-bottom:.6rem;letter-spacing:.08em;">The motivation behind this site</p>
+          <p style="font-size:.92rem;">There's no grand reason behind it, really (just a lazy fish~). I just really, really love the idols (a fellow ALL-ES-P here!). Before I knew it, I had saved tons of amazing fan art from all over the web. So I thought — why not organize them all in one place and share it with everyone? It would be my greatest honor if you enjoy it too! ( •̀ ω •́ )✧</p>
+        </div>
+        <p style="margin-top:1rem;color:var(--champagne);">Finally, thank you so much for visiting! I wish all Producers the best of luck — may your pulls be ever in your favor, and may your faves come home with amazing cards! See you around! Baiiii :) 🐟✨</p>
+      </div>
+    </div>
+
+    <!-- Contact cards -->
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:1.5rem;">
+
+      <!-- Bilibili -->
+      <div style="background:rgba(0,174,236,0.07);border:1px solid rgba(0,174,236,0.2);border-radius:14px;padding:1.2rem 1.5rem;">
+        <div style="font-size:.7rem;color:var(--muted);margin-bottom:6px;letter-spacing:.1em;">BILIBILI</div>
+        <div style="color:var(--champagne);font-size:.95rem;margin-bottom:4px;">下辈子当咸鱼</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">站內更新 · 私信投稿 · Site updates & DMs</div>
+        <a href="https://space.bilibili.com/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,174,236,0.15);border:1px solid rgba(0,174,236,0.35);color:#7dd3fc;border-radius:18px;text-decoration:none;font-size:.8rem;" onmouseover="this.style.background='rgba(0,174,236,0.28)'" onmouseout="this.style.background='rgba(0,174,236,0.15)'">📺 前往主頁 / Visit</a>
+      </div>
+
+      <!-- Email -->
+      <div style="background:rgba(201,169,110,0.07);border:1px solid rgba(201,169,110,0.2);border-radius:14px;padding:1.2rem 1.5rem;">
+        <div style="font-size:.7rem;color:var(--muted);margin-bottom:6px;letter-spacing:.1em;">EMAIL</div>
+        <div style="color:var(--champagne);font-size:.95rem;margin-bottom:4px;">xianyulazy@gmail.com</div>
+        <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">版權 · 合作 · Copyright & collabs</div>
+        <a href="mailto:xianyulazy@gmail.com" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.35);color:var(--gold);border-radius:18px;text-decoration:none;font-size:.8rem;" onmouseover="this.style.background='rgba(201,169,110,0.28)'" onmouseout="this.style.background='rgba(201,169,110,0.15)'">✉ 發送郵件 / Send email</a>
+      </div>
+
+    </div>
+
+    <!-- Quick message form -->
+    <div style="margin-top:1rem;background:rgba(232,164,184,0.05);border:1px solid rgba(232,164,184,0.15);border-radius:14px;padding:1.4rem 1.5rem;">
+      <div style="font-size:.78rem;color:var(--muted);letter-spacing:.08em;margin-bottom:1rem;">✉ SEND A QUICK MESSAGE · 快速留言</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin-bottom:.8rem;">
+        <input id="msg-name" type="text" placeholder="Your name / 你的名字" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:9px 14px;color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:.83rem;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(201,169,110,0.5)'" onblur="this.style.borderColor='rgba(201,169,110,0.2)'">
+        <input id="msg-email" type="email" placeholder="Your email / 你的郵箱 (optional)" style="background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:9px 14px;color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:.83rem;outline:none;width:100%;" onfocus="this.style.borderColor='rgba(201,169,110,0.5)'" onblur="this.style.borderColor='rgba(201,169,110,0.2)'">
+      </div>
+      <textarea id="msg-body" rows="3" placeholder="Message / 留言內容…" style="width:100%;background:rgba(255,255,255,0.04);border:1px solid rgba(201,169,110,0.2);border-radius:10px;padding:9px 14px;color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:.83rem;outline:none;resize:vertical;margin-bottom:.8rem;" onfocus="this.style.borderColor='rgba(201,169,110,0.5)'" onblur="this.style.borderColor='rgba(201,169,110,0.2)'"></textarea>
+      <div style="display:flex;align-items:center;gap:1rem;flex-wrap:wrap;">
+        <button onclick="sendMsg()" style="padding:8px 22px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.4);color:var(--gold);border-radius:20px;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.83rem;" onmouseover="this.style.background='rgba(201,169,110,0.28)'" onmouseout="this.style.background='rgba(201,169,110,0.15)'">✉ 發送 / Send</button>
+        <span id="msg-status" style="font-size:.8rem;color:var(--muted);"></span>
+      </div>
+    </div>
+
+  </div>
+</main></div>
+  
 <!-- ══ PAGE: ABOUT ══ -->
 <div id="page-about" class="page"><main>
   <div class="about-prose">
@@ -456,7 +559,7 @@ const ARTISTS = [
 // ═══════════════════════════════════════════════════════════════
 const T = {
   'zh-TW':{
-    navHome:'首頁',navGallery:'作品庫',navUnits:'偶像團體',navChars:'角色',navArtists:'畫師牆',navAbout:'關於',navDisclaimer:'版權',
+    navHome:'首頁',navGallery:'作品庫',navUnits:'偶像團體',navChars:'角色',navArtists:'畫師牆',navAbout:'關於',navDisclaimer:'版權',navXianyu:'關於咸魚',
     eye:'✦ Ensemble Stars! Fan Gallery ✦',
     htitle:'璀璨星辰',hsub:'偶像二創畫廊',
     hdesc:'歡迎來到由咸魚精心整理的 Ensemble Stars! 同人美術作品集。這裡收錄來自世界各地繪師創作的美麗作品，所有作品均已標注原創者並連結原始發布頁面。',
@@ -480,7 +583,7 @@ const T = {
     statArt:'幅作品',statUnit:'個團體',statArtist:'位畫師',
   },
   'zh-CN':{
-    navHome:'首页',navGallery:'作品库',navUnits:'偶像团体',navChars:'角色',navArtists:'画师墙',navAbout:'关于',navDisclaimer:'版权',
+    navHome:'首页',navGallery:'作品库',navUnits:'偶像团体',navChars:'角色',navArtists:'画师墙',navAbout:'关于',navDisclaimer:'版权',navXianyu:'关于咸鱼',
     eye:'✦ Ensemble Stars! Fan Gallery ✦',
     htitle:'璀璨星辰',hsub:'偶像同人画廊',
     hdesc:'欢迎来到由咸鱼整理的 Ensemble Stars! 同人美术作品集。收录了来自世界各地绘师创作的精美作品，每幅作品均标注原创者并链接到原始发布页面。',
@@ -504,7 +607,7 @@ const T = {
     statArt:'幅作品',statUnit:'个团体',statArtist:'位画师',
   },
   'en':{
-    navHome:'Home',navGallery:'Gallery',navUnits:'Units',navChars:'Characters',navArtists:'Artists',navAbout:'About',navDisclaimer:'Disclaimer',
+    navHome:'Home',navGallery:'Gallery',navUnits:'Units',navChars:'Characters',navArtists:'Artists',navAbout:'About',navDisclaimer:'Disclaimer',navXianyu:'About Me',
     eye:'✦ Ensemble Stars! Fan Gallery ✦',
     htitle:'Shining Stars',hsub:'Fan Art Gallery',
     hdesc:'A curated collection of Ensemble Stars! fan artworks maintained by Xianyu (咸魚). Every piece credits the original artist and links to its source. Built out of love — non-commercial.',
@@ -552,7 +655,8 @@ function applyLang(){
   setTxt('nav-home',t.navHome); setTxt('nav-gallery',t.navGallery);
   setTxt('nav-units',t.navUnits); setTxt('nav-chars',t.navChars);
   setTxt('nav-artists',t.navArtists); setTxt('nav-about',t.navAbout);
-  setTxt('nav-disclaimer',t.navDisclaimer);
+  setTxt('nav-disclaimer',t.navDisclaimer);   
+  setTxt('nav-xianyu',t.navXianyu);
   setTxt('t-eye',t.eye);
   setHTML('t-htitle', t.htitle+'<br><em>'+t.hsub+'</em>');
   setTxt('t-hdesc',t.hdesc); setTxt('t-ann',t.ann);
@@ -718,6 +822,28 @@ function showPage(name){
 
 // Init
 document.addEventListener('DOMContentLoaded',()=>{ applyLang(); });
+  // Xianyu page language toggle
+function xyLang(l){
+  ['tw','cn','en'].forEach(x=>{
+    document.getElementById('xy-'+x).style.display = x===l ? 'block' : 'none';
+    document.getElementById('xy-btn-'+x).style.background = x===l ? 'rgba(201,169,110,0.25)' : 'none';
+  });
+}
+
+// Quick message form — opens Gmail compose
+function sendMsg(){
+  const name = document.getElementById('msg-name').value.trim();
+  const email = document.getElementById('msg-email').value.trim();
+  const body = document.getElementById('msg-body').value.trim();
+  if(!body){ document.getElementById('msg-status').textContent = '請填寫留言內容 / Please write a message'; return; }
+  const subject = encodeURIComponent('EnsembleFans message from ' + (name||'a visitor'));
+  const bodyText = encodeURIComponent(body + (email ? '\n\nReply to: '+email : '') + (name ? '\nFrom: '+name : ''));
+  window.open('mailto:xianyulazy@gmail.com?subject='+subject+'&body='+bodyText);
+  document.getElementById('msg-status').textContent = '✓ Opening your email app…';
+  document.getElementById('msg-name').value='';
+  document.getElementById('msg-email').value='';
+  document.getElementById('msg-body').value='';
+}
 </script>
 </body>
 </html>
