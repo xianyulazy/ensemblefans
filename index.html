@@ -1,39 +1,223 @@
 <!DOCTYPE html>
 <html lang="zh-TW">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EnsembleFans ✦ Ensemble Stars! Fan Gallery</title>
-  <meta name="description" content="Ensemble Stars! fan art gallery — curated by Xianyu. Fan artworks organized by unit and character, all credited to original artists.">
-  <meta property="og:title" content="EnsembleFans ✦ Ensemble Stars! Fan Gallery">
-  <meta property="og:description" content="A curated fan art gallery for Ensemble Stars!, maintained with love by Xianyu.">
-  <meta property="og:url" content="https://xianyulazy.github.io/ensemblefans/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@300;400;600&family=Noto+Sans+SC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EnsembleFans ✦ Ensemble Stars! Fan Gallery</title>
+<meta name="description" content="Ensemble Stars! fan art gallery — curated by Xianyu (咸魚). Fan artworks organized by unit and character, all credited to original artists.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#0d1b2a;--deep:#111827;--surface:#1a2638;--card:#1e2d3d;--card2:#19293a;--rose:#e8a4b8;--gold:#c9a96e;--champagne:#f0e6d3;--muted:#8a9ab5;--text:#e8eaf0;--soft:#b8c4d4;--star:#f5d77a;}
+*{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans SC',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* Stars */
+.stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 20%,#1a2040 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,#1c1030 0%,transparent 60%),var(--navy);}
+.stars-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 25% 40%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 40% 8%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 60% 25%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 75% 55%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 88% 12%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 15% 70%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 50% 80%,rgba(245,215,122,.4) 0%,transparent 100%),radial-gradient(1px 1px at 92% 65%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 33% 90%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 70% 90%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 5% 95%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 55% 50%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 80% 35%,rgba(245,215,122,.4) 0%,transparent 100%);}
+
+/* Header */
+header{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,169,110,.18);}
+.header-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:58px;gap:.75rem;}
+.site-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--champagne);letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;border:none;background:none;}
+.logo-star{color:var(--star);}
+nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
+.nav-btn{background:none;border:none;cursor:pointer;color:var(--soft);font-family:'Noto Sans SC',sans-serif;font-size:.78rem;padding:5px 10px;border-radius:18px;transition:all .2s;white-space:nowrap;letter-spacing:.03em;}
+.nav-btn:hover,.nav-btn.active{color:var(--champagne);background:rgba(201,169,110,.13);}
+.lang-sw{display:flex;gap:4px;flex-shrink:0;}
+.lang-btn{background:none;border:1px solid rgba(201,169,110,.3);cursor:pointer;color:var(--muted);font-size:.68rem;padding:3px 8px;border-radius:12px;transition:all .2s;font-family:'Noto Sans SC',sans-serif;}
+.lang-btn:hover,.lang-btn.active{color:var(--gold);border-color:var(--gold);background:rgba(201,169,110,.1);}
+
+/* Layout */
+.page{display:none;}
+.page.active{display:block;}
+main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
+
+/* Hero */
+.hero{text-align:center;padding:3.5rem 0 2.5rem;}
+.hero-eye{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;opacity:.85;}
+.hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4.2rem);font-weight:300;line-height:1.15;color:var(--champagne);margin-bottom:1.2rem;}
+.hero-title em{font-style:italic;color:var(--rose);}
+.hero-desc{font-size:.92rem;color:var(--soft);line-height:1.85;max-width:580px;margin:0 auto 2rem;}
+.divider{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 2.5rem;}
+
+/* Search */
+.search-wrap{max-width:480px;margin:0 auto 2rem;position:relative;}
+.search-wrap input{width:100%;padding:11px 18px 11px 44px;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.22);border-radius:28px;color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;}
+.search-wrap input:focus{border-color:rgba(201,169,110,.55);}
+.search-wrap input::placeholder{color:var(--muted);}
+.search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1rem;pointer-events:none;}
+
+/* Unit chips */
+.chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:2.5rem;}
+.chip{padding:5px 15px;border-radius:18px;font-size:.77rem;border:1px solid;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;background:none;letter-spacing:.03em;}
+.chip:hover{opacity:.8;}
+.chip.active{color:#0d1b2a!important;}
+
+/* Section headers */
+.sec-hd{display:flex;align-items:center;gap:.8rem;margin-bottom:1.3rem;}
+.sec-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--champagne);white-space:nowrap;letter-spacing:.04em;}
+.sec-line{flex:1;height:1px;background:rgba(201,169,110,.18);}
+
+/* Art grid */
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:1.1rem;margin-bottom:2.5rem;}
+.art-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .28s;position:relative;}
+.art-card:hover{transform:translateY(-5px);border-color:rgba(201,169,110,.38);box-shadow:0 14px 40px rgba(0,0,0,.45);}
+.art-thumb{aspect-ratio:3/4;width:100%;background:linear-gradient(135deg,var(--surface),var(--deep));display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden;}
+.art-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,.85) 0%,transparent 55%);}
+.art-thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.thumb-em{z-index:1;position:relative;}
+.pick-badge{position:absolute;top:8px;right:8px;z-index:2;background:rgba(201,169,110,.92);color:#1a0f00;font-size:.58rem;padding:2px 7px;border-radius:10px;letter-spacing:.1em;font-weight:600;}
+.cp-badge{position:absolute;top:8px;left:8px;z-index:2;background:rgba(232,100,120,.85);color:#fff;font-size:.58rem;padding:2px 7px;border-radius:10px;letter-spacing:.05em;}
+.art-info{padding:9px 11px 11px;}
+.art-unit{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;}
+.art-ttl{font-size:.83rem;color:var(--champagne);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.art-by{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:3px;}
+.art-by a{color:var(--gold);text-decoration:none;}
+.art-by a:hover{text-decoration:underline;}
+
+/* Lightbox */
+.lb-overlay{position:fixed;inset:0;z-index:200;background:rgba(5,10,18,.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.lb-overlay.open{opacity:1;pointer-events:all;}
+.lb-box{background:var(--card);border:1px solid rgba(201,169,110,.2);border-radius:16px;max-width:500px;width:100%;overflow:hidden;transform:scale(.95);transition:transform .25s;}
+.lb-overlay.open .lb-box{transform:scale(1);}
+.lb-img{width:100%;aspect-ratio:3/4;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
+.lb-img img{width:100%;height:100%;object-fit:contain;}
+.lb-info{padding:1.1rem 1.3rem 1.3rem;}
+.lb-unit{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:5px;}
+.lb-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--champagne);margin-bottom:6px;}
+.lb-char{font-size:.82rem;color:var(--soft);margin-bottom:10px;}
+.lb-artist{font-size:.82rem;color:var(--muted);margin-bottom:12px;}
+.lb-artist a{color:var(--gold);text-decoration:none;}
+.lb-artist a:hover{text-decoration:underline;}
+.lb-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.lb-btn{padding:7px 16px;border-radius:18px;font-size:.78rem;text-decoration:none;border:1px solid;transition:all .2s;font-family:'Noto Sans SC',sans-serif;}
+.lb-btn-gold{color:var(--gold);border-color:rgba(201,169,110,.4);background:rgba(201,169,110,.08);}
+.lb-btn-gold:hover{background:rgba(201,169,110,.2);}
+.lb-close{position:absolute;top:1rem;right:1rem;background:rgba(13,27,42,.7);border:1px solid rgba(201,169,110,.3);color:var(--champagne);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:210;}
+.lb-close:hover{background:rgba(201,169,110,.2);}
+
+/* Units page */
+.units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem;}
+.unit-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:16px;padding:1.4rem;cursor:pointer;transition:all .28s;position:relative;overflow:hidden;}
+.unit-card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.28);}
+.unit-top{position:absolute;top:0;left:0;right:0;height:3px;}
+.unit-em{font-size:2.2rem;margin-bottom:10px;}
+.unit-nm{font-family:'Cormorant Garamond',serif;font-size:1.35rem;margin-bottom:5px;}
+.unit-members{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
+.mem-tag{font-size:.68rem;color:var(--soft);background:rgba(255,255,255,.05);padding:2px 8px;border-radius:8px;}
+.unit-cnt{font-size:.73rem;color:var(--muted);}
+
+/* Characters page */
+.char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;}
+.char-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:1.1rem;text-align:center;cursor:pointer;transition:all .25s;}
+.char-card:hover{transform:translateY(-3px);border-color:rgba(201,169,110,.3);}
+.char-em{font-size:2rem;margin-bottom:8px;}
+.char-nm{font-size:.82rem;color:var(--champagne);margin-bottom:3px;}
+.char-unit{font-size:.68rem;color:var(--muted);}
+
+/* About */
+.about-prose{max-width:680px;line-height:1.95;font-size:.93rem;color:var(--soft);}
+.about-prose h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--champagne);margin:2.2rem 0 .9rem;}
+.about-prose h2:first-child{margin-top:0;}
+.about-prose p{margin-bottom:.9rem;}
+.about-prose strong{color:var(--champagne);}
+.info-card{background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.18);border-radius:12px;padding:1.1rem 1.4rem;margin:1.3rem 0;}
+.bili-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(0,174,236,.12);border:1px solid rgba(0,174,236,.28);color:#7dd3fc;padding:8px 16px;border-radius:20px;font-size:.83rem;text-decoration:none;transition:all .2s;margin-top:.5rem;}
+.bili-btn:hover{background:rgba(0,174,236,.22);}
+
+/* Disclaimer */
+.disc-sec{background:rgba(232,164,184,.05);border:1px solid rgba(232,164,184,.18);border-left:3px solid var(--rose);border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin-bottom:1.3rem;}
+.disc-sec h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--rose);margin-bottom:.65rem;font-weight:400;}
+.disc-sec p{font-size:.88rem;color:var(--soft);line-height:1.8;}
+
+/* Artist wall */
+.artist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem;}
+.artist-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:10px;transition:all .2s;text-decoration:none;}
+.artist-card:hover{border-color:rgba(201,169,110,.3);transform:translateY(-2px);}
+.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;background:rgba(201,169,110,.12);}
+.ar-nm{font-size:.87rem;color:var(--champagne);margin-bottom:2px;}
+.ar-pl{font-size:.7rem;color:var(--muted);}
+
+/* CTAs */
+.cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:1.5rem 0;}
+.cta{padding:9px 20px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;letter-spacing:.03em;border:1px solid;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.cta-g{background:rgba(201,169,110,.12);color:var(--gold);border-color:rgba(201,169,110,.35);}
+.cta-g:hover{background:rgba(201,169,110,.22);}
+.cta-r{background:rgba(232,164,184,.09);color:var(--rose);border-color:rgba(232,164,184,.28);}
+.cta-r:hover{background:rgba(232,164,184,.18);}
+.cta-b{background:rgba(0,174,236,.09);color:#7dd3fc;border-color:rgba(0,174,236,.28);}
+.cta-b:hover{background:rgba(0,174,236,.18);}
+
+/* Empty */
+.empty{text-align:center;padding:3.5rem 1rem;color:var(--muted);}
+.empty .ei{font-size:2.5rem;margin-bottom:.8rem;opacity:.4;}
+
+/* Stats bar */
+.stats-bar{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;}
+.stat{text-align:center;}
+.stat-n{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);line-height:1;}
+.stat-l{font-size:.72rem;color:var(--muted);letter-spacing:.08em;margin-top:3px;}
+
+/* Announcement */
+.announcement{background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:12px;padding:1rem 1.3rem;margin-bottom:2rem;display:flex;align-items:flex-start;gap:10px;}
+.ann-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.ann-text{font-size:.85rem;color:var(--soft);line-height:1.7;}
+.ann-text strong{color:var(--champagne);}
+
+/* Footer */
+footer{position:relative;z-index:1;border-top:1px solid rgba(201,169,110,.13);text-align:center;padding:2.2rem 1.5rem;color:var(--muted);font-size:.78rem;line-height:2.1;}
+footer a{color:var(--gold);text-decoration:none;}
+footer a:hover{text-decoration:underline;}
+.foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--champagne);margin-bottom:.6rem;}
+
+/* Responsive */
+@media(max-width:700px){
+  .header-inner{flex-wrap:wrap;height:auto;padding:.6rem 1rem;}
+  nav{order:3;width:100%;justify-content:center;}
+  .lang-sw{order:2;}
+  main{padding:1.5rem 1rem 4rem;}
+  .hero{padding:2rem 0 1.5rem;}
+  .art-grid{grid-template-columns:repeat(auto-fill,minmax(145px,1fr));gap:.85rem;}
+  .units-grid{grid-template-columns:1fr;}
+  .stats-bar{gap:1rem;}
+}
+</style>
 </head>
 <body>
-
 <div class="stars-bg"></div>
 
-<!-- ══════════════════════════════════════════
-     HEADER
-══════════════════════════════════════════ -->
+<!-- LIGHTBOX -->
+<div class="lb-overlay" id="lb" onclick="closeLB(event)">
+  <button class="lb-close" onclick="closeLightbox()">✕</button>
+  <div class="lb-box">
+    <div class="lb-img" id="lb-img"></div>
+    <div class="lb-info">
+      <div class="lb-unit" id="lb-unit"></div>
+      <div class="lb-title" id="lb-ttl"></div>
+      <div class="lb-char" id="lb-char"></div>
+      <div class="lb-artist" id="lb-by"></div>
+      <div class="lb-btns" id="lb-btns"></div>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
 <header>
   <div class="header-inner">
-    <a class="site-logo" onclick="showPage('home')">
-      <span class="logo-star">✦</span>
-      EnsembleFans
-    </a>
+    <button class="site-logo" onclick="showPage('home')"><span class="logo-star">✦</span>EnsembleFans</button>
     <nav>
       <button class="nav-btn active" id="nav-home"       onclick="showPage('home')">首頁</button>
+      <button class="nav-btn"        id="nav-gallery"    onclick="showPage('gallery')">作品庫</button>
       <button class="nav-btn"        id="nav-units"      onclick="showPage('units')">偶像團體</button>
+      <button class="nav-btn"        id="nav-chars"      onclick="showPage('chars')">角色</button>
       <button class="nav-btn"        id="nav-artists"    onclick="showPage('artists')">畫師牆</button>
       <button class="nav-btn"        id="nav-about"      onclick="showPage('about')">關於</button>
-      <button class="nav-btn"        id="nav-disclaimer" onclick="showPage('disclaimer')">版權聲明</button>
+      <button class="nav-btn"        id="nav-disclaimer" onclick="showPage('disclaimer')">版權</button>
     </nav>
-    <div class="lang-switcher">
+    <div class="lang-sw">
       <button class="lang-btn"        id="lang-zh-CN" onclick="setLang('zh-CN')">简体</button>
       <button class="lang-btn active" id="lang-zh-TW" onclick="setLang('zh-TW')">繁體</button>
       <button class="lang-btn"        id="lang-en"    onclick="setLang('en')">EN</button>
@@ -41,141 +225,487 @@
   </div>
 </header>
 
-<!-- ══════════════════════════════════════════
-     PAGE: HOME
-══════════════════════════════════════════ -->
-<div id="page-home" class="page active">
-<main>
+<!-- ══ PAGE: HOME ══ -->
+<div id="page-home" class="page active"><main>
   <div class="hero">
-    <p class="hero-eyebrow" id="t-eyebrow">✦ Ensemble Stars! Fan Gallery ✦</p>
-    <h1 class="hero-title" id="t-hero-title">璀璨星辰<br><em>偶像二創畫廊</em></h1>
-    <p class="hero-sub" id="t-hero-desc"></p>
-    <div class="hero-divider"></div>
-
-    <div class="search-bar">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="search-input" placeholder="搜索角色、繪師、偶像團體…" oninput="filterGallery(this.value)">
-    </div>
-
-    <div class="unit-chips" id="filter-chips">
-      <button class="unit-chip active" id="chip-all"
-        style="color:#f5d77a;border-color:#f5d77a;"
-        data-unit="all" onclick="filterUnit('all',this)">全部</button>
-      <button class="unit-chip" style="color:#ff6b9d;border-color:#ff6b9d;" data-unit="Crazy:B"   onclick="filterUnit('Crazy:B',this)">Crazy:B</button>
-      <button class="unit-chip" style="color:#a78bfa;border-color:#a78bfa;" data-unit="ALKALOID"  onclick="filterUnit('ALKALOID',this)">ALKALOID</button>
-      <button class="unit-chip" style="color:#34d399;border-color:#34d399;" data-unit="Valkyrie"  onclick="filterUnit('Valkyrie',this)">Valkyrie</button>
-      <button class="unit-chip" style="color:#fbbf24;border-color:#fbbf24;" data-unit="Eden"      onclick="filterUnit('Eden',this)">Eden</button>
-      <button class="unit-chip" style="color:#f9a8d4;border-color:#f9a8d4;" data-unit="Ra*bits"   onclick="filterUnit('Ra*bits',this)">Ra*bits</button>
-      <button class="unit-chip" style="color:#6ee7b7;border-color:#6ee7b7;" data-unit="Knights"   onclick="filterUnit('Knights',this)">Knights</button>
-      <button class="unit-chip" style="color:#93c5fd;border-color:#93c5fd;" data-unit="RYUSEITAI" onclick="filterUnit('RYUSEITAI',this)">RYUSEITAI</button>
-      <button class="unit-chip" style="color:#fde68a;border-color:#fde68a;" data-unit="fine"      onclick="filterUnit('fine',this)">fine</button>
-    </div>
+    <p class="hero-eye" id="t-eye">✦ Ensemble Stars! Fan Gallery ✦</p>
+    <h1 class="hero-title" id="t-htitle">璀璨星辰<br><em>偶像二創畫廊</em></h1>
+    <p class="hero-desc" id="t-hdesc"></p>
+    <div class="divider"></div>
   </div>
 
-  <div class="section-header">
-    <h2 class="section-title" id="t-recent">近期新增</h2>
-    <div class="section-line"></div>
-  </div>
-  <div class="art-grid" id="gallery-grid"></div>
+  <div class="stats-bar" id="stats-bar"></div>
 
-  <div class="section-header">
-    <h2 class="section-title" id="t-picks">✦ 咸魚推薦</h2>
-    <div class="section-line"></div>
+  <div class="announcement">
+    <span class="ann-icon">📢</span>
+    <div class="ann-text" id="t-ann">本站持續更新中，作品陸續添加。如有喜歡的角色或繪師，歡迎透過 B 站私信告訴咸魚！</div>
   </div>
+
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="search-input" placeholder="搜索角色、繪師、偶像團體…" oninput="doSearch(this.value)">
+  </div>
+
+  <div class="chips" id="unit-chips">
+    <button class="chip active" id="chip-all" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all" onclick="filterUnit('all',this)">全部</button>
+    <button class="chip" style="color:#ff6b9d;border-color:#ff6b9d;" data-unit="Crazy:B"   onclick="filterUnit('Crazy:B',this)">Crazy:B</button>
+    <button class="chip" style="color:#a78bfa;border-color:#a78bfa;" data-unit="ALKALOID"  onclick="filterUnit('ALKALOID',this)">ALKALOID</button>
+    <button class="chip" style="color:#34d399;border-color:#34d399;" data-unit="Valkyrie"  onclick="filterUnit('Valkyrie',this)">Valkyrie</button>
+    <button class="chip" style="color:#fbbf24;border-color:#fbbf24;" data-unit="Eden"      onclick="filterUnit('Eden',this)">Eden</button>
+    <button class="chip" style="color:#f9a8d4;border-color:#f9a8d4;" data-unit="Ra*bits"   onclick="filterUnit('Ra*bits',this)">Ra*bits</button>
+    <button class="chip" style="color:#6ee7b7;border-color:#6ee7b7;" data-unit="Knights"   onclick="filterUnit('Knights',this)">Knights</button>
+    <button class="chip" style="color:#93c5fd;border-color:#93c5fd;" data-unit="RYUSEITAI" onclick="filterUnit('RYUSEITAI',this)">RYUSEITAI</button>
+    <button class="chip" style="color:#fde68a;border-color:#fde68a;" data-unit="fine"      onclick="filterUnit('fine',this)">fine</button>
+  </div>
+
+  <div class="sec-hd"><h2 class="sec-title" id="t-recent">近期新增</h2><div class="sec-line"></div></div>
+  <div class="art-grid" id="home-grid"></div>
+
+  <div class="sec-hd"><h2 class="sec-title" id="t-picks">✦ 咸魚推薦</h2><div class="sec-line"></div></div>
   <div class="art-grid" id="picks-grid"></div>
 
   <div class="cta-row">
-    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="cta-btn cta-gold">
-      ✉ <span id="t-cta-submit">推薦一幅作品</span>
-    </a>
-    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="cta-btn cta-rose">
-      💬 <span id="t-cta-request">請求更多角色作品</span>
-    </a>
-    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="cta-btn cta-bili">
-      📺 <span id="t-cta-bili">B站：下辈子当咸鱼</span>
-    </a>
+    <a href="https://space.bilibili.com/" target="_blank" class="cta cta-g">✉ <span id="t-cs">推薦一幅作品</span></a>
+    <a href="https://space.bilibili.com/" target="_blank" class="cta cta-r">💬 <span id="t-cr">請求更多角色作品</span></a>
+    <a href="https://space.bilibili.com/" target="_blank" class="cta cta-b">📺 <span id="t-cb">B站：下辈子当咸鱼</span></a>
   </div>
-</main>
-</div>
+</main></div>
 
-<!-- ══════════════════════════════════════════
-     PAGE: UNITS
-══════════════════════════════════════════ -->
-<div id="page-units" class="page">
-<main>
-  <div class="hero" style="padding:2rem 0 2rem;">
-    <p class="hero-eyebrow">✦ IDOL UNITS ✦</p>
-    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.5rem);" id="t-units-title">偶像團體</h1>
-    <p class="hero-sub" id="t-units-desc">點擊任意一個團體，查看成員及相關同人美術作品。</p>
+<!-- ══ PAGE: GALLERY ══ -->
+<div id="page-gallery" class="page"><main>
+  <div class="hero" style="padding:2rem 0 1.5rem;">
+    <p class="hero-eye">✦</p>
+    <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-gtitle">作品庫</h1>
+    <p class="hero-desc" id="t-gdesc">瀏覽全部收錄作品</p>
+  </div>
+  <div class="search-wrap">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="gsearch" placeholder="搜索…" oninput="doGSearch(this.value)">
+  </div>
+  <div class="chips" id="gunit-chips">
+    <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all" onclick="filterGUnit('all',this)">全部</button>
+    <button class="chip" style="color:#ff6b9d;border-color:#ff6b9d;" data-unit="Crazy:B"   onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
+    <button class="chip" style="color:#a78bfa;border-color:#a78bfa;" data-unit="ALKALOID"  onclick="filterGUnit('ALKALOID',this)">ALKALOID</button>
+    <button class="chip" style="color:#34d399;border-color:#34d399;" data-unit="Valkyrie"  onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
+    <button class="chip" style="color:#fbbf24;border-color:#fbbf24;" data-unit="Eden"      onclick="filterGUnit('Eden',this)">Eden</button>
+    <button class="chip" style="color:#f9a8d4;border-color:#f9a8d4;" data-unit="Ra*bits"   onclick="filterGUnit('Ra*bits',this)">Ra*bits</button>
+    <button class="chip" style="color:#6ee7b7;border-color:#6ee7b7;" data-unit="Knights"   onclick="filterGUnit('Knights',this)">Knights</button>
+    <button class="chip" style="color:#93c5fd;border-color:#93c5fd;" data-unit="RYUSEITAI" onclick="filterGUnit('RYUSEITAI',this)">RYUSEITAI</button>
+    <button class="chip" style="color:#fde68a;border-color:#fde68a;" data-unit="fine"      onclick="filterGUnit('fine',this)">fine</button>
+  </div>
+  <div class="art-grid" id="gallery-grid"></div>
+</main></div>
+
+<!-- ══ PAGE: UNITS ══ -->
+<div id="page-units" class="page"><main>
+  <div class="hero" style="padding:2rem 0 1.5rem;">
+    <p class="hero-eye">✦ IDOL UNITS ✦</p>
+    <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-utitle">偶像團體</h1>
+    <p class="hero-desc" id="t-udesc">點擊任意團體，篩選相關作品。</p>
   </div>
   <div class="units-grid" id="units-grid"></div>
-</main>
-</div>
+</main></div>
 
-<!-- ══════════════════════════════════════════
-     PAGE: ARTIST WALL
-══════════════════════════════════════════ -->
-<div id="page-artists" class="page">
-<main>
-  <div class="hero" style="padding:2rem 0 2rem;">
-    <p class="hero-eyebrow">✦ ARTIST WALL ✦</p>
-    <h1 class="hero-title" style="font-size:clamp(2rem,5vw,3.5rem);" id="t-artists-title">畫師牆</h1>
-    <p class="hero-sub" id="t-artists-desc">感謝所有允許收錄作品的創作者。點擊名字即可前往其主頁。</p>
-    <div class="hero-divider"></div>
+<!-- ══ PAGE: CHARACTERS ══ -->
+<div id="page-chars" class="page"><main>
+  <div class="hero" style="padding:2rem 0 1.5rem;">
+    <p class="hero-eye">✦ CHARACTERS ✦</p>
+    <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-ctitle">角色</h1>
+    <p class="hero-desc" id="t-cdesc">點擊角色，查看相關作品。</p>
+  </div>
+  <div class="char-grid" id="chars-grid"></div>
+</main></div>
+
+<!-- ══ PAGE: ARTISTS ══ -->
+<div id="page-artists" class="page"><main>
+  <div class="hero" style="padding:2rem 0 1.5rem;">
+    <p class="hero-eye">✦ ARTIST WALL ✦</p>
+    <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-atitle">畫師牆</h1>
+    <p class="hero-desc" id="t-adesc">感謝所有允許收錄作品的創作者。</p>
+    <div class="divider"></div>
   </div>
   <div class="artist-grid" id="artist-wall"></div>
-</main>
-</div>
+</main></div>
 
-<!-- ══════════════════════════════════════════
-     PAGE: ABOUT
-══════════════════════════════════════════ -->
-<div id="page-about" class="page">
-<main>
+<!-- ══ PAGE: ABOUT ══ -->
+<div id="page-about" class="page"><main>
   <div class="about-prose">
-    <h2 id="t-about-title">關於本站</h2>
-    <div id="t-about-content"></div>
-    <div class="about-card">
-      <p style="font-size:.85rem;color:var(--muted);margin-bottom:8px;" id="t-contact-label">聯絡 / 投稿 / 版權問題：</p>
-      <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" class="bili-link">
-        📺 <span id="t-bili-label">B站：下辈子当咸鱼</span>
-      </a>
+    <h2 id="t-abtitle">關於本站</h2>
+    <div id="t-abcontent"></div>
+    <div class="info-card">
+      <p style="font-size:.82rem;color:var(--muted);margin-bottom:7px;" id="t-clabel">聯絡 / 投稿 / 版權問題：</p>
+      <a href="https://space.bilibili.com/" target="_blank" class="bili-btn">📺 <span id="t-blabel">B站：下辈子当咸鱼</span></a>
     </div>
   </div>
-</main>
-</div>
+</main></div>
 
-<!-- ══════════════════════════════════════════
-     PAGE: DISCLAIMER
-══════════════════════════════════════════ -->
-<div id="page-disclaimer" class="page">
-<main>
-  <div class="hero" style="padding:2rem 0 2rem;">
-    <p class="hero-eyebrow">✦</p>
-    <h1 class="hero-title" style="font-size:clamp(1.8rem,4vw,3rem);" id="t-disclaimer-title">版權聲明</h1>
+<!-- ══ PAGE: DISCLAIMER ══ -->
+<div id="page-disclaimer" class="page"><main>
+  <div class="hero" style="padding:2rem 0 1.5rem;">
+    <p class="hero-eye">✦</p>
+    <h1 class="hero-title" style="font-size:clamp(1.6rem,4vw,2.8rem);" id="t-dtitle">版權聲明</h1>
   </div>
-  <div id="t-disclaimer-content"></div>
-</main>
-</div>
+  <div id="t-dcontent"></div>
+</main></div>
 
-<!-- ══════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════ -->
 <footer>
-  <div class="footer-logo">✦ EnsembleFans ✦</div>
-  <div id="t-footer-text">本站為非商業性質的同人愛好者網站，所有作品版權歸原創者所有。</div>
-  <div style="margin-top:6px;">
-    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" id="t-footer-bili">B站：下辈子当咸鱼</a>
+  <div class="foot-logo">✦ EnsembleFans ✦</div>
+  <div id="t-ftxt">本站為非商業性質的同人愛好者網站，所有作品版權歸原創者所有。</div>
+  <div style="margin-top:5px;">
+    <a href="https://space.bilibili.com/" target="_blank" id="t-fbili">B站：下辈子当咸鱼</a>
     &nbsp;｜&nbsp;
-    <a href="https://space.bilibili.com/your-id" target="_blank" rel="noopener" id="t-footer-contact">聯繫站長申請下架</a>
+    <a href="https://space.bilibili.com/" target="_blank" id="t-fcontact">聯繫站長申請下架</a>
   </div>
-  <div style="margin-top:8px;font-size:.72rem;color:#4a5568;" id="t-footer-copy">© 2025 EnsembleFans · 站點更新通知請關注B站動態</div>
+  <div style="margin-top:7px;font-size:.7rem;color:#374151;" id="t-fcopy">© 2025 EnsembleFans · 站點更新通知請關注B站動態</div>
 </footer>
 
-<!-- Scripts: data first, then translations, then app logic -->
-<script src="js/data.js"></script>
-<script src="js/i18n.js"></script>
-<script src="js/app.js"></script>
+<script>
+// ═══════════════════════════════════════════════════════════════
+// DATA — Edit here to add artworks, artists, etc.
+// ═══════════════════════════════════════════════════════════════
+const UNITS = [
+  { name:'Crazy:B',   color:'#ff6b9d', emblem:'🎲', members:['HiMERU','天城燐音','乙桐柊','氷鷹北斗'] },
+  { name:'ALKALOID',  color:'#a78bfa', emblem:'⚗️',  members:['椎名丹希','碓冰弦','鳴上嶺二','朔間零'] },
+  { name:'Valkyrie',  color:'#34d399', emblem:'⚔️',  members:['瀬名泉','斎宮宗'] },
+  { name:'Eden',      color:'#fbbf24', emblem:'🌿', members:['聖良太一','蓮巳敬人','朱桜司','峰ヶ谷桃季'] },
+  { name:'Ra*bits',   color:'#f9a8d4', emblem:'🐰', members:['日々樹渉','遊木民','西木蛍','守沢千秋'] },
+  { name:'Knights',   color:'#6ee7b7', emblem:'♞',  members:['天祥院英智','高峰翠','朱桜司','周防桃李','一ノ瀬怜'] },
+  { name:'RYUSEITAI', color:'#93c5fd', emblem:'☄️',  members:['天満光','伊東状','守沢千秋','衣更真緒','明星スバル'] },
+  { name:'fine',      color:'#fde68a', emblem:'👑', members:['天祥院英智','天城燐音','春川宙','七種茨'] },
+];
 
+const CHARS = [
+  { name:'HiMERU',    unit:'Crazy:B',   em:'🎲' },
+  { name:'天城燐音',  unit:'Crazy:B',   em:'🎲' },
+  { name:'乙桐柊',    unit:'Crazy:B',   em:'🎲' },
+  { name:'氷鷹北斗',  unit:'Crazy:B',   em:'🎲' },
+  { name:'椎名丹希',  unit:'ALKALOID',  em:'⚗️'  },
+  { name:'碓冰弦',    unit:'ALKALOID',  em:'⚗️'  },
+  { name:'鳴上嶺二',  unit:'ALKALOID',  em:'⚗️'  },
+  { name:'朔間零',    unit:'ALKALOID',  em:'⚗️'  },
+  { name:'瀬名泉',    unit:'Valkyrie',  em:'⚔️'  },
+  { name:'斎宮宗',    unit:'Valkyrie',  em:'⚔️'  },
+  { name:'聖良太一',  unit:'Eden',      em:'🌿' },
+  { name:'蓮巳敬人',  unit:'Eden',      em:'🌿' },
+  { name:'朱桜司',    unit:'Eden',      em:'🌿' },
+  { name:'峰ヶ谷桃季',unit:'Eden',      em:'🌿' },
+  { name:'日々樹渉',  unit:"Ra*bits",   em:'🐰' },
+  { name:'遊木民',    unit:"Ra*bits",   em:'🐰' },
+  { name:'西木蛍',    unit:"Ra*bits",   em:'🐰' },
+  { name:'守沢千秋',  unit:"Ra*bits",   em:'🐰' },
+  { name:'天祥院英智',unit:'Knights',   em:'♞'  },
+  { name:'高峰翠',    unit:'Knights',   em:'♞'  },
+  { name:'周防桃李',  unit:'Knights',   em:'♞'  },
+  { name:'一ノ瀬怜',  unit:'Knights',   em:'♞'  },
+  { name:'天満光',    unit:'RYUSEITAI', em:'☄️'  },
+  { name:'伊東状',    unit:'RYUSEITAI', em:'☄️'  },
+  { name:'衣更真緒',  unit:'RYUSEITAI', em:'☄️'  },
+  { name:'明星スバル',unit:'RYUSEITAI', em:'☄️'  },
+  { name:'天城燐音',  unit:'fine',      em:'👑' },
+  { name:'春川宙',    unit:'fine',      em:'👑' },
+  { name:'七種茨',    unit:'fine',      em:'👑' },
+];
+
+// ─── ADD YOUR ARTWORKS HERE ────────────────────────────────────
+// image_url: put image filenames in the "images" folder, e.g. "images/art001.jpg"
+// Leave image_url as "" to show the emoji placeholder until you add images
+// cp: true = show CP warning badge
+const ARTWORKS = [
+  { id:1,  image_url:'', thumb:'🌸', title:'夜桜',         unit:'Crazy:B',   char:'HiMERU',    artist:'@hanami_art',  url:'https://pixiv.net', platform:'pixiv',   editor:true,  cp:false },
+  { id:2,  image_url:'', thumb:'⚡', title:'Electric Stage',unit:'ALKALOID',  char:'椎名丹希',  artist:'@tsuki_draw',  url:'https://x.com',    platform:'twitter', editor:false, cp:false },
+  { id:3,  image_url:'', thumb:'🗡️', title:'Eternal Oath', unit:'Valkyrie',  char:'瀬名泉',    artist:null,           url:null,               platform:null,      editor:false, cp:false },
+  { id:4,  image_url:'', thumb:'🌟', title:'Garden of Gold',unit:'Eden',      char:'聖良太一',  artist:'@sora_illust', url:'https://pixiv.net', platform:'pixiv',   editor:true,  cp:false },
+  { id:5,  image_url:'', thumb:'🎀', title:'Bunny Love',   unit:"Ra*bits",   char:'日々樹渉',  artist:'@mochi_fan',   url:'https://x.com',    platform:'twitter', editor:false, cp:false },
+  { id:6,  image_url:'', thumb:'🏰', title:"Knight's Vow", unit:'Knights',   char:'天祥院英智',artist:'@castle_ink',  url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
+  { id:7,  image_url:'', thumb:'☄️', title:'Comet Fall',   unit:'RYUSEITAI', char:'天満光',    artist:'@ryusei_p',    url:'https://x.com',    platform:'twitter', editor:true,  cp:false },
+  { id:8,  image_url:'', thumb:'✨', title:'Fine Dining',  unit:'fine',      char:'天祥院英智',artist:'@eichi_fan',   url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
+  { id:9,  image_url:'', thumb:'🎭', title:'Crimson Drama', unit:'Valkyrie', char:'斎宮宗',    artist:'@drama_brush', url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
+  { id:10, image_url:'', thumb:'💫', title:'Midnight Run',  unit:'Crazy:B',  char:'乙桐柊',    artist:null,           url:null,               platform:null,      editor:false, cp:false },
+  { id:11, image_url:'', thumb:'🌙', title:'Lunar Waltz',   unit:'ALKALOID', char:'朔間零',    artist:'@luna_p',      url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
+  { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',    unit:'Ra*bits',  char:'遊木民',    artist:'@wave_art',    url:'https://x.com',    platform:'twitter', editor:false, cp:false },
+];
+
+// ─── ADD YOUR ARTISTS HERE ─────────────────────────────────────
+const ARTISTS = [
+  { name:'@hanami_art',  platform:'Pixiv',     url:'https://pixiv.net', avatar:'🌸' },
+  { name:'@tsuki_draw',  platform:'X/Twitter', url:'https://x.com',    avatar:'🌙' },
+  { name:'@sora_illust', platform:'Pixiv',     url:'https://pixiv.net', avatar:'☁️' },
+  { name:'@mochi_fan',   platform:'X/Twitter', url:'https://x.com',    avatar:'🍡' },
+  { name:'@castle_ink',  platform:'Pixiv',     url:'https://pixiv.net', avatar:'🏰' },
+  { name:'@ryusei_p',    platform:'X/Twitter', url:'https://x.com',    avatar:'⭐' },
+  { name:'@eichi_fan',   platform:'Pixiv',     url:'https://pixiv.net', avatar:'👑' },
+  { name:'@drama_brush', platform:'Pixiv',     url:'https://pixiv.net', avatar:'🎭' },
+  { name:'@luna_p',      platform:'Pixiv',     url:'https://pixiv.net', avatar:'🌙' },
+  { name:'@wave_art',    platform:'X/Twitter', url:'https://x.com',    avatar:'🌊' },
+];
+
+// ═══════════════════════════════════════════════════════════════
+// TRANSLATIONS
+// ═══════════════════════════════════════════════════════════════
+const T = {
+  'zh-TW':{
+    navHome:'首頁',navGallery:'作品庫',navUnits:'偶像團體',navChars:'角色',navArtists:'畫師牆',navAbout:'關於',navDisclaimer:'版權',
+    eye:'✦ Ensemble Stars! Fan Gallery ✦',
+    htitle:'璀璨星辰',hsub:'偶像二創畫廊',
+    hdesc:'歡迎來到由咸魚精心整理的 Ensemble Stars! 同人美術作品集。這裡收錄來自世界各地繪師創作的美麗作品，所有作品均已標注原創者並連結原始發布頁面。',
+    ann:'本站持續更新中，作品陸續添加。如有喜歡的角色或繪師，歡迎透過 B 站私信告訴咸魚！',
+    search:'搜索角色、繪師、偶像團體…',
+    chipAll:'全部',recent:'近期新增',picks:'✦ 咸魚推薦',
+    cs:'推薦一幅作品',cr:'請求更多角色作品',cb:'B站：下辈子当咸鱼',
+    gtitle:'作品庫',gdesc:'瀏覽全部收錄作品',
+    utitle:'偶像團體',udesc:'點擊任意團體，篩選相關作品。',artCount:'幅作品',
+    ctitle:'角色',cdesc:'點擊角色，查看相關作品。',
+    atitle:'畫師牆',adesc:'感謝所有允許收錄作品的創作者。點擊名字即可前往其主頁。',
+    abtitle:'關於本站',
+    abcontent:`<p>本站是一個以整理及展示 <strong>Ensemble Stars!</strong> 同人美術為目的的非商業愛好者網站，由學生愛好者「咸魚」（Bilibili：下辈子当咸鱼）獨立維護。</p><p>我們致力於在尊重原創者版權的前提下，為 ES 粉絲提供美觀整潔的作品瀏覽體驗。每幅作品均附有原作者名稱及原始連結。所有作品在收錄前均已確認原作者的轉載規定，僅收錄明確允許或未明確禁止轉載的作品。</p><p>若您希望撤下作品，請透過 Bilibili 私信聯絡，將立即下架。</p>`,
+    clabel:'聯絡 / 投稿 / 版權問題：',blabel:'B站：下辈子当咸鱼',
+    dtitle:'版權聲明',
+    dcontent:`<div class="disc-sec"><h3>📌 版權歸屬</h3><p>本站展示的所有同人美術作品版權屬於原創作者。本站僅作整理展示用途，所有作品均標注原作者及來源平台，並提供原始連結。</p></div><div class="disc-sec"><h3>⚠️ CP / 成人內容</h3><p>部分作品可能含有 CP（配對）或限制級內容，已標注 CP 標籤提示。瀏覽此類作品前請確認您已達到所在地區的合法年齡。</p></div><div class="disc-sec"><h3>🔍 未知畫師</h3><p>部分作品因源自 Pinterest 等二次轉載平台暫時無法追溯原作者，標注為「畫師：不明」。站長將持續嘗試找回來源。如您知悉原作者，歡迎告知。</p></div><div class="disc-sec"><h3>📩 下架申請</h3><p>若您是原創者並希望撤下作品，請透過 Bilibili 私信聯絡：<strong>下辈子当咸鱼</strong>，將立即處理，無需說明理由。</p></div><div class="disc-sec"><h3>🎮 遊戲版權</h3><p>Ensemble Stars! 相關角色及世界觀屬 Happy Elements K.K. 所有，本站與其無官方關聯。</p></div>`,
+    unknown:'畫師：不明',viewOrig:'查看原圖',cpWarn:'CP',
+    ftxt:'本站為非商業性質的同人愛好者網站，所有作品版權歸原創者所有。',
+    fbili:'B站：下辈子当咸鱼',fcontact:'聯繫站長申請下架',
+    fcopy:'© 2025 EnsembleFans · 站點更新通知請關注B站動態',
+    statArt:'幅作品',statUnit:'個團體',statArtist:'位畫師',
+  },
+  'zh-CN':{
+    navHome:'首页',navGallery:'作品库',navUnits:'偶像团体',navChars:'角色',navArtists:'画师墙',navAbout:'关于',navDisclaimer:'版权',
+    eye:'✦ Ensemble Stars! Fan Gallery ✦',
+    htitle:'璀璨星辰',hsub:'偶像同人画廊',
+    hdesc:'欢迎来到由咸鱼整理的 Ensemble Stars! 同人美术作品集。收录了来自世界各地绘师创作的精美作品，每幅作品均标注原创者并链接到原始发布页面。',
+    ann:'本站持续更新中，作品陆续添加。如有喜欢的角色或绘师，欢迎通过 B 站私信告诉咸鱼！',
+    search:'搜索角色、绘师、偶像团体…',
+    chipAll:'全部',recent:'最近新增',picks:'✦ 咸鱼推荐',
+    cs:'推荐一幅作品',cr:'请求更多角色作品',cb:'B站：下辈子当咸鱼',
+    gtitle:'作品库',gdesc:'浏览全部收录作品',
+    utitle:'偶像团体',udesc:'点击任意团体，筛选相关作品。',artCount:'幅作品',
+    ctitle:'角色',cdesc:'点击角色，查看相关作品。',
+    atitle:'画师墙',adesc:'感谢所有允许收录作品的创作者。点击名字即可前往其主页。',
+    abtitle:'关于本站',
+    abcontent:`<p>本站是一个以整理及展示 <strong>Ensemble Stars!</strong> 同人美术为目的的非商业爱好者网站，由学生爱好者「咸鱼」（Bilibili：下辈子当咸鱼）独立维护。</p><p>我们致力于在尊重原创者版权的前提下，为 ES 粉丝提供美观整洁的作品浏览体验。每幅作品均附有原作者名称及原始链接。所有作品在收录前均已确认原作者的转载规定，仅收录允许或未明确禁止转载的作品。</p><p>若您希望撤下作品，请通过 Bilibili 私信联系，将立即下架。</p>`,
+    clabel:'联络 / 投稿 / 版权问题：',blabel:'B站：下辈子当咸鱼',
+    dtitle:'版权声明',
+    dcontent:`<div class="disc-sec"><h3>📌 版权归属</h3><p>本站展示的所有同人美术作品版权属于原创作者。本站仅作整理展示用途，所有作品均标注原作者及来源平台，并提供原始链接。</p></div><div class="disc-sec"><h3>⚠️ CP / 成人内容</h3><p>部分作品可能含有 CP 或限制级内容，已标注 CP 标签提示。浏览此类作品前请确认您已达到合法年龄。</p></div><div class="disc-sec"><h3>🔍 未知画师</h3><p>部分作品因源自 Pinterest 等二次转载平台暂无法追溯原作者，标注为「画师：不明」。如您知悉原作者欢迎告知。</p></div><div class="disc-sec"><h3>📩 下架申请</h3><p>如需撤下作品，请通过 Bilibili 私信联系：<strong>下辈子当咸鱼</strong>，将立即处理。</p></div><div class="disc-sec"><h3>🎮 游戏版权</h3><p>Ensemble Stars! 相关角色和世界观属 Happy Elements K.K. 所有，本站与其无官方关联。</p></div>`,
+    unknown:'画师：不明',viewOrig:'查看原图',cpWarn:'CP',
+    ftxt:'本站为非商业性质的同人爱好者网站，所有作品版权归原创者所有。',
+    fbili:'B站：下辈子当咸鱼',fcontact:'联系站长申请下架',
+    fcopy:'© 2025 EnsembleFans · 站点更新通知请关注B站动态',
+    statArt:'幅作品',statUnit:'个团体',statArtist:'位画师',
+  },
+  'en':{
+    navHome:'Home',navGallery:'Gallery',navUnits:'Units',navChars:'Characters',navArtists:'Artists',navAbout:'About',navDisclaimer:'Disclaimer',
+    eye:'✦ Ensemble Stars! Fan Gallery ✦',
+    htitle:'Shining Stars',hsub:'Fan Art Gallery',
+    hdesc:'A curated collection of Ensemble Stars! fan artworks maintained by Xianyu (咸魚). Every piece credits the original artist and links to its source. Built out of love — non-commercial.',
+    ann:'This gallery is constantly growing! Feel free to send artwork recommendations or character requests via Bilibili DM.',
+    search:'Search characters, artists, units…',
+    chipAll:'All',recent:'Recently Added',picks:"✦ Curator's Picks",
+    cs:'Recommend an artwork',cr:'Request a character',cb:'Bilibili: 下辈子当咸鱼',
+    gtitle:'Gallery',gdesc:'Browse all artworks',
+    utitle:'Idol Units',udesc:'Click any unit to filter artworks.',artCount:'artworks',
+    ctitle:'Characters',cdesc:'Click a character to view their artworks.',
+    atitle:'Artist Wall',adesc:'Every credited artist featured in this gallery. Click a name to visit their profile.',
+    abtitle:'About',
+    abcontent:`<p>EnsembleFans is a non-commercial fan gallery for <strong>Ensemble Stars!</strong>, independently maintained by a student fan known as Xianyu (咸魚, Bilibili: 下辈子当咸鱼).</p><p>Every artwork is credited to its original creator with a link back to the source. Works are only included after checking the artist's repost policy — only those who permit or don't explicitly forbid reposting are featured.</p><p>If you'd like your work removed, please reach out on Bilibili — it will be taken down immediately, no questions asked.</p>`,
+    clabel:'Contact / Submit / Copyright:',blabel:'Bilibili: 下辈子当咸鱼 (Xianyu)',
+    dtitle:'Disclaimer & Copyright',
+    dcontent:`<div class="disc-sec"><h3>📌 Copyright</h3><p>All fan artworks displayed here belong to their original creators. This site only organizes and displays works — every piece links back to the source with full credit.</p></div><div class="disc-sec"><h3>⚠️ CP / Mature Content</h3><p>Some artworks may contain shipping (CP) or mature themes. These are labeled with a CP badge. Please ensure you are of legal age in your region before viewing such content.</p></div><div class="disc-sec"><h3>🔍 Unknown Artists</h3><p>Some works were sourced from re-sharing platforms like Pinterest without attribution. These are labeled "Artist: Unknown" and the curator will attempt to trace the original source.</p></div><div class="disc-sec"><h3>📩 Takedown Requests</h3><p>If you are the original creator and want your work removed, please message on Bilibili: <strong>下辈子当咸鱼</strong>. Removal is immediate, no questions asked.</p></div><div class="disc-sec"><h3>🎮 Game IP</h3><p>Ensemble Stars! characters and story belong to Happy Elements K.K. This site has no affiliation with Happy Elements.</p></div>`,
+    unknown:'Artist: Unknown',viewOrig:'View original',cpWarn:'CP',
+    ftxt:'A non-commercial fan gallery. All artworks belong to their respective creators.',
+    fbili:'Bilibili: 下辈子当咸鱼',fcontact:'Request removal',
+    fcopy:'© 2025 EnsembleFans · Updates posted on Bilibili',
+    statArt:'artworks',statUnit:'units',statArtist:'artists',
+  }
+};
+
+// ═══════════════════════════════════════════════════════════════
+// APP LOGIC
+// ═══════════════════════════════════════════════════════════════
+let lang = 'zh-TW';
+let unitFilter = 'all';
+let gUnitFilter = 'all';
+
+function $(id){ return document.getElementById(id); }
+function setTxt(id,v){ const e=$(id); if(e) e.textContent=v; }
+function setHTML(id,v){ const e=$(id); if(e) e.innerHTML=v; }
+
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  $('lang-'+l).classList.add('active');
+  applyLang();
+}
+
+function applyLang(){
+  const t=T[lang];
+  setTxt('nav-home',t.navHome); setTxt('nav-gallery',t.navGallery);
+  setTxt('nav-units',t.navUnits); setTxt('nav-chars',t.navChars);
+  setTxt('nav-artists',t.navArtists); setTxt('nav-about',t.navAbout);
+  setTxt('nav-disclaimer',t.navDisclaimer);
+  setTxt('t-eye',t.eye);
+  setHTML('t-htitle', t.htitle+'<br><em>'+t.hsub+'</em>');
+  setTxt('t-hdesc',t.hdesc); setTxt('t-ann',t.ann);
+  $('search-input').placeholder=t.search;
+  setTxt('chip-all',t.chipAll);
+  setTxt('t-recent',t.recent); setTxt('t-picks',t.picks);
+  setTxt('t-cs',t.cs); setTxt('t-cr',t.cr); setTxt('t-cb',t.cb);
+  setTxt('t-gtitle',t.gtitle); setTxt('t-gdesc',t.gdesc);
+  setTxt('t-utitle',t.utitle); setTxt('t-udesc',t.udesc);
+  setTxt('t-ctitle',t.ctitle); setTxt('t-cdesc',t.cdesc);
+  setTxt('t-atitle',t.atitle); setTxt('t-adesc',t.adesc);
+  setTxt('t-abtitle',t.abtitle); setHTML('t-abcontent',t.abcontent);
+  setTxt('t-clabel',t.clabel); setTxt('t-blabel',t.blabel);
+  setTxt('t-dtitle',t.dtitle); setHTML('t-dcontent',t.dcontent);
+  setTxt('t-ftxt',t.ftxt); setTxt('t-fbili',t.fbili);
+  setTxt('t-fcontact',t.fcontact); setTxt('t-fcopy',t.fcopy);
+  renderStats(); renderHomeGrid(); renderPicks();
+  renderGalleryGrid(); renderUnits(); renderChars(); renderArtists();
+}
+
+// Stats bar
+function renderStats(){
+  const t=T[lang];
+  $('stats-bar').innerHTML=`
+    <div class="stat"><div class="stat-n">${ARTWORKS.length}</div><div class="stat-l">${t.statArt}</div></div>
+    <div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div>
+    <div class="stat"><div class="stat-n">${ARTISTS.length}</div><div class="stat-l">${t.statArtist}</div></div>
+  `;
+}
+
+// Card renderer
+function card(art){
+  const t=T[lang];
+  const u=UNITS.find(x=>x.name===art.unit);
+  const col=u?u.color:'#888';
+  const pick=art.editor?`<span class="pick-badge">${lang==='en'?'Pick':'推薦'}</span>`:'';
+  const cpb=art.cp?`<span class="cp-badge">${t.cpWarn}</span>`:'';
+  const thumb=art.image_url
+    ?`<img src="${art.image_url}" alt="${art.title}" loading="lazy">`
+    :`<span class="thumb-em">${art.thumb}</span>`;
+  const by=art.artist
+    ?`<a href="${art.url||'#'}" target="_blank" rel="noopener">${art.artist}</a>`
+    :`<span>${t.unknown}</span>`;
+  return `<div class="art-card" onclick="openLB(${art.id})" data-id="${art.id}" data-unit="${art.unit}" data-char="${art.char}" data-artist="${art.artist||''}">
+    <div class="art-thumb">${pick}${cpb}${thumb}</div>
+    <div class="art-info">
+      <div class="art-unit" style="color:${col}">${art.unit}</div>
+      <div class="art-ttl">${art.title}</div>
+      <div class="art-by">🖌 ${by}</div>
+    </div>
+  </div>`;
+}
+
+function renderHomeGrid(q=''){
+  let arts=unitFilter==='all'?ARTWORKS:ARTWORKS.filter(a=>a.unit===unitFilter);
+  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>a.title.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||a.char.toLowerCase().includes(lq));}
+  $('home-grid').innerHTML=arts.length?arts.map(card).join(''):`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
+}
+function renderPicks(){ $('picks-grid').innerHTML=ARTWORKS.filter(a=>a.editor).map(card).join(''); }
+function renderGalleryGrid(q=''){
+  let arts=gUnitFilter==='all'?ARTWORKS:ARTWORKS.filter(a=>a.unit===gUnitFilter);
+  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>a.title.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||a.char.toLowerCase().includes(lq));}
+  $('gallery-grid').innerHTML=arts.length?arts.map(card).join(''):`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
+}
+
+function renderUnits(){
+  const t=T[lang];
+  $('units-grid').innerHTML=UNITS.map(u=>{
+    const cnt=ARTWORKS.filter(a=>a.unit===u.name).length;
+    return `<div class="unit-card" onclick="filterUnit('${u.name}',null);showPage('home');">
+      <div class="unit-top" style="background:${u.color}"></div>
+      <div class="unit-em">${u.emblem}</div>
+      <div class="unit-nm" style="color:${u.color}">${u.name}</div>
+      <div class="unit-members">${u.members.map(m=>`<span class="mem-tag">${m}</span>`).join('')}</div>
+      <div class="unit-cnt">✦ ${cnt} ${t.artCount}</div>
+    </div>`;
+  }).join('');
+}
+
+function renderChars(){
+  $('chars-grid').innerHTML=CHARS.map(c=>{
+    const u=UNITS.find(x=>x.name===c.unit);
+    const col=u?u.color:'#888';
+    return `<div class="char-card" onclick="filterByChar('${c.name}')">
+      <div class="char-em">${c.em}</div>
+      <div class="char-nm">${c.name}</div>
+      <div class="char-unit" style="color:${col}">${c.unit}</div>
+    </div>`;
+  }).join('');
+}
+
+function filterByChar(name){
+  unitFilter='all';
+  document.querySelectorAll('.chip').forEach(c=>{c.classList.remove('active');c.style.background='none';c.style.color=c.style.borderColor;});
+  const chip=$('chip-all');
+  chip.classList.add('active');chip.style.background=chip.style.borderColor;chip.style.color='#0d1b2a';
+  showPage('home');
+  renderHomeGrid(name);
+  $('search-input').value=name;
+}
+
+function renderArtists(){
+  $('artist-wall').innerHTML=ARTISTS.map(a=>`
+    <a href="${a.url}" target="_blank" rel="noopener" class="artist-card">
+      <div class="av">${a.avatar}</div>
+      <div><div class="ar-nm">${a.name}</div><div class="ar-pl">${a.platform}</div></div>
+    </a>`).join('');
+}
+
+// Filters
+function filterUnit(unit,btn){
+  unitFilter=unit;
+  document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='none';c.style.color=c.style.borderColor;});
+  const target=btn||(document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`));
+  if(target){target.classList.add('active');target.style.background=target.style.borderColor;target.style.color='#0d1b2a';}
+  renderHomeGrid($('search-input').value);
+}
+function filterGUnit(unit,btn){
+  gUnitFilter=unit;
+  document.querySelectorAll('#gunit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='none';c.style.color=c.style.borderColor;});
+  if(btn){btn.classList.add('active');btn.style.background=btn.style.borderColor;btn.style.color='#0d1b2a';}
+  renderGalleryGrid($('gsearch').value);
+}
+function doSearch(q){ renderHomeGrid(q); }
+function doGSearch(q){ renderGalleryGrid(q); }
+
+// Lightbox
+function openLB(id){
+  const art=ARTWORKS.find(a=>a.id===id);
+  if(!art)return;
+  const t=T[lang];
+  const u=UNITS.find(x=>x.name===art.unit);
+  const col=u?u.color:'#888';
+  $('lb-img').innerHTML=art.image_url
+    ?`<img src="${art.image_url}" alt="${art.title}">`
+    :`<span style="font-size:5rem">${art.thumb}</span>`;
+  $('lb-unit').innerHTML=`<span style="color:${col}">${art.unit}</span>`;
+  $('lb-ttl').textContent=art.title;
+  $('lb-char').textContent=art.char;
+  const byText=art.artist?`🖌 ${art.artist}`:`🖌 ${t.unknown}`;
+  $('lb-by').innerHTML=art.artist&&art.url?`🖌 <a href="${art.url}" target="_blank" rel="noopener">${art.artist}</a>`:byText;
+  const btns=[];
+  if(art.url) btns.push(`<a href="${art.url}" target="_blank" rel="noopener" class="lb-btn lb-btn-gold">↗ ${t.viewOrig}</a>`);
+  $('lb-btns').innerHTML=btns.join('');
+  $('lb').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeLightbox(){
+  $('lb').classList.remove('open');
+  document.body.style.overflow='';
+}
+function closeLB(e){ if(e.target===$('lb')) closeLightbox(); }
+document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLightbox(); });
+
+// Navigation
+function showPage(name){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  const pg=$('page-'+name); if(pg) pg.classList.add('active');
+  document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
+  const nb=$('nav-'+name); if(nb) nb.classList.add('active');
+  window.scrollTo(0,0);
+}
+
+// Init
+document.addEventListener('DOMContentLoaded',()=>{ applyLang(); });
+</script>
 </body>
 </html>
