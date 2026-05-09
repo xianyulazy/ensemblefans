@@ -104,12 +104,16 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .disc-sec{background:rgba(232,164,184,.05);border:1px solid rgba(232,164,184,.18);border-left:3px solid var(--rose);border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin-bottom:1.3rem;}
 .disc-sec h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--rose);margin-bottom:.65rem;font-weight:400;}
 .disc-sec p{font-size:.88rem;color:var(--soft);line-height:1.8;}
-.artist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem;}
-.artist-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:10px;transition:all .2s;text-decoration:none;}
-.artist-card:hover{border-color:rgba(201,169,110,.3);transform:translateY(-2px);}
-.av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;background:rgba(201,169,110,.12);}
-.ar-nm{font-size:.87rem;color:var(--champagne);margin-bottom:2px;}
-.ar-pl{font-size:.7rem;color:var(--muted);}
+/* Gallery tabs */
+.tab-row{display:flex;gap:4px;margin-bottom:1.5rem;border-bottom:1px solid rgba(201,169,110,.15);padding-bottom:0;}
+.tab-btn{background:none;border:none;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.85rem;padding:8px 20px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;letter-spacing:.03em;}
+.tab-btn:hover{color:var(--soft);}
+.tab-btn.active{color:var(--champagne);border-bottom-color:var(--gold);}
+.tab-panel{display:none;}.tab-panel.active{display:block;}
+/* CP pairing tag */
+.pairing-tag{font-size:.68rem;color:var(--rose);letter-spacing:.05em;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+/* CP disclaimer banner */
+.cp-notice{background:rgba(232,164,184,.07);border:1px solid rgba(232,164,184,.2);border-radius:10px;padding:.8rem 1.1rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--soft);display:flex;align-items:center;gap:8px;}
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:1.5rem 0;}
 .cta{padding:9px 20px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;letter-spacing:.03em;border:1px solid;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
 .cta-g{background:rgba(201,169,110,.12);color:var(--gold);border-color:rgba(201,169,110,.35);}
@@ -170,7 +174,6 @@ footer a:hover{text-decoration:underline;}
       <button class="nav-btn"        id="nav-gallery"    onclick="showPage('gallery')">作品庫</button>
       <button class="nav-btn"        id="nav-units"      onclick="showPage('units')">偶像團體</button>
       <button class="nav-btn"        id="nav-chars"      onclick="showPage('chars')">角色</button>
-      <button class="nav-btn"        id="nav-artists"    onclick="showPage('artists')">畫師牆</button>
       <button class="nav-btn"        id="nav-about"      onclick="showPage('about')">關於</button>
       <button class="nav-btn"        id="nav-xianyu"     onclick="showPage('xianyu')">關於咸魚</button>
       <button class="nav-btn"        id="nav-disclaimer" onclick="showPage('disclaimer')">版權</button>
@@ -231,24 +234,64 @@ footer a:hover{text-decoration:underline;}
     <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-gtitle">作品庫</h1>
     <p class="hero-desc" id="t-gdesc"></p>
   </div>
-  <div class="search-wrap">
-    <span class="search-icon">🔍</span>
-    <input type="text" id="gsearch" placeholder="搜索…" oninput="doGSearch(this.value)">
+
+  <!-- Tabs -->
+  <div class="tab-row">
+    <button class="tab-btn active" id="tab-all-btn" onclick="switchGTab('all')">
+      <span id="t-tab-all">全部作品</span>
+    </button>
+    <button class="tab-btn" id="tab-cp-btn" onclick="switchGTab('cp')">
+      <span id="t-tab-cp">❤ CP 作品</span>
+    </button>
   </div>
-  <div class="chips" id="gunit-chips">
-    <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all"           onclick="filterGUnit('all',this)">全部</button>
-    <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
-    <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"             onclick="filterGUnit('ALKALOID',this)">ALKALOID</button>
-    <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"             onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
-    <button class="chip" style="color:#a09080;border-color:#a09080;" data-unit="Eden"                 onclick="filterGUnit('Eden',this)">Eden</button>
-    <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"              onclick="filterGUnit('Ra*bits',this)">Ra*bits</button>
-    <button class="chip" style="color:#6080cc;border-color:#6080cc;" data-unit="Knights"              onclick="filterGUnit('Knights',this)">Knights</button>
-    <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"            onclick="filterGUnit('RYUSEITAI',this)" id="gchip-ryu">RYUSEITAI</button>
-    <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"                 onclick="filterGUnit('fine',this)">fine</button>
-    <button class="chip" style="color:#b08060;border-color:#b08060;" data-unit="Mellow Dear Us"       onclick="filterGUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
-    <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"             onclick="filterGUnit('Akatsuki',this)" id="gchip-aka">Akatsuki</button>
+
+  <!-- All artworks tab -->
+  <div class="tab-panel active" id="tab-all">
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="gsearch" placeholder="搜索…" oninput="doGSearch(this.value)">
+    </div>
+    <div class="chips" id="gunit-chips">
+      <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all"           onclick="filterGUnit('all',this)">全部</button>
+      <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
+      <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"             onclick="filterGUnit('ALKALOID',this)">ALKALOID</button>
+      <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"             onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
+      <button class="chip" style="color:#a09080;border-color:#a09080;" data-unit="Eden"                 onclick="filterGUnit('Eden',this)">Eden</button>
+      <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"              onclick="filterGUnit('Ra*bits',this)">Ra*bits</button>
+      <button class="chip" style="color:#6080cc;border-color:#6080cc;" data-unit="Knights"              onclick="filterGUnit('Knights',this)">Knights</button>
+      <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"            onclick="filterGUnit('RYUSEITAI',this)" id="gchip-ryu">RYUSEITAI</button>
+      <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"                 onclick="filterGUnit('fine',this)">fine</button>
+      <button class="chip" style="color:#b08060;border-color:#b08060;" data-unit="Mellow Dear Us"       onclick="filterGUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
+      <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"             onclick="filterGUnit('Akatsuki',this)" id="gchip-aka">Akatsuki</button>
+    </div>
+    <div class="art-grid" id="gallery-grid"></div>
   </div>
-  <div class="art-grid" id="gallery-grid"></div>
+
+  <!-- CP tab -->
+  <div class="tab-panel" id="tab-cp">
+    <div class="cp-notice">⚠️ <span id="t-cp-notice">部分作品含有 CP / 配對內容，請注意。所有 CP 作品均來自允許轉載的繪師。</span></div>
+    <div class="search-wrap">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="cpsearch" placeholder="搜索配對名稱、角色、團體…" oninput="doCPSearch(this.value)">
+    </div>
+    <div class="chips" id="cpunit-chips">
+      <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all"           onclick="filterCPUnit('all',this)">全部</button>
+      <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterCPUnit('Crazy:B',this)">Crazy:B</button>
+      <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"             onclick="filterCPUnit('ALKALOID',this)">ALKALOID</button>
+      <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"             onclick="filterCPUnit('Valkyrie',this)">Valkyrie</button>
+      <button class="chip" style="color:#a09080;border-color:#a09080;" data-unit="Eden"                 onclick="filterCPUnit('Eden',this)">Eden</button>
+      <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"              onclick="filterCPUnit('Ra*bits',this)">Ra*bits</button>
+      <button class="chip" style="color:#6080cc;border-color:#6080cc;" data-unit="Knights"              onclick="filterCPUnit('Knights',this)">Knights</button>
+      <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"            onclick="filterCPUnit('RYUSEITAI',this)" id="cpchip-ryu">RYUSEITAI</button>
+      <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"                 onclick="filterCPUnit('fine',this)">fine</button>
+      <button class="chip" style="color:#b08060;border-color:#b08060;" data-unit="Mellow Dear Us"       onclick="filterCPUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
+      <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"             onclick="filterCPUnit('Akatsuki',this)" id="cpchip-aka">Akatsuki</button>
+    </div>
+    <!-- Popular pairings quick-filter -->
+    <div id="pairing-tags-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;"></div>
+    <div class="art-grid" id="cp-grid"></div>
+  </div>
+
 </main></div>
 
 <!-- PAGE: UNITS -->
@@ -269,17 +312,6 @@ footer a:hover{text-decoration:underline;}
     <p class="hero-desc" id="t-cdesc"></p>
   </div>
   <div class="char-grid" id="chars-grid"></div>
-</main></div>
-
-<!-- PAGE: ARTISTS -->
-<div id="page-artists" class="page"><main>
-  <div class="hero" style="padding:2rem 0 1.5rem;">
-    <p class="hero-eye">✦ ARTIST WALL ✦</p>
-    <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-atitle">畫師牆</h1>
-    <p class="hero-desc" id="t-adesc"></p>
-    <div class="divider"></div>
-  </div>
-  <div class="artist-grid" id="artist-wall"></div>
 </main></div>
 
 <!-- PAGE: XIANYU -->
@@ -474,6 +506,7 @@ const ARTWORKS = [
   { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',     unit:'Ra*bits',        char:'紫之創',    artist:'@wave_art',    url:'https://x.com',     platform:'twitter',   editor:false, cp:false },
   { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'🍞', title:{tw:'麵包尼', cn:'面包尼', en:'Bread Niki'}, unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://pin.it/3Gled9ofT', platform:'pinterest', editor:true, cp:false },
   { id:14, image_url:'48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'🤓', title:'Glasses Niki', unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://www.pinterest.com/pin/1058557087429714796/', platform:'pinterest', editor:false, cp:false },
+  { id:15, image_url:'', thumb:'💕', title:{tw:'星光之約', cn:'星光之约', en:'Starlit Promise'}, unit:'Crazy:B', char:'HiMERU', artist:null, url:null, platform:null, editor:false, cp:true, pairing:{tw:'HiMERU × 椎名丹希', cn:'HiMERU × 椎名丹希', en:'HiMERU × Shiina Niki'} },
 ];
 
 // ═══════════════════════════════════════════════════
@@ -497,7 +530,9 @@ const ARTISTS = [
 // ═══════════════════════════════════════════════════
 const T = {
   'zh-TW':{
-    navHome:'首頁',navGallery:'作品庫',navUnits:'偶像團體',navChars:'角色',navArtists:'畫師牆',navAbout:'關於',navDisclaimer:'版權',navXianyu:'關於咸魚',
+    navHome:'首頁',navGallery:'作品庫',navUnits:'偶像團體',navChars:'角色',navAbout:'關於',navDisclaimer:'版權',navXianyu:'關於咸魚',
+    tabAll:'全部作品',tabCP:'❤ CP 作品',
+    cpNotice:'部分作品含有 CP / 配對內容，請注意。所有 CP 作品均來自允許轉載的繪師。',
     eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'璀璨星辰',hsub:'偶像二創畫廊',
     hdesc:'歡迎來到由咸魚精心整理的 Ensemble Stars! 同人美術作品集。這裡收錄來自世界各地繪師創作的美麗作品，所有作品均已標注原創者並連結原始發布頁面。',
     ann:'本站持續更新中，作品陸續添加。如有喜歡的角色或繪師，歡迎透過 B 站私信告訴咸魚！',
@@ -518,7 +553,9 @@ const T = {
     statArt:'幅作品',statUnit:'個團體',statArtist:'位畫師',
   },
   'zh-CN':{
-    navHome:'首页',navGallery:'作品库',navUnits:'偶像团体',navChars:'角色',navArtists:'画师墙',navAbout:'关于',navDisclaimer:'版权',navXianyu:'关于咸鱼',
+    navHome:'首页',navGallery:'作品库',navUnits:'偶像团体',navChars:'角色',navAbout:'关于',navDisclaimer:'版权',navXianyu:'关于咸鱼',
+    tabAll:'全部作品',tabCP:'❤ CP 作品',
+    cpNotice:'部分作品含有 CP / 配对内容，请注意。所有 CP 作品均来自允许转载的绘师。',
     eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'璀璨星辰',hsub:'偶像同人画廊',
     hdesc:'欢迎来到由咸鱼整理的 Ensemble Stars! 同人美术作品集。收录了来自世界各地绘师创作的精美作品，每幅作品均标注原创者并链接到原始发布页面。',
     ann:'本站持续更新中，作品陆续添加。如有喜欢的角色或绘师，欢迎通过 B 站私信告诉咸鱼！',
@@ -539,7 +576,9 @@ const T = {
     statArt:'幅作品',statUnit:'个团体',statArtist:'位画师',
   },
   'en':{
-    navHome:'Home',navGallery:'Gallery',navUnits:'Units',navChars:'Characters',navArtists:'Artists',navAbout:'About',navDisclaimer:'Disclaimer',navXianyu:'About Me',
+    navHome:'Home',navGallery:'Gallery',navUnits:'Units',navChars:'Characters',navAbout:'About',navDisclaimer:'Disclaimer',navXianyu:'About Me',
+    tabAll:'All Artworks',tabCP:'❤ CP Artworks',
+    cpNotice:'Some artworks contain CP / shipping content. All CP works are from artists who permit sharing.',
     eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'Shining Stars',hsub:'Fan Art Gallery',
     hdesc:'A curated collection of Ensemble Stars! fan artworks maintained by Xianyu (咸魚). Every piece credits the original artist and links to its source. Built out of love — non-commercial.',
     ann:'This gallery is constantly growing! Feel free to send artwork recommendations or character requests via Bilibili DM.',
@@ -582,8 +621,9 @@ function setLang(l){
 function applyLang(){
   const t=T[lang];
   setTxt('nav-home',t.navHome);setTxt('nav-gallery',t.navGallery);setTxt('nav-units',t.navUnits);
-  setTxt('nav-chars',t.navChars);setTxt('nav-artists',t.navArtists);setTxt('nav-about',t.navAbout);
+  setTxt('nav-chars',t.navChars);setTxt('nav-about',t.navAbout);
   setTxt('nav-disclaimer',t.navDisclaimer);setTxt('nav-xianyu',t.navXianyu);
+  setTxt('t-tab-all',t.tabAll);setTxt('t-tab-cp',t.tabCP);setTxt('t-cp-notice',t.cpNotice);
   setTxt('t-eye',t.eye);
   setHTML('t-htitle',t.htitle+'<br><em>'+t.hsub+'</em>');
   setTxt('t-hdesc',t.hdesc);setTxt('t-ann',t.ann);
@@ -604,9 +644,9 @@ function applyLang(){
   const l=lk();
   const ryu=UNITS.find(u=>u.key==='RYUSEITAI');
   const aka=UNITS.find(u=>u.key==='Akatsuki');
-  ['chip-ryu','gchip-ryu'].forEach(id=>{const e=$(id);if(e&&ryu)e.textContent=ryu.name[l];});
-  ['chip-aka','gchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
-  renderStats();renderHomeGrid();renderPicks();renderGalleryGrid();renderUnits();renderChars();renderArtists();
+  ['chip-ryu','gchip-ryu','cpchip-ryu'].forEach(id=>{const e=$(id);if(e&&ryu)e.textContent=ryu.name[l];});
+  ['chip-aka','gchip-aka','cpchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
+  renderStats();renderHomeGrid();renderPicks();renderGalleryGrid();renderUnits();renderChars();
 }
 
 function renderStats(){
@@ -614,7 +654,7 @@ function renderStats(){
   $('stats-bar').innerHTML=`<div class="stat"><div class="stat-n">${ARTWORKS.length}</div><div class="stat-l">${t.statArt}</div></div><div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div><div class="stat"><div class="stat-n">${ARTISTS.length}</div><div class="stat-l">${t.statArtist}</div></div>`;
 }
 
-function card(art){
+function card(art, showPairing=false){
   const t=T[lang];
   const l=lk();
   const u=UNITS.find(x=>x.key===art.unit);
@@ -626,10 +666,13 @@ function card(art){
   const cpb=art.cp?`<span class="cp-badge">${t.cpWarn}</span>`:'';
   const thumb=art.image_url?`<img src="${art.image_url}" alt="${artTitle}" loading="lazy">`:`<span class="thumb-em">${art.thumb}</span>`;
   const by=art.artist?`<a href="${art.url||'#'}" target="_blank" rel="noopener">${art.artist}</a>`:`<span>${t.unknown}</span>`;
+  const pairingStr=art.pairing?(typeof art.pairing==='object'?art.pairing[l]:art.pairing):null;
+  const pairingHTML=showPairing&&pairingStr?`<div class="pairing-tag">♡ ${pairingStr}</div>`:'';
   return `<div class="art-card" onclick="openLB(${art.id})">
     <div class="art-thumb">${pick}${cpb}${thumb}</div>
     <div class="art-info">
       <div class="art-unit" style="color:${col}">${unitLabel}</div>
+      ${pairingHTML}
       <div class="art-ttl">${artTitle}</div>
       <div class="art-by">🖌 ${by}</div>
     </div>
@@ -688,9 +731,82 @@ function filterByChar(name,unit){
   renderHomeGrid();
 }
 
-function renderArtists(){
-  $('artist-wall').innerHTML=ARTISTS.map(a=>`<a href="${a.url}" target="_blank" rel="noopener" class="artist-card"><div class="av">${a.avatar}</div><div><div class="ar-nm">${a.name}</div><div class="ar-pl">${a.platform}</div></div></a>`).join('');
+// Gallery tab switcher
+let gTab='all';
+function switchGTab(tab){
+  gTab=tab;
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+  $('tab-'+tab+'-btn').classList.add('active');
+  $('tab-'+tab).classList.add('active');
+  if(tab==='cp') renderCPGrid(); else renderGalleryGrid();
 }
+
+// CP state
+let cpUnitFilter='all', cpPairingFilter='';
+
+function renderCPGrid(q=''){
+  const l=lk();
+  let arts=ARTWORKS.filter(a=>a.cp);
+  if(cpUnitFilter!=='all') arts=arts.filter(a=>a.unit===cpUnitFilter);
+  if(cpPairingFilter){
+    const f=cpPairingFilter.toLowerCase();
+    arts=arts.filter(a=>{
+      const p=a.pairing?(typeof a.pairing==='object'?Object.values(a.pairing).join(' '):a.pairing):'';
+      return p.toLowerCase().includes(f);
+    });
+  }
+  if(q){
+    const lq=q.toLowerCase();
+    arts=arts.filter(a=>{
+      const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;
+      const ch=typeof a.char==='object'?Object.values(a.char).join(' '):a.char;
+      const p=a.pairing?(typeof a.pairing==='object'?Object.values(a.pairing).join(' '):a.pairing):'';
+      return ttl.toLowerCase().includes(lq)||ch.toLowerCase().includes(lq)||a.unit.toLowerCase().includes(lq)||p.toLowerCase().includes(lq);
+    });
+  }
+  $('cp-grid').innerHTML=arts.length?arts.map(a=>card(a,true)).join(''):`<div class="empty"><div class="ei">🌸</div><p>No CP artworks here yet.</p></div>`;
+  renderPairingTags();
+}
+
+function renderPairingTags(){
+  const l=lk();
+  // Collect unique pairings from current unit filter
+  let arts=ARTWORKS.filter(a=>a.cp&&a.pairing);
+  if(cpUnitFilter!=='all') arts=arts.filter(a=>a.unit===cpUnitFilter);
+  const seen=new Set();
+  const tags=[];
+  arts.forEach(a=>{
+    const p=typeof a.pairing==='object'?a.pairing[l]:a.pairing;
+    if(p&&!seen.has(p)){seen.add(p);tags.push(p);}
+  });
+  const row=$('pairing-tags-row');
+  if(!row)return;
+  row.innerHTML=tags.map(p=>{
+    const active=cpPairingFilter===p;
+    return `<button onclick="filterCPPairing('${p.replace(/'/g,"\\'")}',this)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(232,164,184,${active?.5:.25});background:rgba(232,164,184,${active?.18:.06});color:var(--rose);cursor:pointer;font-family:'Noto Sans SC',sans-serif;transition:all .2s;">${p}</button>`;
+  }).join('');
+  if(tags.length>0){
+    const clearBtn=`<button onclick="filterCPPairing('',null)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(138,154,181,.25);background:none;color:var(--muted);cursor:pointer;font-family:'Noto Sans SC',sans-serif;">✕ 清除</button>`;
+    row.innerHTML+=clearBtn;
+  }
+}
+
+function filterCPUnit(unit,btn){
+  cpUnitFilter=unit;
+  cpPairingFilter='';
+  document.querySelectorAll('#cpunit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
+  if(btn){btn.classList.add('active');btn.style.background=btn.style.borderColor;btn.style.color='#0d1b2a';}
+  $('cpsearch').value='';
+  renderCPGrid();
+}
+
+function filterCPPairing(pairing,btn){
+  cpPairingFilter=pairing;
+  renderCPGrid($('cpsearch').value);
+}
+
+function doCPSearch(q){renderCPGrid(q);}
 
 function filterUnit(unit,btn){
   unitFilter=unit;
