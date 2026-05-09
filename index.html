@@ -9,16 +9,12 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#16375C;--deep:#111827;--surface:#1a2638;--card:#1e2d3d;--card2:#19293a;--rose:#e8a4b8;--gold:#c9a96e;--champagne:#f0e6d3;--muted:#8a9ab5;--text:#e8eaf0;--soft:#b8c4d4;--star:#f5d77a;}
+:root{--navy:#16375C;--deep:#111827;--surface:#1a2638;--card:#1e2d3d;--rose:#e8a4b8;--gold:#c9a96e;--champagne:#f0e6d3;--muted:#8a9ab5;--text:#e8eaf0;--soft:#b8c4d4;--star:#f5d77a;}
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans SC',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;overflow-x:hidden;}
-
-/* Stars */
 .stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 20%,#1a2040 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,#1c1030 0%,transparent 60%),var(--navy);}
 .stars-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 25% 40%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 40% 8%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 60% 25%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 75% 55%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 88% 12%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 15% 70%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 50% 80%,rgba(245,215,122,.4) 0%,transparent 100%),radial-gradient(1px 1px at 92% 65%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 33% 90%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 70% 90%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 5% 95%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 55% 50%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 80% 35%,rgba(245,215,122,.4) 0%,transparent 100%);}
-
-/* Header */
 header{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,169,110,.18);}
 .header-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:58px;gap:.75rem;}
 .site-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--champagne);letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;border:none;background:none;}
@@ -29,39 +25,26 @@ nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
 .lang-sw{display:flex;gap:4px;flex-shrink:0;}
 .lang-btn{background:none;border:1px solid rgba(201,169,110,.3);cursor:pointer;color:var(--muted);font-size:.68rem;padding:3px 8px;border-radius:12px;transition:all .2s;font-family:'Noto Sans SC',sans-serif;}
 .lang-btn:hover,.lang-btn.active{color:var(--gold);border-color:var(--gold);background:rgba(201,169,110,.1);}
-
-/* Layout */
-.page{display:none;}
-.page.active{display:block;}
+.page{display:none;} .page.active{display:block;}
 main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
-
-/* Hero */
 .hero{text-align:center;padding:3.5rem 0 2.5rem;}
 .hero-eye{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;opacity:.85;}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4.2rem);font-weight:300;line-height:1.15;color:var(--champagne);margin-bottom:1.2rem;}
 .hero-title em{font-style:italic;color:var(--rose);}
 .hero-desc{font-size:.92rem;color:var(--soft);line-height:1.85;max-width:580px;margin:0 auto 2rem;}
 .divider{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 2.5rem;}
-
-/* Search */
 .search-wrap{max-width:480px;margin:0 auto 2rem;position:relative;}
 .search-wrap input{width:100%;padding:11px 18px 11px 44px;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.22);border-radius:28px;color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;}
 .search-wrap input:focus{border-color:rgba(201,169,110,.55);}
 .search-wrap input::placeholder{color:var(--muted);}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1rem;pointer-events:none;}
-
-/* Unit chips */
 .chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:2.5rem;}
-.chip{padding:5px 15px;border-radius:18px;font-size:.77rem;border:1px solid;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;background:rgba(255,255,255,0.06);letter-spacing:.03em;filter:brightness(1.4);}
+.chip{padding:5px 15px;border-radius:18px;font-size:.77rem;border:1px solid;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;background:rgba(255,255,255,.08);letter-spacing:.03em;filter:brightness(1.5);}
 .chip:hover{opacity:.85;}
-.chip.active{color:#0d1b2a!important;}
-
-/* Section headers */
+.chip.active{color:#0d1b2a!important;filter:brightness(1);}
 .sec-hd{display:flex;align-items:center;gap:.8rem;margin-bottom:1.3rem;}
 .sec-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--champagne);white-space:nowrap;letter-spacing:.04em;}
 .sec-line{flex:1;height:1px;background:rgba(201,169,110,.18);}
-
-/* Art grid */
 .art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:1.1rem;margin-bottom:2.5rem;}
 .art-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .28s;position:relative;}
 .art-card:hover{transform:translateY(-5px);border-color:rgba(201,169,110,.38);box-shadow:0 14px 40px rgba(0,0,0,.45);}
@@ -77,8 +60,6 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .art-by{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:3px;}
 .art-by a{color:var(--gold);text-decoration:none;}
 .art-by a:hover{text-decoration:underline;}
-
-/* Lightbox */
 .lb-overlay{position:fixed;inset:0;z-index:200;background:rgba(5,10,18,.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
 .lb-overlay.open{opacity:1;pointer-events:all;}
 .lb-box{background:var(--card);border:1px solid rgba(201,169,110,.2);border-radius:16px;max-width:500px;width:100%;overflow:hidden;transform:scale(.95);transition:transform .25s;}
@@ -91,15 +72,12 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .lb-char{font-size:.82rem;color:var(--soft);margin-bottom:10px;}
 .lb-artist{font-size:.82rem;color:var(--muted);margin-bottom:12px;}
 .lb-artist a{color:var(--gold);text-decoration:none;}
-.lb-artist a:hover{text-decoration:underline;}
 .lb-btns{display:flex;gap:8px;flex-wrap:wrap;}
 .lb-btn{padding:7px 16px;border-radius:18px;font-size:.78rem;text-decoration:none;border:1px solid;transition:all .2s;font-family:'Noto Sans SC',sans-serif;}
 .lb-btn-gold{color:var(--gold);border-color:rgba(201,169,110,.4);background:rgba(201,169,110,.08);}
 .lb-btn-gold:hover{background:rgba(201,169,110,.2);}
 .lb-close{position:absolute;top:1rem;right:1rem;background:rgba(13,27,42,.7);border:1px solid rgba(201,169,110,.3);color:var(--champagne);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:210;}
 .lb-close:hover{background:rgba(201,169,110,.2);}
-
-/* Units page */
 .units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem;}
 .unit-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:16px;padding:1.4rem;cursor:pointer;transition:all .28s;position:relative;overflow:hidden;}
 .unit-card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.28);}
@@ -109,16 +87,12 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .unit-members{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
 .mem-tag{font-size:.68rem;color:var(--soft);background:rgba(255,255,255,.05);padding:2px 8px;border-radius:8px;}
 .unit-cnt{font-size:.73rem;color:var(--muted);}
-
-/* Characters page */
 .char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;}
 .char-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:1.1rem;text-align:center;cursor:pointer;transition:all .25s;}
 .char-card:hover{transform:translateY(-3px);border-color:rgba(201,169,110,.3);}
 .char-em{font-size:2rem;margin-bottom:8px;}
 .char-nm{font-size:.82rem;color:var(--champagne);margin-bottom:3px;}
 .char-unit{font-size:.68rem;color:var(--muted);}
-
-/* About */
 .about-prose{max-width:680px;line-height:1.95;font-size:.93rem;color:var(--soft);}
 .about-prose h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--champagne);margin:2.2rem 0 .9rem;}
 .about-prose h2:first-child{margin-top:0;}
@@ -127,21 +101,15 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .info-card{background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.18);border-radius:12px;padding:1.1rem 1.4rem;margin:1.3rem 0;}
 .bili-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(0,174,236,.12);border:1px solid rgba(0,174,236,.28);color:#7dd3fc;padding:8px 16px;border-radius:20px;font-size:.83rem;text-decoration:none;transition:all .2s;margin-top:.5rem;}
 .bili-btn:hover{background:rgba(0,174,236,.22);}
-
-/* Disclaimer */
 .disc-sec{background:rgba(232,164,184,.05);border:1px solid rgba(232,164,184,.18);border-left:3px solid var(--rose);border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin-bottom:1.3rem;}
 .disc-sec h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--rose);margin-bottom:.65rem;font-weight:400;}
 .disc-sec p{font-size:.88rem;color:var(--soft);line-height:1.8;}
-
-/* Artist wall */
 .artist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.9rem;}
 .artist-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:.9rem 1.1rem;display:flex;align-items:center;gap:10px;transition:all .2s;text-decoration:none;}
 .artist-card:hover{border-color:rgba(201,169,110,.3);transform:translateY(-2px);}
 .av{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;background:rgba(201,169,110,.12);}
 .ar-nm{font-size:.87rem;color:var(--champagne);margin-bottom:2px;}
 .ar-pl{font-size:.7rem;color:var(--muted);}
-
-/* CTAs */
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:1.5rem 0;}
 .cta{padding:9px 20px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;letter-spacing:.03em;border:1px solid;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
 .cta-g{background:rgba(201,169,110,.12);color:var(--gold);border-color:rgba(201,169,110,.35);}
@@ -150,30 +118,19 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .cta-r:hover{background:rgba(232,164,184,.18);}
 .cta-b{background:rgba(0,174,236,.09);color:#7dd3fc;border-color:rgba(0,174,236,.28);}
 .cta-b:hover{background:rgba(0,174,236,.18);}
-
-/* Empty */
 .empty{text-align:center;padding:3.5rem 1rem;color:var(--muted);}
 .empty .ei{font-size:2.5rem;margin-bottom:.8rem;opacity:.4;}
-
-/* Stats bar */
 .stats-bar{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;}
 .stat{text-align:center;}
 .stat-n{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);line-height:1;}
 .stat-l{font-size:.72rem;color:var(--muted);letter-spacing:.08em;margin-top:3px;}
-
-/* Announcement */
 .announcement{background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:12px;padding:1rem 1.3rem;margin-bottom:2rem;display:flex;align-items:flex-start;gap:10px;}
 .ann-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
 .ann-text{font-size:.85rem;color:var(--soft);line-height:1.7;}
-.ann-text strong{color:var(--champagne);}
-
-/* Footer */
 footer{position:relative;z-index:1;border-top:1px solid rgba(201,169,110,.13);text-align:center;padding:2.2rem 1.5rem;color:var(--muted);font-size:.78rem;line-height:2.1;}
 footer a{color:var(--gold);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
 .foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--champagne);margin-bottom:.6rem;}
-
-/* Responsive */
 @media(max-width:700px){
   .header-inner{flex-wrap:wrap;height:auto;padding:.6rem 1rem;}
   nav{order:3;width:100%;justify-content:center;}
@@ -214,7 +171,7 @@ footer a:hover{text-decoration:underline;}
       <button class="nav-btn"        id="nav-units"      onclick="showPage('units')">偶像團體</button>
       <button class="nav-btn"        id="nav-chars"      onclick="showPage('chars')">角色</button>
       <button class="nav-btn"        id="nav-artists"    onclick="showPage('artists')">畫師牆</button>
-      <button class="nav-btn"        id="nav-about"      onclick="showPage('about')">關於</button>       
+      <button class="nav-btn"        id="nav-about"      onclick="showPage('about')">關於</button>
       <button class="nav-btn"        id="nav-xianyu"     onclick="showPage('xianyu')">關於咸魚</button>
       <button class="nav-btn"        id="nav-disclaimer" onclick="showPage('disclaimer')">版權</button>
     </nav>
@@ -226,7 +183,7 @@ footer a:hover{text-decoration:underline;}
   </div>
 </header>
 
-<!-- ══ PAGE: HOME ══ -->
+<!-- PAGE: HOME -->
 <div id="page-home" class="page active"><main>
   <div class="hero">
     <p class="hero-eye" id="t-eye">✦ Ensemble Stars! Fan Gallery ✦</p>
@@ -234,39 +191,32 @@ footer a:hover{text-decoration:underline;}
     <p class="hero-desc" id="t-hdesc"></p>
     <div class="divider"></div>
   </div>
-
   <div class="stats-bar" id="stats-bar"></div>
-
   <div class="announcement">
     <span class="ann-icon">📢</span>
-    <div class="ann-text" id="t-ann">本站持續更新中，作品陸續添加。如有喜歡的角色或繪師，歡迎透過 B 站私信告訴咸魚！</div>
+    <div class="ann-text" id="t-ann"></div>
   </div>
-
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
-    <input type="text" id="search-input" placeholder="搜索角色、繪師、偶像團體…" oninput="doSearch(this.value)">
+    <input type="text" id="search-input" placeholder="搜索…" oninput="doSearch(this.value)">
   </div>
-
   <div class="chips" id="unit-chips">
     <button class="chip active" id="chip-all" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all" onclick="filterUnit('all',this)">全部</button>
-    <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"   onclick="filterUnit('Crazy:B',this)">Crazy:B</button>
-    <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"  onclick="filterUnit('ALKALOID',this)">ALKALOID</button>
-    <button class="chip" style="color:#8C2346;border-color:#8C2346;" data-unit="Valkyrie"  onclick="filterUnit('Valkyrie',this)">Valkyrie</button>
-    <button class="chip" style="color:#5F5B5D;border-color:#5F5B5D;" data-unit="Eden"      onclick="filterUnit('Eden',this)">Eden</button>
-    <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"   onclick="filterUnit('Ra*bits',this)">Ra*bits</button>
-    <button class="chip" style="color:#305DAA;border-color:#305DAA;" data-unit="Knights"   onclick="filterUnit('Knights',this)">Knights</button>
-    <button class="chip" style="color:#24004D;border-color:#24004D;" data-unit="RYUSEITAI" onclick="filterUnit('RYUSEITAI',this)">RYUSEITAI</button>
-    <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"      onclick="filterUnit('fine',this)">fine</button>
-    <button class="chip" style="color:#4D2118;border-color:#4D2118;" data-unit="Mellow Dear Us"      onclick="filterUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
-    <button class="chip" style="color:#962828;border-color:#962828;" data-unit="Akatsuki"      onclick="filterUnit('Akatsuki',this)">Akatsuki</button>
+    <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"        onclick="filterUnit('Crazy:B',this)">Crazy:B</button>
+    <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"       onclick="filterUnit('ALKALOID',this)">ALKALOID</button>
+    <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"       onclick="filterUnit('Valkyrie',this)">Valkyrie</button>
+    <button class="chip" style="color:#a09080;border-color:#a09080;" data-unit="Eden"           onclick="filterUnit('Eden',this)">Eden</button>
+    <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"        onclick="filterUnit('Ra*bits',this)">Ra*bits</button>
+    <button class="chip" style="color:#6080cc;border-color:#6080cc;" data-unit="Knights"        onclick="filterUnit('Knights',this)">Knights</button>
+    <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"      onclick="filterUnit('RYUSEITAI',this)" id="chip-ryu">RYUSEITAI</button>
+    <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"           onclick="filterUnit('fine',this)">fine</button>
+    <button class="chip" style="color:#b08060;border-color:#b08060;" data-unit="Mellow Dear Us" onclick="filterUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
+    <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"       onclick="filterUnit('Akatsuki',this)" id="chip-aka">Akatsuki</button>
   </div>
-
   <div class="sec-hd"><h2 class="sec-title" id="t-recent">近期新增</h2><div class="sec-line"></div></div>
   <div class="art-grid" id="home-grid"></div>
-
   <div class="sec-hd"><h2 class="sec-title" id="t-picks">✦ 咸魚推薦</h2><div class="sec-line"></div></div>
   <div class="art-grid" id="picks-grid"></div>
-
   <div class="cta-row">
     <a href="https://space.bilibili.com/" target="_blank" class="cta cta-g">✉ <span id="t-cs">推薦一幅作品</span></a>
     <a href="https://space.bilibili.com/" target="_blank" class="cta cta-r">💬 <span id="t-cr">請求更多角色作品</span></a>
@@ -274,81 +224,76 @@ footer a:hover{text-decoration:underline;}
   </div>
 </main></div>
 
-<!-- ══ PAGE: GALLERY ══ -->
+<!-- PAGE: GALLERY -->
 <div id="page-gallery" class="page"><main>
   <div class="hero" style="padding:2rem 0 1.5rem;">
     <p class="hero-eye">✦</p>
     <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-gtitle">作品庫</h1>
-    <p class="hero-desc" id="t-gdesc">瀏覽全部收錄作品</p>
+    <p class="hero-desc" id="t-gdesc"></p>
   </div>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
     <input type="text" id="gsearch" placeholder="搜索…" oninput="doGSearch(this.value)">
   </div>
   <div class="chips" id="gunit-chips">
-    <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all" onclick="filterGUnit('all',this)">全部</button>
-    <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"   onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
-    <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"  onclick="filterGUnit('ALKALOID',this)">ALKALOID</button>
-    <button class="chip" style="color:#8C2346;border-color:#8C2346;" data-unit="Valkyrie"  onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
-    <button class="chip" style="color:#5F5B5D;border-color:#5F5B5D;" data-unit="Eden"      onclick="filterGUnit('Eden',this)">Eden</button>
-    <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"   onclick="filterGUnit('Ra*bits',this)">Ra*bits</button>
-    <button class="chip" style="color:#305DAA;border-color:#305DAA;" data-unit="Knights"   onclick="filterGUnit('Knights',this)">Knights</button>
-    <button class="chip" style="color:#24004D;border-color:#24004D;" data-unit="RYUSEITAI" onclick="filterGUnit('RYUSEITAI',this)">RYUSEITAI</button>
-    <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"      onclick="filterGUnit('fine',this)">fine</button>
-    <button class="chip" style="color:#4D2118;border-color:#4D2118;" data-unit="Mellow Dear Us"      onclick="filterGUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
-    <button class="chip" style="color:#962828;border-color:#962828;" data-unit="Akatsuki"      onclick="filterGUnit('Akatsuki',this)">Akatsuki</button>
+    <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all"           onclick="filterGUnit('all',this)">全部</button>
+    <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
+    <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"             onclick="filterGUnit('ALKALOID',this)">ALKALOID</button>
+    <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"             onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
+    <button class="chip" style="color:#a09080;border-color:#a09080;" data-unit="Eden"                 onclick="filterGUnit('Eden',this)">Eden</button>
+    <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"              onclick="filterGUnit('Ra*bits',this)">Ra*bits</button>
+    <button class="chip" style="color:#6080cc;border-color:#6080cc;" data-unit="Knights"              onclick="filterGUnit('Knights',this)">Knights</button>
+    <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"            onclick="filterGUnit('RYUSEITAI',this)" id="gchip-ryu">RYUSEITAI</button>
+    <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"                 onclick="filterGUnit('fine',this)">fine</button>
+    <button class="chip" style="color:#b08060;border-color:#b08060;" data-unit="Mellow Dear Us"       onclick="filterGUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
+    <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"             onclick="filterGUnit('Akatsuki',this)" id="gchip-aka">Akatsuki</button>
   </div>
   <div class="art-grid" id="gallery-grid"></div>
 </main></div>
 
-<!-- ══ PAGE: UNITS ══ -->
+<!-- PAGE: UNITS -->
 <div id="page-units" class="page"><main>
   <div class="hero" style="padding:2rem 0 1.5rem;">
     <p class="hero-eye">✦ IDOL UNITS ✦</p>
     <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-utitle">偶像團體</h1>
-    <p class="hero-desc" id="t-udesc">點擊任意團體，篩選相關作品。</p>
+    <p class="hero-desc" id="t-udesc"></p>
   </div>
   <div class="units-grid" id="units-grid"></div>
 </main></div>
 
-<!-- ══ PAGE: CHARACTERS ══ -->
+<!-- PAGE: CHARACTERS -->
 <div id="page-chars" class="page"><main>
   <div class="hero" style="padding:2rem 0 1.5rem;">
     <p class="hero-eye">✦ CHARACTERS ✦</p>
     <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-ctitle">角色</h1>
-    <p class="hero-desc" id="t-cdesc">點擊角色，查看相關作品。</p>
+    <p class="hero-desc" id="t-cdesc"></p>
   </div>
   <div class="char-grid" id="chars-grid"></div>
 </main></div>
 
-<!-- ══ PAGE: ARTISTS ══ -->
+<!-- PAGE: ARTISTS -->
 <div id="page-artists" class="page"><main>
   <div class="hero" style="padding:2rem 0 1.5rem;">
     <p class="hero-eye">✦ ARTIST WALL ✦</p>
     <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-atitle">畫師牆</h1>
-    <p class="hero-desc" id="t-adesc">感謝所有允許收錄作品的創作者。</p>
+    <p class="hero-desc" id="t-adesc"></p>
     <div class="divider"></div>
   </div>
   <div class="artist-grid" id="artist-wall"></div>
 </main></div>
 
-<!-- ══ PAGE: XIANYU ══ -->
+<!-- PAGE: XIANYU -->
 <div id="page-xianyu" class="page"><main>
   <div class="hero" style="padding:2rem 0 1.5rem;">
     <p class="hero-eye">✦ ABOUT ME ✦</p>
     <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3rem);" id="t-xytitle">關於咸魚</h1>
   </div>
-
   <div style="max-width:780px;margin:0 auto;">
-
-    <!-- Language toggle -->
     <div style="display:flex;gap:8px;margin-bottom:2rem;">
       <button onclick="xyLang('tw')" id="xy-btn-tw" style="padding:6px 18px;border-radius:16px;border:1px solid rgba(201,169,110,0.4);color:var(--gold);background:rgba(201,169,110,0.25);cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.82rem;">繁體</button>
       <button onclick="xyLang('cn')" id="xy-btn-cn" style="padding:6px 18px;border-radius:16px;border:1px solid rgba(201,169,110,0.4);color:var(--gold);background:none;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.82rem;">简体</button>
       <button onclick="xyLang('en')" id="xy-btn-en" style="padding:6px 18px;border-radius:16px;border:1px solid rgba(201,169,110,0.4);color:var(--gold);background:none;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.82rem;">EN</button>
     </div>
-
-    <!-- Traditional Chinese -->
     <div id="xy-tw" style="display:block;">
       <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:2rem 2.2rem;line-height:2.1;color:var(--soft);font-size:.95rem;">
         <p style="font-size:1.1rem;color:var(--champagne);margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;">大家好，這裡是咸魚！🐟</p>
@@ -365,8 +310,6 @@ footer a:hover{text-decoration:underline;}
         <p style="margin-top:1rem;color:var(--champagne);">最後，感謝大家的瀏覽！祝各位製作人運気暴漲，抽卡永遠不歪，自推多出好卡！那麼，咸魚先告辭！🐟✨</p>
       </div>
     </div>
-
-    <!-- Simplified Chinese -->
     <div id="xy-cn" style="display:none;">
       <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:2rem 2.2rem;line-height:2.1;color:var(--soft);font-size:.95rem;">
         <p style="font-size:1.1rem;color:var(--champagne);margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;">大家好，这里是咸鱼！🐟</p>
@@ -380,8 +323,6 @@ footer a:hover{text-decoration:underline;}
         <p style="margin-top:1rem;color:var(--champagne);">最后，感谢大家的浏览！祝各位制作人运気暴漲，抽卡永远不歪，自推多出好卡！那么，咸鱼先告辞啦！🐟✨</p>
       </div>
     </div>
-
-    <!-- English -->
     <div id="xy-en" style="display:none;">
       <div style="background:rgba(201,169,110,0.06);border:1px solid rgba(201,169,110,0.15);border-radius:16px;padding:2rem 2.2rem;line-height:2.1;color:var(--soft);font-size:.95rem;">
         <p style="font-size:1.1rem;color:var(--champagne);margin-bottom:1.2rem;font-family:'Cormorant Garamond',serif;">Hi everyone, this is Xianyu! 🐟</p>
@@ -395,37 +336,29 @@ footer a:hover{text-decoration:underline;}
         <p style="margin-top:1rem;color:var(--champagne);">Finally, thank you so much for visiting! I wish all Producers the best of luck — may your pulls be ever in your favor, and may your faves come home with amazing cards! See you around! Baiiii :) 🐟✨</p>
       </div>
     </div>
-
-    <!-- Contact cards -->
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;margin-top:1.5rem;">
-
-      <!-- Bilibili -->
       <div style="background:rgba(0,174,236,0.07);border:1px solid rgba(0,174,236,0.2);border-radius:14px;padding:1.2rem 1.5rem;">
         <div style="font-size:.7rem;color:var(--muted);margin-bottom:6px;letter-spacing:.1em;">BILIBILI</div>
         <div style="color:var(--champagne);font-size:.95rem;margin-bottom:4px;">下辈子当咸鱼</div>
         <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">站內更新 · 私信投稿 · Site updates & DMs</div>
-        <a href="https://space.bilibili.com/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,174,236,0.15);border:1px solid rgba(0,174,236,0.35);color:#7dd3fc;border-radius:18px;text-decoration:none;font-size:.8rem;" onmouseover="this.style.background='rgba(0,174,236,0.28)'" onmouseout="this.style.background='rgba(0,174,236,0.15)'">📺 前往主頁 / Visit</a>
+        <a href="https://space.bilibili.com/" target="_blank" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(0,174,236,0.15);border:1px solid rgba(0,174,236,0.35);color:#7dd3fc;border-radius:18px;text-decoration:none;font-size:.8rem;">📺 前往主頁 / Visit</a>
       </div>
-
-      <!-- Email -->
       <div style="background:rgba(201,169,110,0.07);border:1px solid rgba(201,169,110,0.2);border-radius:14px;padding:1.2rem 1.5rem;">
         <div style="font-size:.7rem;color:var(--muted);margin-bottom:6px;letter-spacing:.1em;">EMAIL</div>
         <div style="color:var(--champagne);font-size:.95rem;margin-bottom:4px;">xianyulazy@gmail.com</div>
         <div style="font-size:.78rem;color:var(--muted);margin-bottom:12px;">版權 · 合作 · Copyright & collabs</div>
-        <a href="mailto:xianyulazy@gmail.com" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.35);color:var(--gold);border-radius:18px;text-decoration:none;font-size:.8rem;" onmouseover="this.style.background='rgba(201,169,110,0.28)'" onmouseout="this.style.background='rgba(201,169,110,0.15)'">✉ 發送郵件 / Send email</a>
+        <a href="mailto:xianyulazy@gmail.com" style="display:inline-flex;align-items:center;gap:6px;padding:7px 16px;background:rgba(201,169,110,0.15);border:1px solid rgba(201,169,110,0.35);color:var(--gold);border-radius:18px;text-decoration:none;font-size:.8rem;">✉ 發送郵件 / Send email</a>
       </div>
-
     </div>
+    <div style="margin-top:1rem;background:rgba(232,164,184,0.05);border:1px solid rgba(232,164,184,0.15);border-radius:14px;padding:1.4rem 1.5rem;">
+      <div style="font-size:.78rem;color:var(--muted);letter-spacing:.08em;margin-bottom:1rem;">💌 LEAVE A MESSAGE · 留言給咸魚</div>
+      <p style="font-size:.85rem;color:var(--soft);line-height:1.8;margin-bottom:1.2rem;">想說什麼都可以！可以匿名留言，咸魚一定會看的 ☆<br><span style="font-size:.8rem;color:var(--muted);">Send me anything — fully anonymous, I read every message!</span></p>
+      <a href="https://marshmallow-qa.com/5fwt4ivuodyqiq8?t=0ydZTH&utm_medium=url_text&utm_source=promotion" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:rgba(232,164,184,0.15);border:1px solid rgba(232,164,184,0.35);color:var(--rose);border-radius:22px;text-decoration:none;font-size:.85rem;">🍡 投個棉花糖 / Send a Marshmallow</a>
+    </div>
+  </div>
+</main></div>
 
-    <!-- Quick message form -->
-<!-- Contact / Message -->
-<div style="margin-top:1rem;background:rgba(232,164,184,0.05);border:1px solid rgba(232,164,184,0.15);border-radius:14px;padding:1.4rem 1.5rem;">
-  <div style="font-size:.78rem;color:var(--muted);letter-spacing:.08em;margin-bottom:1rem;">💌 LEAVE A MESSAGE · 留言給咸魚</div>
-  <p style="font-size:.85rem;color:var(--soft);line-height:1.8;margin-bottom:1.2rem;">想說什麼都可以！可以匿名留言，咸魚一定會看的 ☆<br><span style="font-size:.8rem;color:var(--muted);">Send me anything — fully anonymous, I read every message!</span></p>
-  <a href="https://marshmallow-qa.com/5fwt4ivuodyqiq8?t=0ydZTH&utm_medium=url_text&utm_source=promotion" target="_blank" style="display:inline-flex;align-items:center;gap:8px;padding:10px 22px;background:rgba(232,164,184,0.15);border:1px solid rgba(232,164,184,0.35);color:var(--rose);border-radius:22px;text-decoration:none;font-size:.85rem;transition:all .2s;" onmouseover="this.style.background='rgba(232,164,184,0.28)'" onmouseout="this.style.background='rgba(232,164,184,0.15)'">🍡 投個棉花糖 / Send a Marshmallow</a>
-</div>
-  
-<!-- ══ PAGE: ABOUT ══ -->
+<!-- PAGE: ABOUT -->
 <div id="page-about" class="page"><main>
   <div class="about-prose">
     <h2 id="t-abtitle">關於本站</h2>
@@ -437,7 +370,7 @@ footer a:hover{text-decoration:underline;}
   </div>
 </main></div>
 
-<!-- ══ PAGE: DISCLAIMER ══ -->
+<!-- PAGE: DISCLAIMER -->
 <div id="page-disclaimer" class="page"><main>
   <div class="hero" style="padding:2rem 0 1.5rem;">
     <p class="hero-eye">✦</p>
@@ -458,85 +391,94 @@ footer a:hover{text-decoration:underline;}
 </footer>
 
 <script>
-// ═══════════════════════════════════════════════════════════════
-// DATA — Edit here to add artworks, artists, etc. 
-// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
+// UNITS — internal key is always English name
+// name: {tw, cn, en} for display
+// members: {tw, cn, en} for display
+// ═══════════════════════════════════════════════════
 const UNITS = [
-  const UNITS = [
-  { name:{tw:'Crazy:B', cn:'Crazy:B', en:'Crazy:B'}, color:'#FFD400', emblem:'🎲', members:{tw:['HiMERU','天城燐音','椎名丹希','櫻河琥珀'], cn:['HiMERU','天城燐音','椎名丹希','樱河琥珀'], en:['HiMERU','Amagi Rinne','Shiina Niki','Owkawa Kohaku']} },
-  { name:{tw:'ALKALOID', cn:'ALKALOID', en:'ALKALOID'}, color:'#2BB7CA', emblem:'⚗️', members:{tw:['天城一彩','白鳥藍良','禮瀨真宵','風早巽'], cn:['天城一彩','白鸟蓝良','礼濑真宵','风早巽'], en:['Shiina Niki','Usamine Gen','Narukami Ryosei','Sakuma Rei']} },
-  { name:{tw:'Valkyrie', cn:'Valkyrie', en:'Valkyrie'}, color:'#8C2346', emblem:'⚔️', members:{tw:['齋宮宗','影片美伽'], cn:['斎宮宗','影片美伽'], en:['Sena Izumi','Mikejima Madara']} },
-  { name:{tw:'Eden', cn:'Eden', en:'Eden'}, color:'#5F5B5D', emblem:'🌿', members:{tw:['乱凪砂','巴日和','七种茨','涟纯'], cn:['乱凪砂','巴日和','七种茨','涟纯'], en:['Seira Taichi','Hasumi Keito','Sakurako Tsukasa','Minegishi Tomoya']} },
-  { name:{tw:"Ra*bits", cn:"Ra*bits", en:"Ra*bits"}, color:'#68C0F4', emblem:'🐰', members:{tw:['真白友也','仁兔成鸣','天满光','紫之创'], cn:['真白友也','仁兔成鸣','天满光','紫之创'], en:['Hibiki Wataru','Yuuki Makoto','Nishiki Hotaru','Morisawa Chiaki']} },
-  { name:{tw:'Knights', cn:'Knights', en:'Knights'}, color:'#305DAA', emblem:'♞', members:{tw:['月永雷欧','濑名泉','朱樱司','鸣上岚','朔间凛月'], cn:['月永雷欧','濑名泉','朱樱司','鸣上岚','朔间凛月'], en:['Tenshouin Eichi','Takamine Midori','Sakurako Tsukasa','Suoh Tsukasa','Ichinose Rei']} },
-  { name:{tw:'流星隊', cn:'流星队', en:'RYUSEITAI'}, color:'#24004D', emblem:'☄️', members:{tw:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'], cn:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'], en:['Tenmа Mitsuru','Ito Sora','Morisawa Chiaki','Kinugawa Tomoya','Akehoshi Subaru']} },
-  { name:{tw:'紅月', cn:'红月', en:'Akatsuki'}, color:'#962828', emblem:'🌙', members:{tw:['莲巳敬人','鬼龙红郎','神崎飒马'], cn:['莲巳敬人','鬼龙红郎','神崎飒马'], en:['Tenshouin Eichi','Amagi Rinne','Harukawa Sora','Nanakusa Ibara']} },
-  { name:{tw:'fine', cn:'fine', en:'fine'}, color:'#FFD7A0', emblem:'👑', members:{tw:['天祥院英智','天城燐音','春川宙','七種茨'], cn:['天祥院英智','天城燐音','春川宙','七種茨'], en:['Tenshouin Eichi','Amagi Rinne','Harukawa Sora','Nanakusa Ibara']} },
-  { name:{tw:'Mellow Dear Us', cn:'Mellow Dear Us', en:'Mellow Dear Us'}, color:'#4D2118', emblem:'🍫', members:{tw:['小鹿爵斯','圆果望见','久远舞珠','甘乐千岁'], cn:['小鹿爵斯','圆果望见','久远舞珠','甘乐千岁'], en:['Tenshouin Eichi','Amagi Rinne','Harukawa Sora','Nanakusa Ibara']} }
+  { key:'Crazy:B',        name:{tw:'Crazy:B',      cn:'Crazy:B',      en:'Crazy:B'},        color:'#FFD400', emblem:'🎲', members:{tw:['HiMERU','天城燐音','椎名丹希','櫻河琥珀'],       cn:['HiMERU','天城燐音','椎名丹希','樱河琥珀'],       en:['HiMERU','Amagi Rinne','Shiina Niki','Owkawa Kohaku']} },
+  { key:'ALKALOID',       name:{tw:'ALKALOID',     cn:'ALKALOID',     en:'ALKALOID'},       color:'#2BB7CA', emblem:'⚗️', members:{tw:['天城一彩','白鳥藍良','禮瀨真宵','風早巽'],       cn:['天城一彩','白鸟蓝良','礼濑真宵','风早巽'],       en:['Amagi Kazusa','Shiratori Aira','Reise Mayoi','Kazahaya Tatsumi']} },
+  { key:'Valkyrie',       name:{tw:'Valkyrie',     cn:'Valkyrie',     en:'Valkyrie'},       color:'#c06080', emblem:'⚔️', members:{tw:['齋宮宗','影片美伽'],                             cn:['斎宮宗','影片美伽'],                             en:['Saegusa Ibara','Mikaze Ai']} },
+  { key:'Eden',           name:{tw:'Eden',         cn:'Eden',         en:'Eden'},           color:'#a09080', emblem:'🌿', members:{tw:['亂凪砂','巴日和','七種茨','漣純'],               cn:['乱凪砂','巴日和','七种茨','涟纯'],               en:['Ran Nagisa','Tomoe Hiyori','Nanakusa Ibara','Sazanami Jun']} },
+  { key:'Ra*bits',        name:{tw:'Ra*bits',      cn:'Ra*bits',      en:'Ra*bits'},        color:'#68C0F4', emblem:'🐰', members:{tw:['真白友也','仁兔成鳴','天満光','紫之創'],         cn:['真白友也','仁兔成鸣','天満光','紫之创'],         en:['Mashiro Tomoya','Nito Nazuna','Tenma Mitsuru','Momoiro Yuta']} },
+  { key:'Knights',        name:{tw:'Knights',      cn:'Knights',      en:'Knights'},        color:'#6080cc', emblem:'♞',  members:{tw:['月永雷歐','瀨名泉','朱櫻司','鳴上嵐','朔間凛月'], cn:['月永雷欧','濑名泉','朱樱司','鸣上岚','朔间凛月'], en:['Tsukishiro Leo','Sena Izumi','Sakuma Ritsu','Narukami Arashi','Sakuma Rinne']} },
+  { key:'RYUSEITAI',      name:{tw:'流星隊',        cn:'流星队',        en:'RYUSEITAI'},      color:'#9070cc', emblem:'☄️', members:{tw:['守澤千秋','深海奏汰','仙石忍','南雲鐵虎','高峯翠'], cn:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'], en:['Morisawa Chiaki','Shinkai Kanata','Sengoku Shinobu','Nagumo Tetora','Takamine Midori']} },
+  { key:'Akatsuki',       name:{tw:'紅月',          cn:'红月',          en:'Akatsuki'},       color:'#e08080', emblem:'🌙', members:{tw:['蓮巳敬人','鬼龍紅郎','神崎颯馬'],               cn:['莲巳敬人','鬼龙红郎','神崎飒马'],               en:['Hasumi Keito','Kiryu Koga','Kanzaki Souma']} },
+  { key:'fine',           name:{tw:'fine',         cn:'fine',         en:'fine'},           color:'#FFD7A0', emblem:'👑', members:{tw:['天祥院英智','天城燐音','春川宙','七種茨'],       cn:['天祥院英智','天城燐音','春川宙','七种茨'],       en:['Tenshouin Eichi','Amagi Rinne','Harukawa Sora','Nanakusa Ibara']} },
+  { key:'Mellow Dear Us', name:{tw:'Mellow Dear Us',cn:'Mellow Dear Us',en:'Mellow Dear Us'},color:'#b08060', emblem:'🍫', members:{tw:['小鹿爵斯','圓果望見','久遠舞珠','甘樂千歲'],   cn:['小鹿爵斯','圆果望见','久远舞珠','甘乐千岁'],   en:['Ojika Juss','Marugame Miken','Kuon Maju','Kanra Chisato']} },
 ];
 
-
+// ═══════════════════════════════════════════════════
+// CHARACTERS — unit field matches UNITS key
+// name can be string (same all langs) or {tw,cn,en}
+// ═══════════════════════════════════════════════════
 const CHARS = [
-  { name:{tw:'HiMERU', cn:'HiMERU', en:'HiMERU'}, unit:'Crazy:B', em:'🎲' },
-  { name:{tw:'天城燐音', cn:'天城燐音', en:'Amagi Rinne'}, unit:'Crazy:B', em:'🎲' },
-  { name:{tw:'椎名丹希', cn:'椎名丹希', en:'Shiina Niki'}, unit:'Crazy:B', em:'🎲' },
-  { name:{tw:'樱河琥珀', cn:'樱河琥珀', en:'Owkawa Kohaku'},'',  unit:'Crazy:B', em:'🎲' },
-  { name:'天城一彩',  unit:'ALKALOID',  em:'⚗️'  },
-  { name:'白鸟蓝良',    unit:'ALKALOID',  em:'⚗️'  },
-  { name:'礼濑真宵',  unit:'ALKALOID',  em:'⚗️'  },
-  { name:'风早巽',    unit:'ALKALOID',  em:'⚗️'  },
-  { name:'影片美伽',    unit:'Valkyrie',  em:'⚔️'  },
-  { name:'斎宮宗',    unit:'Valkyrie',  em:'⚔️'  },
-  { name:'乱凪砂',  unit:'Eden',      em:'🌿' },
-  { name:'巴日和',  unit:'Eden',      em:'🌿' },
-  { name:'七种茨',    unit:'Eden',      em:'🌿' },
-  { name:'涟纯',  unit:'Eden',      em:'🌿' },
-  { name:'真白友也',  unit:"Ra*bits",   em:'🐰' },
-  { name:'仁兔成鸣',    unit:"Ra*bits",   em:'🐰' },
-  { name:'天满光',    unit:"Ra*bits",   em:'🐰' },
-  { name:'紫之创',  unit:"Ra*bits",   em:'🐰' },
-  { name:'月永雷欧',  unit:'Knights',   em:'♞'  },
-  { name:'濑名泉',    unit:'Knights',   em:'♞'  },
-  { name:'朱樱司',  unit:'Knights',   em:'♞'  },
-  { name:'鸣上岚',  unit:'Knights',   em:'♞'  },
-  { name:'朔间凛月',  unit:'Knights',   em:'♞'  },
-  { name:'守泽千秋',    unit:'RYUSEITAI', em:'☄️'  },
-  { name:'深海奏汰',    unit:'RYUSEITAI', em:'☄️'  },
-  { name:'仙石忍',  unit:'RYUSEITAI', em:'☄️'  },
-  { name:'南云铁虎',  unit:'RYUSEITAI', em:'☄️'  },
-  { name:'高峯翠',  unit:'RYUSEITAI', em:'☄️'  },
-  { name:'姬宫桃李',  unit:'fine',      em:'👑' },
-  { name:'天祥院英智',    unit:'fine',      em:'👑' },
-  { name:'日日树涉',    unit:'fine',      em:'👑' },
-  { name:'伏见弓弦',    unit:'fine',      em:'👑' },
-  { name:'小鹿爵斯',    unit:'Mellow Dear Us',      em:'🍫' },
-  { name:'圆果望见',    unit:'Mellow Dear Us',      em:'🍫' },
-  { name:'久远舞珠',    unit:'Mellow Dear Us',      em:'🍫' },
-  { name:'甘乐千岁',    unit:'Mellow Dear Us',      em:'🍫' },
-];
-  
-// ─── ADD YOUR ARTWORKS HERE ────────────────────────────────────
-// image_url: put image filenames in the "images" folder, e.g. "images/art001.jpg"
-// Leave image_url as "" to show the emoji placeholder until you add images
-// cp: true = show CP warning badge
-const ARTWORKS = [
-  { id:1,  image_url:'', thumb:'🌸', title:'夜桜',         unit:'Crazy:B',   char:'HiMERU',    artist:'@hanami_art',  url:'https://pixiv.net', platform:'pixiv',   editor:true,  cp:false },
-  { id:2,  image_url:'', thumb:'⚡', title:'Electric Stage',unit:'Crazy:B',  char:'椎名丹希',  artist:'@tsuki_draw',  url:'https://x.com',    platform:'twitter', editor:false, cp:false },
-  { id:3,  image_url:'', thumb:'🗡️', title:'Eternal Oath', unit:'Valkyrie',  char:'影片美伽',    artist:null,           url:null,               platform:null,      editor:false, cp:false },
-  { id:4,  image_url:'', thumb:'🌟', title:'Garden of Gold',unit:'Eden',      char:'乱凪砂',  artist:'@sora_illust', url:'https://pixiv.net', platform:'pixiv',   editor:true,  cp:false },
-  { id:5,  image_url:'', thumb:'🎀', title:'Bunny Love',   unit:"Ra*bits",   char:'紫之创',  artist:'@mochi_fan',   url:'https://x.com',    platform:'twitter', editor:false, cp:false },
-  { id:6,  image_url:'', thumb:'🏰', title:"Knight's Vow", unit:'Knights',   char:'月永雷欧',artist:'@castle_ink',  url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
-  { id:7,  image_url:'', thumb:'☄️', title:'Comet Fall',   unit:'RYUSEITAI', char:'深海奏汰',    artist:'@ryusei_p',    url:'https://x.com',    platform:'twitter', editor:true,  cp:false },
-  { id:8,  image_url:'', thumb:'✨', title:'Fine Dining',  unit:'fine',      char:'天祥院英智',artist:'@eichi_fan',   url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
-  { id:9,  image_url:'', thumb:'🎭', title:'Crimson Drama', unit:'Valkyrie', char:'斎宮宗',    artist:'@drama_brush', url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
-  { id:10, image_url:'', thumb:'💫', title:'Midnight Run',  unit:'Crazy:B',  char:'椎名丹希',    artist:null,           url:null,               platform:null,      editor:false, cp:false },
-  { id:11, image_url:'', thumb:'🌙', title:'Lunar Waltz',   unit:'ALKALOID', char:'天城一彩',    artist:'@luna_p',      url:'https://pixiv.net', platform:'pixiv',   editor:false, cp:false },
-  { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',    unit:'Ra*bits',  char:'紫之创',    artist:'@wave_art',    url:'https://x.com',    platform:'twitter', editor:false, cp:false },
-  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'😋', title:{tw:'麵包尼', cn:'面包尼', en:'Bread Niki'}, unit:'Crazy:B', char:'椎名丹希', artist:'@hanami_art', url:'https://pin.it/3Gled9ofT', platform:'pinterest', editor:true, cp:false },
-  { id:14, image_url:'images/48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'😋', title:'Glasses niki',    unit:'Crazy:B',  char:'椎名丹希',    artist:null,    url:'https://www.pinterest.com/pin/1058557087429714796/',    platform:'pinterest', editor:false, cp:false }
+  { name:{tw:'HiMERU',    cn:'HiMERU',    en:'HiMERU'},           unit:'Crazy:B',        em:'🎲' },
+  { name:{tw:'天城燐音',  cn:'天城燐音',  en:'Amagi Rinne'},       unit:'Crazy:B',        em:'🎲' },
+  { name:{tw:'椎名丹希',  cn:'椎名丹希',  en:'Shiina Niki'},       unit:'Crazy:B',        em:'🎲' },
+  { name:{tw:'櫻河琥珀',  cn:'樱河琥珀',  en:'Owkawa Kohaku'},     unit:'Crazy:B',        em:'🎲' },
+  { name:{tw:'天城一彩',  cn:'天城一彩',  en:'Amagi Kazusa'},      unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'白鳥藍良',  cn:'白鸟蓝良',  en:'Shiratori Aira'},    unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'禮瀨真宵',  cn:'礼濑真宵',  en:'Reise Mayoi'},       unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'風早巽',    cn:'风早巽',    en:'Kazahaya Tatsumi'},   unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'齋宮宗',    cn:'斎宮宗',    en:'Saegusa Ibara'},      unit:'Valkyrie',       em:'⚔️' },
+  { name:{tw:'影片美伽',  cn:'影片美伽',  en:'Mikaze Ai'},          unit:'Valkyrie',       em:'⚔️' },
+  { name:{tw:'亂凪砂',    cn:'乱凪砂',    en:'Ran Nagisa'},         unit:'Eden',           em:'🌿' },
+  { name:{tw:'巴日和',    cn:'巴日和',    en:'Tomoe Hiyori'},       unit:'Eden',           em:'🌿' },
+  { name:{tw:'七種茨',    cn:'七种茨',    en:'Nanakusa Ibara'},     unit:'Eden',           em:'🌿' },
+  { name:{tw:'漣純',      cn:'涟纯',      en:'Sazanami Jun'},       unit:'Eden',           em:'🌿' },
+  { name:{tw:'真白友也',  cn:'真白友也',  en:'Mashiro Tomoya'},     unit:'Ra*bits',        em:'🐰' },
+  { name:{tw:'仁兔成鳴',  cn:'仁兔成鸣',  en:'Nito Nazuna'},        unit:'Ra*bits',        em:'🐰' },
+  { name:{tw:'天満光',    cn:'天満光',    en:'Tenma Mitsuru'},      unit:'Ra*bits',        em:'🐰' },
+  { name:{tw:'紫之創',    cn:'紫之创',    en:'Momoiro Yuta'},       unit:'Ra*bits',        em:'🐰' },
+  { name:{tw:'月永雷歐',  cn:'月永雷欧',  en:'Tsukishiro Leo'},     unit:'Knights',        em:'♞'  },
+  { name:{tw:'瀨名泉',    cn:'濑名泉',    en:'Sena Izumi'},         unit:'Knights',        em:'♞'  },
+  { name:{tw:'朱櫻司',    cn:'朱樱司',    en:'Sakuma Ritsu'},       unit:'Knights',        em:'♞'  },
+  { name:{tw:'鳴上嵐',    cn:'鸣上岚',    en:'Narukami Arashi'},    unit:'Knights',        em:'♞'  },
+  { name:{tw:'朔間凛月',  cn:'朔间凛月',  en:'Sakuma Rinne'},       unit:'Knights',        em:'♞'  },
+  { name:{tw:'守澤千秋',  cn:'守泽千秋',  en:'Morisawa Chiaki'},    unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'深海奏汰',  cn:'深海奏汰',  en:'Shinkai Kanata'},     unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'仙石忍',    cn:'仙石忍',    en:'Sengoku Shinobu'},    unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'南雲鐵虎',  cn:'南云铁虎',  en:'Nagumo Tetora'},      unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'高峯翠',    cn:'高峯翠',    en:'Takamine Midori'},    unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'蓮巳敬人',  cn:'莲巳敬人',  en:'Hasumi Keito'},       unit:'Akatsuki',       em:'🌙' },
+  { name:{tw:'鬼龍紅郎',  cn:'鬼龙红郎',  en:'Kiryu Koga'},         unit:'Akatsuki',       em:'🌙' },
+  { name:{tw:'神崎颯馬',  cn:'神崎飒马',  en:'Kanzaki Souma'},      unit:'Akatsuki',       em:'🌙' },
+  { name:{tw:'天祥院英智',cn:'天祥院英智',en:'Tenshouin Eichi'},    unit:'fine',           em:'👑' },
+  { name:{tw:'天城燐音',  cn:'天城燐音',  en:'Amagi Rinne'},        unit:'fine',           em:'👑' },
+  { name:{tw:'春川宙',    cn:'春川宙',    en:'Harukawa Sora'},      unit:'fine',           em:'👑' },
+  { name:{tw:'七種茨',    cn:'七种茨',    en:'Nanakusa Ibara'},     unit:'fine',           em:'👑' },
+  { name:{tw:'小鹿爵斯',  cn:'小鹿爵斯',  en:'Ojika Juss'},         unit:'Mellow Dear Us', em:'🍫' },
+  { name:{tw:'圓果望見',  cn:'圆果望见',  en:'Marugame Miken'},     unit:'Mellow Dear Us', em:'🍫' },
+  { name:{tw:'久遠舞珠',  cn:'久远舞珠',  en:'Kuon Maju'},          unit:'Mellow Dear Us', em:'🍫' },
+  { name:{tw:'甘樂千歲',  cn:'甘乐千岁',  en:'Kanra Chisato'},      unit:'Mellow Dear Us', em:'🍫' },
 ];
 
-// ─── ADD YOUR ARTISTS HERE ─────────────────────────────────────
+// ═══════════════════════════════════════════════════
+// ARTWORKS — unit field must match a UNITS key above
+// title & char can be string or {tw, cn, en}
+// ═══════════════════════════════════════════════════
+const ARTWORKS = [
+  { id:1,  image_url:'', thumb:'🌸', title:'夜桜',          unit:'Crazy:B',        char:'HiMERU',    artist:'@hanami_art',  url:'https://pixiv.net', platform:'pixiv',     editor:true,  cp:false },
+  { id:2,  image_url:'', thumb:'⚡', title:'Electric Stage', unit:'Crazy:B',        char:'椎名丹希',  artist:'@tsuki_draw',  url:'https://x.com',     platform:'twitter',   editor:false, cp:false },
+  { id:3,  image_url:'', thumb:'🗡️', title:'Eternal Oath',  unit:'Valkyrie',       char:'影片美伽',  artist:null,           url:null,                platform:null,        editor:false, cp:false },
+  { id:4,  image_url:'', thumb:'🌟', title:'Garden of Gold', unit:'Eden',           char:'亂凪砂',    artist:'@sora_illust', url:'https://pixiv.net', platform:'pixiv',     editor:true,  cp:false },
+  { id:5,  image_url:'', thumb:'🎀', title:'Bunny Love',     unit:'Ra*bits',        char:'紫之創',    artist:'@mochi_fan',   url:'https://x.com',     platform:'twitter',   editor:false, cp:false },
+  { id:6,  image_url:'', thumb:'🏰', title:"Knight's Vow",   unit:'Knights',        char:'月永雷歐',  artist:'@castle_ink',  url:'https://pixiv.net', platform:'pixiv',     editor:false, cp:false },
+  { id:7,  image_url:'', thumb:'☄️', title:'Comet Fall',     unit:'RYUSEITAI',      char:'深海奏汰',  artist:'@ryusei_p',    url:'https://x.com',     platform:'twitter',   editor:true,  cp:false },
+  { id:8,  image_url:'', thumb:'✨', title:'Fine Dining',    unit:'fine',           char:'天祥院英智',artist:'@eichi_fan',   url:'https://pixiv.net', platform:'pixiv',     editor:false, cp:false },
+  { id:9,  image_url:'', thumb:'🎭', title:'Crimson Drama',  unit:'Valkyrie',       char:'齋宮宗',    artist:'@drama_brush', url:'https://pixiv.net', platform:'pixiv',     editor:false, cp:false },
+  { id:10, image_url:'', thumb:'💫', title:'Midnight Run',   unit:'Crazy:B',        char:'椎名丹希',  artist:null,           url:null,                platform:null,        editor:false, cp:false },
+  { id:11, image_url:'', thumb:'🌙', title:'Lunar Waltz',    unit:'ALKALOID',       char:'天城一彩',  artist:'@luna_p',      url:'https://pixiv.net', platform:'pixiv',     editor:false, cp:false },
+  { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',     unit:'Ra*bits',        char:'紫之創',    artist:'@wave_art',    url:'https://x.com',     platform:'twitter',   editor:false, cp:false },
+  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'🍞', title:{tw:'麵包尼', cn:'面包尼', en:'Bread Niki'}, unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://pin.it/3Gled9ofT', platform:'pinterest', editor:true, cp:false },
+  { id:14, image_url:'48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'🤓', title:'Glasses Niki', unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://www.pinterest.com/pin/1058557087429714796/', platform:'pinterest', editor:false, cp:false },
+];
+
+// ═══════════════════════════════════════════════════
+// ARTISTS
+// ═══════════════════════════════════════════════════
 const ARTISTS = [
   { name:'@hanami_art',  platform:'Pixiv',     url:'https://pixiv.net', avatar:'🌸' },
   { name:'@tsuki_draw',  platform:'X/Twitter', url:'https://x.com',    avatar:'🌙' },
@@ -550,94 +492,85 @@ const ARTISTS = [
   { name:'@wave_art',    platform:'X/Twitter', url:'https://x.com',    avatar:'🌊' },
 ];
 
-// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // TRANSLATIONS
-// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 const T = {
   'zh-TW':{
     navHome:'首頁',navGallery:'作品庫',navUnits:'偶像團體',navChars:'角色',navArtists:'畫師牆',navAbout:'關於',navDisclaimer:'版權',navXianyu:'關於咸魚',
-    eye:'✦ Ensemble Stars! Fan Gallery ✦',
-    htitle:'璀璨星辰',hsub:'偶像二創畫廊',
+    eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'璀璨星辰',hsub:'偶像二創畫廊',
     hdesc:'歡迎來到由咸魚精心整理的 Ensemble Stars! 同人美術作品集。這裡收錄來自世界各地繪師創作的美麗作品，所有作品均已標注原創者並連結原始發布頁面。',
     ann:'本站持續更新中，作品陸續添加。如有喜歡的角色或繪師，歡迎透過 B 站私信告訴咸魚！',
-    search:'搜索角色、繪師、偶像團體…',
-    chipAll:'全部',recent:'近期新增',picks:'✦ 咸魚推薦',
+    search:'搜索角色、繪師、偶像團體…',chipAll:'全部',recent:'近期新增',picks:'✦ 咸魚推薦',
     cs:'推薦一幅作品',cr:'請求更多角色作品',cb:'B站：下辈子当咸鱼',
     gtitle:'作品庫',gdesc:'瀏覽全部收錄作品',
     utitle:'偶像團體',udesc:'點擊任意團體，篩選相關作品。',artCount:'幅作品',
     ctitle:'角色',cdesc:'點擊角色，查看相關作品。',
     atitle:'畫師牆',adesc:'感謝所有允許收錄作品的創作者。點擊名字即可前往其主頁。',
     abtitle:'關於本站',
-    abcontent:`<p>本站是一個以整理及展示 <strong>Ensemble Stars!</strong> 同人美術為目的的非商業愛好者網站，由學生愛好者「咸魚」（Bilibili：下辈子当咸鱼）獨立維護。</p><p>我們致力於在尊重原創者版權的前提下，為 ES 粉絲提供美觀整潔的作品瀏覽體驗。每幅作品均附有原作者名稱及原始連結。所有作品在收錄前均已確認原作者的轉載規定，僅收錄明確允許或未明確禁止轉載的作品。</p><p>若您希望撤下作品，請透過 Bilibili 私信聯絡，將立即下架。</p>`,
-    clabel:'聯絡 / 投稿 / 版權問題：',blabel:'B站：下辈子当咸鱼',
+    abcontent:`<p>本站是一個以整理及展示 <strong>Ensemble Stars!</strong> 同人美術為目的的非商業愛好者網站，由學生愛好者「咸魚」獨立維護。</p><p>我們致力於在尊重原創者版權的前提下，為 ES 粉絲提供美觀整潔的作品瀏覽體驗。每幅作品均附有原作者名稱及原始連結。所有作品在收錄前均已確認原作者的轉載規定，僅收錄明確允許或未明確禁止轉載的作品。</p><p>若您希望撤下作品，請透過 Bilibili 私信聯絡，將立即下架。</p>`,
+    clabel:'聯絡 / 投稿 / 版權問題：',blabel:'B站：下辈子当咸鱼',xytitle:'關於咸魚',
     dtitle:'版權聲明',
-    dcontent:`<div class="disc-sec"><h3>📌 版權歸屬</h3><p>本站展示的所有同人美術作品版權屬於原創作者。本站僅作整理展示用途，所有作品均標注原作者及來源平台，並提供原始連結。</p></div><div class="disc-sec"><h3>⚠️ CP / 成人內容</h3><p>部分作品可能含有 CP（配對）或限制級內容，已標注 CP 標籤提示。瀏覽此類作品前請確認您已達到所在地區的合法年齡。</p></div><div class="disc-sec"><h3>🔍 未知畫師</h3><p>部分作品因源自 Pinterest 等二次轉載平台暫時無法追溯原作者，標注為「畫師：不明」。站長將持續嘗試找回來源。如您知悉原作者，歡迎告知。</p></div><div class="disc-sec"><h3>📩 下架申請</h3><p>若您是原創者並希望撤下作品，請透過 Bilibili 私信聯絡：<strong>下辈子当咸鱼</strong>，將立即處理，無需說明理由。</p></div><div class="disc-sec"><h3>🎮 遊戲版權</h3><p>Ensemble Stars! 相關角色及世界觀屬 Happy Elements K.K. 所有，本站與其無官方關聯。</p></div>`,
+    dcontent:`<div class="disc-sec"><h3>📌 版權歸屬</h3><p>本站展示的所有同人美術作品版權屬於原創作者。本站僅作整理展示用途，所有作品均標注原作者及來源平台，並提供原始連結。</p></div><div class="disc-sec"><h3>⚠️ CP / 成人內容</h3><p>部分作品可能含有 CP 或限制級內容，已標注 CP 標籤提示。瀏覽此類作品前請確認您已達到所在地區的合法年齡。</p></div><div class="disc-sec"><h3>🔍 未知畫師</h3><p>部分作品因源自 Pinterest 等二次轉載平台暫時無法追溯原作者，標注為「畫師：不明」。如您知悉原作者，歡迎告知。</p></div><div class="disc-sec"><h3>📩 下架申請</h3><p>若您是原創者並希望撤下作品，請透過 Bilibili 私信聯絡：<strong>下辈子当咸鱼</strong>，將立即處理，無需說明理由。</p></div><div class="disc-sec"><h3>🎮 遊戲版權</h3><p>Ensemble Stars! 相關角色及世界觀屬 Happy Elements K.K. 所有，本站與其無官方關聯。</p></div>`,
     unknown:'畫師：不明',viewOrig:'查看原圖',cpWarn:'CP',
     ftxt:'本站為非商業性質的同人愛好者網站，所有作品版權歸原創者所有。',
-    fbili:'B站：下辈子当咸鱼',fcontact:'聯繫站長申請下架',
-    fcopy:'© 2025 EnsembleFans · 站點更新通知請關注B站動態',
+    fbili:'B站：下辈子当咸鱼',fcontact:'聯繫站長申請下架',fcopy:'© 2025 EnsembleFans · 站點更新通知請關注B站動態',
     statArt:'幅作品',statUnit:'個團體',statArtist:'位畫師',
   },
   'zh-CN':{
     navHome:'首页',navGallery:'作品库',navUnits:'偶像团体',navChars:'角色',navArtists:'画师墙',navAbout:'关于',navDisclaimer:'版权',navXianyu:'关于咸鱼',
-    eye:'✦ Ensemble Stars! Fan Gallery ✦',
-    htitle:'璀璨星辰',hsub:'偶像同人画廊',
+    eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'璀璨星辰',hsub:'偶像同人画廊',
     hdesc:'欢迎来到由咸鱼整理的 Ensemble Stars! 同人美术作品集。收录了来自世界各地绘师创作的精美作品，每幅作品均标注原创者并链接到原始发布页面。',
     ann:'本站持续更新中，作品陆续添加。如有喜欢的角色或绘师，欢迎通过 B 站私信告诉咸鱼！',
-    search:'搜索角色、绘师、偶像团体…',
-    chipAll:'全部',recent:'最近新增',picks:'✦ 咸鱼推荐',
+    search:'搜索角色、绘师、偶像团体…',chipAll:'全部',recent:'最近新增',picks:'✦ 咸鱼推荐',
     cs:'推荐一幅作品',cr:'请求更多角色作品',cb:'B站：下辈子当咸鱼',
     gtitle:'作品库',gdesc:'浏览全部收录作品',
     utitle:'偶像团体',udesc:'点击任意团体，筛选相关作品。',artCount:'幅作品',
     ctitle:'角色',cdesc:'点击角色，查看相关作品。',
     atitle:'画师墙',adesc:'感谢所有允许收录作品的创作者。点击名字即可前往其主页。',
     abtitle:'关于本站',
-    abcontent:`<p>本站是一个以整理及展示 <strong>Ensemble Stars!</strong> 同人美术为目的的非商业爱好者网站，由学生爱好者「咸鱼」（Bilibili：下辈子当咸鱼）独立维护。</p><p>我们致力于在尊重原创者版权的前提下，为 ES 粉丝提供美观整洁的作品浏览体验。每幅作品均附有原作者名称及原始链接。所有作品在收录前均已确认原作者的转载规定，仅收录允许或未明确禁止转载的作品。</p><p>若您希望撤下作品，请通过 Bilibili 私信联系，将立即下架。</p>`,
-    clabel:'联络 / 投稿 / 版权问题：',blabel:'B站：下辈子当咸鱼',
+    abcontent:`<p>本站是一个以整理及展示 <strong>Ensemble Stars!</strong> 同人美术为目的的非商业爱好者网站，由学生爱好者「咸鱼」独立维护。</p><p>我们致力于在尊重原创者版权的前提下，为 ES 粉丝提供美观整洁的作品浏览体验。每幅作品均附有原作者名称及原始链接。所有作品在收录前均已确认原作者的转载规定，仅收录允许或未明确禁止转载的作品。</p><p>若您希望撤下作品，请通过 Bilibili 私信联系，将立即下架。</p>`,
+    clabel:'联络 / 投稿 / 版权问题：',blabel:'B站：下辈子当咸鱼',xytitle:'关于咸鱼',
     dtitle:'版权声明',
     dcontent:`<div class="disc-sec"><h3>📌 版权归属</h3><p>本站展示的所有同人美术作品版权属于原创作者。本站仅作整理展示用途，所有作品均标注原作者及来源平台，并提供原始链接。</p></div><div class="disc-sec"><h3>⚠️ CP / 成人内容</h3><p>部分作品可能含有 CP 或限制级内容，已标注 CP 标签提示。浏览此类作品前请确认您已达到合法年龄。</p></div><div class="disc-sec"><h3>🔍 未知画师</h3><p>部分作品因源自 Pinterest 等二次转载平台暂无法追溯原作者，标注为「画师：不明」。如您知悉原作者欢迎告知。</p></div><div class="disc-sec"><h3>📩 下架申请</h3><p>如需撤下作品，请通过 Bilibili 私信联系：<strong>下辈子当咸鱼</strong>，将立即处理。</p></div><div class="disc-sec"><h3>🎮 游戏版权</h3><p>Ensemble Stars! 相关角色和世界观属 Happy Elements K.K. 所有，本站与其无官方关联。</p></div>`,
     unknown:'画师：不明',viewOrig:'查看原图',cpWarn:'CP',
     ftxt:'本站为非商业性质的同人爱好者网站，所有作品版权归原创者所有。',
-    fbili:'B站：下辈子当咸鱼',fcontact:'联系站长申请下架',
-    fcopy:'© 2025 EnsembleFans · 站点更新通知请关注B站动态',
+    fbili:'B站：下辈子当咸鱼',fcontact:'联系站长申请下架',fcopy:'© 2025 EnsembleFans · 站点更新通知请关注B站动态',
     statArt:'幅作品',statUnit:'个团体',statArtist:'位画师',
   },
   'en':{
     navHome:'Home',navGallery:'Gallery',navUnits:'Units',navChars:'Characters',navArtists:'Artists',navAbout:'About',navDisclaimer:'Disclaimer',navXianyu:'About Me',
-    eye:'✦ Ensemble Stars! Fan Gallery ✦',
-    htitle:'Shining Stars',hsub:'Fan Art Gallery',
+    eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'Shining Stars',hsub:'Fan Art Gallery',
     hdesc:'A curated collection of Ensemble Stars! fan artworks maintained by Xianyu (咸魚). Every piece credits the original artist and links to its source. Built out of love — non-commercial.',
     ann:'This gallery is constantly growing! Feel free to send artwork recommendations or character requests via Bilibili DM.',
-    search:'Search characters, artists, units…',
-    chipAll:'All',recent:'Recently Added',picks:"✦ Curator's Picks",
+    search:'Search characters, artists, units…',chipAll:'All',recent:'Recently Added',picks:"✦ Curator's Picks",
     cs:'Recommend an artwork',cr:'Request a character',cb:'Bilibili: 下辈子当咸鱼',
     gtitle:'Gallery',gdesc:'Browse all artworks',
     utitle:'Idol Units',udesc:'Click any unit to filter artworks.',artCount:'artworks',
     ctitle:'Characters',cdesc:'Click a character to view their artworks.',
     atitle:'Artist Wall',adesc:'Every credited artist featured in this gallery. Click a name to visit their profile.',
     abtitle:'About',
-    abcontent:`<p>EnsembleFans is a non-commercial fan gallery for <strong>Ensemble Stars!</strong>, independently maintained by a student fan known as Xianyu (咸魚, Bilibili: 下辈子当咸鱼).</p><p>Every artwork is credited to its original creator with a link back to the source. Works are only included after checking the artist's repost policy — only those who permit or don't explicitly forbid reposting are featured.</p><p>If you'd like your work removed, please reach out on Bilibili — it will be taken down immediately, no questions asked.</p>`,
-    clabel:'Contact / Submit / Copyright:',blabel:'Bilibili: 下辈子当咸鱼 (Xianyu)',
+    abcontent:`<p>EnsembleFans is a non-commercial fan gallery for <strong>Ensemble Stars!</strong>, independently maintained by a student fan known as Xianyu (咸魚).</p><p>Every artwork is credited to its original creator with a link back to the source. Works are only included after checking the artist's repost policy.</p><p>If you'd like your work removed, please reach out on Bilibili — it will be taken down immediately, no questions asked.</p>`,
+    clabel:'Contact / Submit / Copyright:',blabel:'Bilibili: 下辈子当咸鱼 (Xianyu)',xytitle:'About Me',
     dtitle:'Disclaimer & Copyright',
     dcontent:`<div class="disc-sec"><h3>📌 Copyright</h3><p>All fan artworks displayed here belong to their original creators. This site only organizes and displays works — every piece links back to the source with full credit.</p></div><div class="disc-sec"><h3>⚠️ CP / Mature Content</h3><p>Some artworks may contain shipping (CP) or mature themes. These are labeled with a CP badge. Please ensure you are of legal age in your region before viewing such content.</p></div><div class="disc-sec"><h3>🔍 Unknown Artists</h3><p>Some works were sourced from re-sharing platforms like Pinterest without attribution. These are labeled "Artist: Unknown" and the curator will attempt to trace the original source.</p></div><div class="disc-sec"><h3>📩 Takedown Requests</h3><p>If you are the original creator and want your work removed, please message on Bilibili: <strong>下辈子当咸鱼</strong>. Removal is immediate, no questions asked.</p></div><div class="disc-sec"><h3>🎮 Game IP</h3><p>Ensemble Stars! characters and story belong to Happy Elements K.K. This site has no affiliation with Happy Elements.</p></div>`,
     unknown:'Artist: Unknown',viewOrig:'View original',cpWarn:'CP',
     ftxt:'A non-commercial fan gallery. All artworks belong to their respective creators.',
-    fbili:'Bilibili: 下辈子当咸鱼',fcontact:'Request removal',
-    fcopy:'© 2025 EnsembleFans · Updates posted on Bilibili',
+    fbili:'Bilibili: 下辈子当咸鱼',fcontact:'Request removal',fcopy:'© 2025 EnsembleFans · Updates posted on Bilibili',
     statArt:'artworks',statUnit:'units',statArtist:'artists',
   }
 };
 
-// ═══════════════════════════════════════════════════════════════
+// ═══════════════════════════════════════════════════
 // APP LOGIC
-// ═══════════════════════════════════════════════════════════════
-let lang = 'zh-TW';
-let unitFilter = 'all';
-let gUnitFilter = 'all';
-
-function $(id){ return document.getElementById(id); }
-function setTxt(id,v){ const e=$(id); if(e) e.textContent=v; }
-function setHTML(id,v){ const e=$(id); if(e) e.innerHTML=v; }
+// ═══════════════════════════════════════════════════
+let lang='zh-TW', unitFilter='all', gUnitFilter='all';
+function $(id){return document.getElementById(id);}
+function setTxt(id,v){const e=$(id);if(e)e.textContent=v;}
+function setHTML(id,v){const e=$(id);if(e)e.innerHTML=v;}
+function lk(){return lang==='zh-CN'?'cn':lang==='en'?'en':'tw';}
+function uname(u){return typeof u.name==='object'?u.name[lk()]:u.name;}
+function cname(c){return typeof c.name==='object'?c.name[lk()]:c.name;}
 
 function setLang(l){
   lang=l;
@@ -648,61 +581,55 @@ function setLang(l){
 
 function applyLang(){
   const t=T[lang];
-  setTxt('nav-home',t.navHome); setTxt('nav-gallery',t.navGallery);
-  setTxt('nav-units',t.navUnits); setTxt('nav-chars',t.navChars);
-  setTxt('nav-artists',t.navArtists); setTxt('nav-about',t.navAbout);
-  setTxt('nav-disclaimer',t.navDisclaimer);   
-  setTxt('nav-xianyu',t.navXianyu);
+  setTxt('nav-home',t.navHome);setTxt('nav-gallery',t.navGallery);setTxt('nav-units',t.navUnits);
+  setTxt('nav-chars',t.navChars);setTxt('nav-artists',t.navArtists);setTxt('nav-about',t.navAbout);
+  setTxt('nav-disclaimer',t.navDisclaimer);setTxt('nav-xianyu',t.navXianyu);
   setTxt('t-eye',t.eye);
-  setHTML('t-htitle', t.htitle+'<br><em>'+t.hsub+'</em>');
-  setTxt('t-hdesc',t.hdesc); setTxt('t-ann',t.ann);
+  setHTML('t-htitle',t.htitle+'<br><em>'+t.hsub+'</em>');
+  setTxt('t-hdesc',t.hdesc);setTxt('t-ann',t.ann);
   $('search-input').placeholder=t.search;
   setTxt('chip-all',t.chipAll);
-  setTxt('t-recent',t.recent); setTxt('t-picks',t.picks);
-  setTxt('t-cs',t.cs); setTxt('t-cr',t.cr); setTxt('t-cb',t.cb);
-  setTxt('t-gtitle',t.gtitle); setTxt('t-gdesc',t.gdesc);
-  setTxt('t-utitle',t.utitle); setTxt('t-udesc',t.udesc);
-  setTxt('t-ctitle',t.ctitle); setTxt('t-cdesc',t.cdesc);
-  setTxt('t-atitle',t.atitle); setTxt('t-adesc',t.adesc);
-  setTxt('t-abtitle',t.abtitle); setHTML('t-abcontent',t.abcontent);
-  setTxt('t-clabel',t.clabel); setTxt('t-blabel',t.blabel);
-  setTxt('t-dtitle',t.dtitle); setHTML('t-dcontent',t.dcontent);
-  setTxt('t-ftxt',t.ftxt); setTxt('t-fbili',t.fbili);
-  setTxt('t-fcontact',t.fcontact); setTxt('t-fcopy',t.fcopy);
-  renderStats(); renderHomeGrid(); renderPicks();
-  renderGalleryGrid(); renderUnits(); renderChars(); renderArtists();
+  setTxt('t-recent',t.recent);setTxt('t-picks',t.picks);
+  setTxt('t-cs',t.cs);setTxt('t-cr',t.cr);setTxt('t-cb',t.cb);
+  setTxt('t-gtitle',t.gtitle);setTxt('t-gdesc',t.gdesc);
+  setTxt('t-utitle',t.utitle);setTxt('t-udesc',t.udesc);
+  setTxt('t-ctitle',t.ctitle);setTxt('t-cdesc',t.cdesc);
+  setTxt('t-atitle',t.atitle);setTxt('t-adesc',t.adesc);
+  setTxt('t-abtitle',t.abtitle);setHTML('t-abcontent',t.abcontent);
+  setTxt('t-clabel',t.clabel);setTxt('t-blabel',t.blabel);
+  setTxt('t-xytitle',t.xytitle);
+  setTxt('t-dtitle',t.dtitle);setHTML('t-dcontent',t.dcontent);
+  setTxt('t-ftxt',t.ftxt);setTxt('t-fbili',t.fbili);setTxt('t-fcontact',t.fcontact);setTxt('t-fcopy',t.fcopy);
+  // Update RYUSEITAI and Akatsuki chip labels
+  const l=lk();
+  const ryu=UNITS.find(u=>u.key==='RYUSEITAI');
+  const aka=UNITS.find(u=>u.key==='Akatsuki');
+  ['chip-ryu','gchip-ryu'].forEach(id=>{const e=$(id);if(e&&ryu)e.textContent=ryu.name[l];});
+  ['chip-aka','gchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
+  renderStats();renderHomeGrid();renderPicks();renderGalleryGrid();renderUnits();renderChars();renderArtists();
 }
 
-// Stats bar
 function renderStats(){
   const t=T[lang];
-  $('stats-bar').innerHTML=`
-    <div class="stat"><div class="stat-n">${ARTWORKS.length}</div><div class="stat-l">${t.statArt}</div></div>
-    <div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div>
-    <div class="stat"><div class="stat-n">${ARTISTS.length}</div><div class="stat-l">${t.statArtist}</div></div>
-  `;
+  $('stats-bar').innerHTML=`<div class="stat"><div class="stat-n">${ARTWORKS.length}</div><div class="stat-l">${t.statArt}</div></div><div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div><div class="stat"><div class="stat-n">${ARTISTS.length}</div><div class="stat-l">${t.statArtist}</div></div>`;
 }
 
-// Card renderer
 function card(art){
   const t=T[lang];
-  const u=UNITS.find(x=>x.name===art.unit);
+  const l=lk();
+  const u=UNITS.find(x=>x.key===art.unit);
   const col=u?u.color:'#888';
-  const lk=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
-  const artTitle=typeof art.title==='object'?art.title[lk]:art.title;
-  const artChar=typeof art.char==='object'?art.char[lk]:art.char;
+  const unitLabel=u?uname(u):art.unit;
+  const artTitle=typeof art.title==='object'?art.title[l]:art.title;
+  const artChar=typeof art.char==='object'?art.char[l]:art.char;
   const pick=art.editor?`<span class="pick-badge">${lang==='en'?'Pick':'推薦'}</span>`:'';
   const cpb=art.cp?`<span class="cp-badge">${t.cpWarn}</span>`:'';
-  const thumb=art.image_url
-    ?`<img src="${art.image_url}" alt="${art.title}" loading="lazy">`
-    :`<span class="thumb-em">${art.thumb}</span>`;
-  const by=art.artist
-    ?`<a href="${art.url||'#'}" target="_blank" rel="noopener">${art.artist}</a>`
-    :`<span>${t.unknown}</span>`;
-  return `<div class="art-card" onclick="openLB(${art.id})" data-id="${art.id}" data-unit="${art.unit}" data-char="${art.char}" data-artist="${art.artist||''}">
+  const thumb=art.image_url?`<img src="${art.image_url}" alt="${artTitle}" loading="lazy">`:`<span class="thumb-em">${art.thumb}</span>`;
+  const by=art.artist?`<a href="${art.url||'#'}" target="_blank" rel="noopener">${art.artist}</a>`:`<span>${t.unknown}</span>`;
+  return `<div class="art-card" onclick="openLB(${art.id})">
     <div class="art-thumb">${pick}${cpb}${thumb}</div>
     <div class="art-info">
-      <div class="art-unit" style="color:${col}">${art.unit}</div>
+      <div class="art-unit" style="color:${col}">${unitLabel}</div>
       <div class="art-ttl">${artTitle}</div>
       <div class="art-by">🖌 ${by}</div>
     </div>
@@ -711,143 +638,112 @@ function card(art){
 
 function renderHomeGrid(q=''){
   let arts=unitFilter==='all'?ARTWORKS:ARTWORKS.filter(a=>a.unit===unitFilter);
-  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>a.title.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||a.char.toLowerCase().includes(lq));}
+  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>{const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;const ch=typeof a.char==='object'?Object.values(a.char).join(' '):a.char;return ttl.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||ch.toLowerCase().includes(lq);});}
   $('home-grid').innerHTML=arts.length?arts.map(card).join(''):`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
 }
-function renderPicks(){ $('picks-grid').innerHTML=ARTWORKS.filter(a=>a.editor).map(card).join(''); }
+function renderPicks(){$('picks-grid').innerHTML=ARTWORKS.filter(a=>a.editor).map(card).join('');}
 function renderGalleryGrid(q=''){
   let arts=gUnitFilter==='all'?ARTWORKS:ARTWORKS.filter(a=>a.unit===gUnitFilter);
-  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>a.title.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||a.char.toLowerCase().includes(lq));}
+  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>{const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;const ch=typeof a.char==='object'?Object.values(a.char).join(' '):a.char;return ttl.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||ch.toLowerCase().includes(lq);});}
   $('gallery-grid').innerHTML=arts.length?arts.map(card).join(''):`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
 }
 
 function renderUnits(){
-  const lk=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
-  const t=T[lang];
+  const t=T[lang];const l=lk();
   $('units-grid').innerHTML=UNITS.map(u=>{
-    const cnt=ARTWORKS.filter(a=>a.unit===u.name).length;
-    return `<div class="unit-card" onclick="filterUnit('${u.name}',null);showPage('home');">
+    const cnt=ARTWORKS.filter(a=>a.unit===u.key).length;
+    const members=Array.isArray(u.members)?u.members:u.members[l];
+    return `<div class="unit-card" onclick="filterUnit('${u.key}',null);showPage('home');">
       <div class="unit-top" style="background:${u.color}"></div>
       <div class="unit-em">${u.emblem}</div>
-      <div class="unit-nm" style="color:${u.color}">${typeof u.name==='object'?u.name[lk]:u.name}</div>
-      <div class="unit-members">${(typeof u.members==='object'&&!Array.isArray(u.members)?u.members[lk]:u.members).map(m=>`<span class="mem-tag">${m}</span>`).join('')}</div>
+      <div class="unit-nm" style="color:${u.color}">${uname(u)}</div>
+      <div class="unit-members">${members.map(m=>`<span class="mem-tag">${m}</span>`).join('')}</div>
       <div class="unit-cnt">✦ ${cnt} ${t.artCount}</div>
     </div>`;
   }).join('');
 }
 
 function renderChars(){
-  const lk=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
+  const l=lk();
   $('chars-grid').innerHTML=CHARS.map(c=>{
-    const u=UNITS.find(x=>x.name===c.unit);
+    const u=UNITS.find(x=>x.key===c.unit);
     const col=u?u.color:'#888';
-    const cname=typeof c.name==='object'?c.name[lk]:c.name;
-    const uname=typeof u?.name==='object'?u.name[lk]:c.unit;
-    return `<div class="char-card" onclick="filterByChar('${cname}')">
+    const cn=cname(c);
+    const un=u?uname(u):c.unit;
+    return `<div class="char-card" onclick="filterByChar('${cn}','${c.unit}')">
       <div class="char-em">${c.em}</div>
-      <div class="char-nm">${cname}</div>
-      <div class="char-unit" style="color:${col}">${uname}</div>
+      <div class="char-nm">${cn}</div>
+      <div class="char-unit" style="color:${col}">${un}</div>
     </div>`;
   }).join('');
 }
 
-function filterByChar(name){
-  unitFilter='all';
-  document.querySelectorAll('.chip').forEach(c=>{c.classList.remove('active');c.style.background='none';c.style.color=c.style.borderColor;});
-  const chip=$('chip-all');
-  chip.classList.add('active');chip.style.background=chip.style.borderColor;chip.style.color='#0d1b2a';
+function filterByChar(name,unit){
+  unitFilter=unit;
+  document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
+  const chip=document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`);
+  if(chip){chip.classList.add('active');chip.style.background=chip.style.borderColor;chip.style.color='#0d1b2a';}
   showPage('home');
-  renderHomeGrid(name);
-  $('search-input').value=name;
+  $('search-input').value='';
+  renderHomeGrid();
 }
 
 function renderArtists(){
-  $('artist-wall').innerHTML=ARTISTS.map(a=>`
-    <a href="${a.url}" target="_blank" rel="noopener" class="artist-card">
-      <div class="av">${a.avatar}</div>
-      <div><div class="ar-nm">${a.name}</div><div class="ar-pl">${a.platform}</div></div>
-    </a>`).join('');
+  $('artist-wall').innerHTML=ARTISTS.map(a=>`<a href="${a.url}" target="_blank" rel="noopener" class="artist-card"><div class="av">${a.avatar}</div><div><div class="ar-nm">${a.name}</div><div class="ar-pl">${a.platform}</div></div></a>`).join('');
 }
 
-// Filters
 function filterUnit(unit,btn){
   unitFilter=unit;
-  document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='none';c.style.color=c.style.borderColor;});
-  const target=btn||(document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`));
+  document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
+  const target=btn||document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`);
   if(target){target.classList.add('active');target.style.background=target.style.borderColor;target.style.color='#0d1b2a';}
   renderHomeGrid($('search-input').value);
 }
 function filterGUnit(unit,btn){
   gUnitFilter=unit;
-  document.querySelectorAll('#gunit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='none';c.style.color=c.style.borderColor;});
+  document.querySelectorAll('#gunit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
   if(btn){btn.classList.add('active');btn.style.background=btn.style.borderColor;btn.style.color='#0d1b2a';}
   renderGalleryGrid($('gsearch').value);
 }
-function doSearch(q){ renderHomeGrid(q); }
-function doGSearch(q){ renderGalleryGrid(q); }
+function doSearch(q){renderHomeGrid(q);}
+function doGSearch(q){renderGalleryGrid(q);}
 
-// Lightbox
 function openLB(id){
-  const art=ARTWORKS.find(a=>a.id===id);
-  if(!art)return;
-  const t=T[lang];
-  const u=UNITS.find(x=>x.name===art.unit);
+  const art=ARTWORKS.find(a=>a.id===id);if(!art)return;
+  const t=T[lang];const l=lk();
+  const u=UNITS.find(x=>x.key===art.unit);
   const col=u?u.color:'#888';
-  $('lb-img').innerHTML=art.image_url
-    ?`<img src="${art.image_url}" alt="${art.title}">`
-    :`<span style="font-size:5rem">${art.thumb}</span>`;
-  $('lb-unit').innerHTML=`<span style="color:${col}">${art.unit}</span>`;
-  $('lb-ttl').textContent=art.title;
-  const lk2=lang==='zh-CN'?'cn':lang==='en'?'en':'tw';
-  $('lb-char').textContent=typeof art.char==='object'?art.char[lk2]:art.char;
-  const byText=art.artist?`🖌 ${art.artist}`:`🖌 ${t.unknown}`;
-  $('lb-by').innerHTML=art.artist&&art.url?`🖌 <a href="${art.url}" target="_blank" rel="noopener">${art.artist}</a>`:byText;
-  const btns=[];
-  if(art.url) btns.push(`<a href="${art.url}" target="_blank" rel="noopener" class="lb-btn lb-btn-gold">↗ ${t.viewOrig}</a>`);
-  $('lb-btns').innerHTML=btns.join('');
+  const artTitle=typeof art.title==='object'?art.title[l]:art.title;
+  const artChar=typeof art.char==='object'?art.char[l]:art.char;
+  $('lb-img').innerHTML=art.image_url?`<img src="${art.image_url}" alt="${artTitle}">`:`<span style="font-size:5rem">${art.thumb}</span>`;
+  $('lb-unit').innerHTML=`<span style="color:${col}">${u?uname(u):art.unit}</span>`;
+  $('lb-ttl').textContent=artTitle;
+  $('lb-char').textContent=artChar;
+  $('lb-by').innerHTML=art.artist&&art.url?`🖌 <a href="${art.url}" target="_blank" rel="noopener">${art.artist}</a>`:`🖌 ${t.unknown}`;
+  $('lb-btns').innerHTML=art.url?`<a href="${art.url}" target="_blank" rel="noopener" class="lb-btn lb-btn-gold">↗ ${t.viewOrig}</a>`:'';
   $('lb').classList.add('open');
   document.body.style.overflow='hidden';
 }
-function closeLightbox(){
-  $('lb').classList.remove('open');
-  document.body.style.overflow='';
-}
-function closeLB(e){ if(e.target===$('lb')) closeLightbox(); }
-document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeLightbox(); });
+function closeLightbox(){$('lb').classList.remove('open');document.body.style.overflow='';}
+function closeLB(e){if(e.target===$('lb'))closeLightbox();}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
-// Navigation
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
-  const pg=$('page-'+name); if(pg) pg.classList.add('active');
+  const pg=$('page-'+name);if(pg)pg.classList.add('active');
   document.querySelectorAll('.nav-btn').forEach(b=>b.classList.remove('active'));
-  const nb=$('nav-'+name); if(nb) nb.classList.add('active');
+  const nb=$('nav-'+name);if(nb)nb.classList.add('active');
   window.scrollTo(0,0);
 }
 
-// Init
-document.addEventListener('DOMContentLoaded',()=>{ applyLang(); });
-  // Xianyu page language toggle
 function xyLang(l){
   ['tw','cn','en'].forEach(x=>{
-    document.getElementById('xy-'+x).style.display = x===l ? 'block' : 'none';
-    document.getElementById('xy-btn-'+x).style.background = x===l ? 'rgba(201,169,110,0.25)' : 'none';
+    $('xy-'+x).style.display=x===l?'block':'none';
+    $('xy-btn-'+x).style.background=x===l?'rgba(201,169,110,0.25)':'none';
   });
 }
 
-// Quick message form — opens Gmail compose
-function sendMsg(){
-  const name = document.getElementById('msg-name').value.trim();
-  const email = document.getElementById('msg-email').value.trim();
-  const body = document.getElementById('msg-body').value.trim();
-  if(!body){ document.getElementById('msg-status').textContent = '請填寫留言內容 / Please write a message'; return; }
-  const subject = encodeURIComponent('EnsembleFans message from ' + (name||'a visitor'));
-  const bodyText = encodeURIComponent(body + (email ? '\n\nReply to: '+email : '') + (name ? '\nFrom: '+name : ''));
-  window.open('mailto:xianyulazy@gmail.com?subject='+subject+'&body='+bodyText);
-  document.getElementById('msg-status').textContent = '✓ Opening your email app…';
-  document.getElementById('msg-name').value='';
-  document.getElementById('msg-email').value='';
-  document.getElementById('msg-body').value='';
-}
+document.addEventListener('DOMContentLoaded',()=>{applyLang();});
 </script>
 </body>
 </html>
