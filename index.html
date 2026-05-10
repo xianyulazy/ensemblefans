@@ -323,7 +323,7 @@ footer a:hover{text-decoration:underline;}
   </div>
   <div class="tab-panel" id="tab-cp">
     <div class="cp-notice">⚠️ <span id="t-cp-notice">部分作品含有 CP / 配對內容，請注意。</span></div>
-    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="cpsearch" placeholder="搜索配對名稱…" oninput="doCPSearch(this.value)" id="cp-search-input"></div>
+    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="cpsearch" placeholder="搜索配對名稱…" oninput="doCPSearch(this.value)"></div>
     <div id="pairing-tags-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;"></div>
     <div class="art-grid" id="cp-grid"></div>
   </div>
@@ -533,7 +533,7 @@ const ARTWORKS = [
   { id:10, image_url:'', thumb:'💫', title:'Midnight Run',   unit:'Crazy:B',        char:'椎名丹希',  artist:null,           url:null,                platform:null,        editor:false, cp:false },
   { id:11, image_url:'', thumb:'🌙', title:'Lunar Waltz',    unit:'ALKALOID',       char:'天城一彩',  artist:'@luna_p',      url:'https://pixiv.net', platform:'pixiv',     editor:false, cp:false },
   { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',     unit:'Ra*bits',        char:'紫之創',    artist:'@wave_art',    url:'https://x.com',     platform:'twitter',   editor:false, cp:false },
-  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'🍞', title:{tw:'麵包尼', cn:'面包尼', en:'Bread Niki'}, unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://pin.it/3Gled9ofT', platform:'pinterest', editor:true, cp:false },
+  { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'🍞', title:{tw:'麵包尼', cn:'面包尼', en:'Bread Niki'}, unit:'Crazy:B', char:{tw:'椎名丹希', cn:'椎名丹希', en:'Shiina Niki'}, artist:null, url:'https://pin.it/3Gled9ofT', platform:'pinterest', editor:true, cp:false },
   { id:14, image_url:'48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'🤓', title:'Glasses Niki', unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://www.pinterest.com/pin/1058557087429714796/', platform:'pinterest', editor:false, cp:false },
   { id:15, image_url:'', thumb:'💕', title:{tw:'星光之約', cn:'星光之约', en:'Starlit Promise'}, unit:'Crazy:B', char:'HiMERU', artist:null, url:null, platform:null, editor:false, cp:true, pairing:{tw:'HiMERU & 椎名丹希', cn:'HiMERU & 椎名丹希', en:'HiMERU & Shiina Niki'} },
 ];
@@ -1006,7 +1006,7 @@ function applyLang(){
   // load more button labels
   const lmLabel={tw:'載入更多 ↓',cn:'加载更多 ↓',en:'Load more ↓'};
   const lmb=$('home-lm-btn');if(lmb)lmb.textContent=lmLabel[l];
-  const cps=$('cp-search-input');if(cps)cps.placeholder=lang==='en'?'Search pairings…':lang==='zh-CN'?'搜索配对名称…':'搜索配對名稱…';
+  const cps=$('cpsearch');if(cps)cps.placeholder=lang==='en'?'Search pairings…':lang==='zh-CN'?'搜索配对名称…':'搜索配對名稱…';
   const glmb=$('gallery-lm-btn');if(glmb)glmb.textContent=lmLabel[l];
   // RYUSEITAI & Akatsuki chip labels
   const ryu=UNITS.find(u=>u.key==='RYUSEITAI'),aka=UNITS.find(u=>u.key==='Akatsuki');
