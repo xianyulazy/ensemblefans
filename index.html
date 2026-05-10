@@ -323,7 +323,7 @@ footer a:hover{text-decoration:underline;}
   </div>
   <div class="tab-panel" id="tab-cp">
     <div class="cp-notice">⚠️ <span id="t-cp-notice">部分作品含有 CP / 配對內容，請注意。</span></div>
-    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="cpsearch" placeholder="搜索配對名稱…" oninput="doCPSearch(this.value)"></div>
+    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="cpsearch" placeholder="搜索配對名稱…" oninput="doCPSearch(this.value)" id="cp-search-input"></div>
     <div id="pairing-tags-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;"></div>
     <div class="art-grid" id="cp-grid"></div>
   </div>
@@ -897,7 +897,7 @@ function renderPairingTags(){
   ARTWORKS.filter(a=>a.cp&&a.pairing).forEach(a=>{const p=typeof a.pairing==='object'?a.pairing[l]:a.pairing;if(p&&!seen.has(p)){seen.add(p);tags.push(p);}});
   const row=$('pairing-tags-row');if(!row)return;
   row.innerHTML=tags.map(p=>{const act=cpPairingFilter===p;return `<button onclick="filterCPPairing('${p.replace(/'/g,"\\'")}',this)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(232,164,184,${act?.5:.25});background:rgba(232,164,184,${act?.18:.06});color:var(--rose);cursor:pointer;font-family:'Noto Sans SC',sans-serif;transition:all .2s;">${p}</button>`;}).join('');
-  if(cpPairingFilter) row.innerHTML+=`<button onclick="filterCPPairing('',null)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(138,154,181,.25);background:none;color:var(--muted);cursor:pointer;font-family:'Noto Sans SC',sans-serif;">✕ 清除</button>`;
+  if(cpPairingFilter){const clr=lang==='en'?'Clear':lang==='zh-CN'?'清除':'清除';row.innerHTML+=`<button onclick="filterCPPairing('',null)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(138,154,181,.25);background:none;color:var(--muted);cursor:pointer;font-family:'Noto Sans SC',sans-serif;">✕ ${clr}</button>`;}
 }
 function filterCPPairing(p){cpPairingFilter=p;renderCPGrid($('cpsearch').value);}
 function doCPSearch(q){renderCPGrid(q);}
@@ -1006,6 +1006,7 @@ function applyLang(){
   // load more button labels
   const lmLabel={tw:'載入更多 ↓',cn:'加载更多 ↓',en:'Load more ↓'};
   const lmb=$('home-lm-btn');if(lmb)lmb.textContent=lmLabel[l];
+  const cps=$('cp-search-input');if(cps)cps.placeholder=lang==='en'?'Search pairings…':lang==='zh-CN'?'搜索配对名称…':'搜索配對名稱…';
   const glmb=$('gallery-lm-btn');if(glmb)glmb.textContent=lmLabel[l];
   // RYUSEITAI & Akatsuki chip labels
   const ryu=UNITS.find(u=>u.key==='RYUSEITAI'),aka=UNITS.find(u=>u.key==='Akatsuki');
