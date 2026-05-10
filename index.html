@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EnsembleFans ✦ Ensemble Stars! Fan Gallery</title>
-<meta name="description" content="Ensemble Stars! fan art gallery — curated by Xianyu (咸魚). Fan artworks organized by unit and character, all credited to original artists.">
+<meta name="description" content="Ensemble Stars! fan art gallery — curated by Xianyu (咸魚).">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
@@ -13,86 +13,148 @@
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{font-family:'Noto Sans SC',sans-serif;background:var(--navy);color:var(--text);min-height:100vh;overflow-x:hidden;}
+
+/* Stars */
 .stars-bg{position:fixed;inset:0;pointer-events:none;z-index:0;background:radial-gradient(ellipse at 20% 20%,#1a2040 0%,transparent 60%),radial-gradient(ellipse at 80% 80%,#1c1030 0%,transparent 60%),var(--navy);}
-.stars-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 25% 40%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 40% 8%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 60% 25%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 75% 55%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 88% 12%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 15% 70%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 50% 80%,rgba(245,215,122,.4) 0%,transparent 100%),radial-gradient(1px 1px at 92% 65%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 33% 90%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 70% 90%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 5% 95%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 55% 50%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 80% 35%,rgba(245,215,122,.4) 0%,transparent 100%);}
+.stars-bg::after{content:'';position:absolute;inset:0;background-image:radial-gradient(1px 1px at 10% 15%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 25% 40%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 40% 8%,rgba(255,255,255,.6) 0%,transparent 100%),radial-gradient(1px 1px at 60% 25%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 75% 55%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 88% 12%,rgba(245,215,122,.7) 0%,transparent 100%),radial-gradient(1px 1px at 15% 70%,rgba(255,255,255,.4) 0%,transparent 100%),radial-gradient(1px 1px at 50% 80%,rgba(245,215,122,.4) 0%,transparent 100%),radial-gradient(1px 1px at 92% 65%,rgba(255,255,255,.5) 0%,transparent 100%),radial-gradient(1.5px 1.5px at 33% 90%,rgba(245,215,122,.5) 0%,transparent 100%),radial-gradient(1px 1px at 70% 90%,rgba(255,255,255,.3) 0%,transparent 100%),radial-gradient(1px 1px at 5% 95%,rgba(245,215,122,.5) 0%,transparent 100%);}
+
+/* Animations */
+@keyframes fadeInUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+@keyframes heartPop{0%{transform:scale(1)}40%{transform:scale(1.6)}70%{transform:scale(.85)}100%{transform:scale(1)}}
+@keyframes floatHeart{0%{opacity:1;transform:translateY(0) scale(1)}100%{opacity:0;transform:translateY(-44px) scale(.5)}}
+@keyframes shimmer{0%{background-position:-200% 0}100%{background-position:200% 0}}
+@keyframes pageIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+.page{display:none;}
+.page.active{display:block;animation:pageIn .3s ease;}
+.card-anim{animation:fadeInUp .35s ease both;}
+main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
+
+/* Header */
 header{position:sticky;top:0;z-index:100;background:rgba(13,27,42,.95);backdrop-filter:blur(16px);border-bottom:1px solid rgba(201,169,110,.18);}
 .header-inner{max-width:1200px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:space-between;height:58px;gap:.75rem;}
-.site-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--champagne);letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;border:none;background:none;}
+.site-logo{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;color:var(--champagne);letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;gap:7px;white-space:nowrap;border:none;background:none;transition:opacity .2s;}
+.site-logo:hover{opacity:.8;}
 .logo-star{color:var(--star);}
 nav{display:flex;align-items:center;gap:2px;flex-wrap:wrap;}
-.nav-btn{background:none;border:none;cursor:pointer;color:var(--soft);font-family:'Noto Sans SC',sans-serif;font-size:.78rem;padding:5px 10px;border-radius:18px;transition:all .2s;white-space:nowrap;letter-spacing:.03em;}
+.nav-btn{background:none;border:none;cursor:pointer;color:var(--soft);font-family:'Noto Sans SC',sans-serif;font-size:.78rem;padding:5px 10px;border-radius:18px;transition:all .22s;white-space:nowrap;letter-spacing:.03em;}
 .nav-btn:hover,.nav-btn.active{color:var(--champagne);background:rgba(201,169,110,.13);}
 .lang-sw{display:flex;gap:4px;flex-shrink:0;}
 .lang-btn{background:none;border:1px solid rgba(201,169,110,.3);cursor:pointer;color:var(--muted);font-size:.68rem;padding:3px 8px;border-radius:12px;transition:all .2s;font-family:'Noto Sans SC',sans-serif;}
 .lang-btn:hover,.lang-btn.active{color:var(--gold);border-color:var(--gold);background:rgba(201,169,110,.1);}
-.page{display:none;} .page.active{display:block;}
-main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1.5rem 5rem;}
+
+/* Hero */
 .hero{text-align:center;padding:3.5rem 0 2.5rem;}
 .hero-eye{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;opacity:.85;}
 .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.2rem,6vw,4.2rem);font-weight:300;line-height:1.15;color:var(--champagne);margin-bottom:1.2rem;}
 .hero-title em{font-style:italic;color:var(--rose);}
 .hero-desc{font-size:.92rem;color:var(--soft);line-height:1.85;max-width:580px;margin:0 auto 2rem;}
 .divider{width:50px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 2.5rem;}
+
+/* Search */
 .search-wrap{max-width:480px;margin:0 auto 2rem;position:relative;}
-.search-wrap input{width:100%;padding:11px 18px 11px 44px;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.22);border-radius:28px;color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:.88rem;outline:none;transition:border-color .2s;}
-.search-wrap input:focus{border-color:rgba(201,169,110,.55);}
+.search-wrap input{width:100%;padding:11px 18px 11px 44px;background:rgba(255,255,255,.05);border:1px solid rgba(201,169,110,.22);border-radius:28px;color:var(--text);font-family:'Noto Sans SC',sans-serif;font-size:.88rem;outline:none;transition:border-color .25s,box-shadow .25s;}
+.search-wrap input:focus{border-color:rgba(201,169,110,.6);box-shadow:0 0 0 3px rgba(201,169,110,.08);}
 .search-wrap input::placeholder{color:var(--muted);}
 .search-icon{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:var(--muted);font-size:1rem;pointer-events:none;}
+
+/* Chips */
 .chips{display:flex;flex-wrap:wrap;gap:7px;justify-content:center;margin-bottom:2.5rem;}
-.chip{padding:5px 15px;border-radius:18px;font-size:.77rem;border:1px solid;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;background:rgba(255,255,255,.08);letter-spacing:.03em;filter:brightness(1.5);}
-.chip:hover{opacity:.85;}
-.chip.active{color:#0d1b2a!important;filter:brightness(1);}
+.chip{padding:5px 15px;border-radius:18px;font-size:.77rem;border:1px solid;cursor:pointer;transition:transform .2s,opacity .2s,background .2s;font-family:'Noto Sans SC',sans-serif;background:rgba(255,255,255,.08);letter-spacing:.03em;filter:brightness(1.5);}
+.chip:hover{opacity:.85;transform:translateY(-1px);}
+.chip.active{color:#0d1b2a!important;filter:brightness(1);transform:translateY(-1px);}
+
+/* Section */
 .sec-hd{display:flex;align-items:center;gap:.8rem;margin-bottom:1.3rem;}
 .sec-title{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:var(--champagne);white-space:nowrap;letter-spacing:.04em;}
 .sec-line{flex:1;height:1px;background:rgba(201,169,110,.18);}
-.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:1.1rem;margin-bottom:2.5rem;}
-.art-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;overflow:hidden;cursor:pointer;transition:all .28s;position:relative;}
-.art-card:hover{transform:translateY(-5px);border-color:rgba(201,169,110,.38);box-shadow:0 14px 40px rgba(0,0,0,.45);}
+
+/* Art grid & cards */
+.art-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(175px,1fr));gap:1.1rem;margin-bottom:2rem;}
+.art-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;overflow:hidden;cursor:pointer;transition:transform .32s cubic-bezier(.34,1.56,.64,1),border-color .25s,box-shadow .25s;position:relative;will-change:transform;}
+.art-card:hover{transform:translateY(-7px) scale(1.02);border-color:rgba(201,169,110,.42);box-shadow:0 16px 44px rgba(0,0,0,.5);}
+.art-card:active{transform:translateY(-2px) scale(.99);}
 .art-thumb{aspect-ratio:3/4;width:100%;background:linear-gradient(135deg,var(--surface),var(--deep));display:flex;align-items:center;justify-content:center;font-size:2.8rem;position:relative;overflow:hidden;}
-.art-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,.85) 0%,transparent 55%);}
-.art-thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;}
+.art-thumb::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(13,27,42,.88) 0%,transparent 55%);transition:opacity .3s;}
+.art-card:hover .art-thumb::after{opacity:.65;}
+.art-thumb img{width:100%;height:100%;object-fit:cover;position:absolute;inset:0;transition:transform .4s ease;}
+.art-card:hover .art-thumb img{transform:scale(1.07);}
 .thumb-em{z-index:1;position:relative;}
 .pick-badge{position:absolute;top:8px;right:8px;z-index:2;background:rgba(201,169,110,.92);color:#1a0f00;font-size:.58rem;padding:2px 7px;border-radius:10px;letter-spacing:.1em;font-weight:600;}
 .cp-badge{position:absolute;top:8px;left:8px;z-index:2;background:rgba(232,100,120,.85);color:#fff;font-size:.58rem;padding:2px 7px;border-radius:10px;letter-spacing:.05em;}
-.art-info{padding:9px 11px 11px;}
+.art-info{padding:9px 11px 8px;}
 .art-unit{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;margin-bottom:3px;}
 .art-ttl{font-size:.83rem;color:var(--champagne);margin-bottom:3px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.like-row{display:flex;align-items:center;justify-content:space-between;margin-top:4px;}
 .art-by{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:3px;}
 .art-by a{color:var(--gold);text-decoration:none;}
 .art-by a:hover{text-decoration:underline;}
-.lb-overlay{position:fixed;inset:0;z-index:200;background:rgba(5,10,18,.92);backdrop-filter:blur(8px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .25s;}
+.pairing-tag{font-size:.68rem;color:var(--rose);letter-spacing:.05em;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+
+/* Like button */
+.like-btn{background:none;border:none;cursor:pointer;display:flex;align-items:center;gap:3px;font-size:.72rem;color:var(--muted);padding:2px 5px;border-radius:8px;transition:all .2s;position:relative;font-family:'Noto Sans SC',sans-serif;flex-shrink:0;}
+.like-btn:hover{color:var(--rose);background:rgba(232,164,184,.12);}
+.like-btn.liked{color:var(--rose);}
+.like-icon{font-size:.88rem;line-height:1;display:inline-block;transition:transform .1s;}
+.like-btn.liked .like-icon{animation:heartPop .35s ease;}
+.float-heart{position:absolute;top:-4px;left:50%;transform:translateX(-50%);font-size:.9rem;pointer-events:none;animation:floatHeart .65s ease forwards;color:var(--rose);}
+
+/* Load more */
+.load-more-wrap{text-align:center;margin-bottom:2rem;}
+.load-more-btn{padding:10px 32px;background:rgba(201,169,110,.1);border:1px solid rgba(201,169,110,.28);color:var(--gold);border-radius:22px;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.85rem;transition:all .25s;letter-spacing:.05em;}
+.load-more-btn:hover{background:rgba(201,169,110,.22);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,.2);}
+
+/* Gallery tabs */
+.tab-row{display:flex;gap:4px;margin-bottom:1.5rem;border-bottom:1px solid rgba(201,169,110,.15);}
+.tab-btn{background:none;border:none;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.85rem;padding:8px 20px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .22s;letter-spacing:.03em;}
+.tab-btn:hover{color:var(--soft);}
+.tab-btn.active{color:var(--champagne);border-bottom-color:var(--gold);}
+.tab-panel{display:none;}.tab-panel.active{display:block;animation:fadeInUp .25s ease;}
+
+/* CP */
+.cp-notice{background:rgba(232,164,184,.07);border:1px solid rgba(232,164,184,.2);border-radius:10px;padding:.8rem 1.1rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--soft);display:flex;align-items:center;gap:8px;}
+
+/* Lightbox */
+.lb-overlay{position:fixed;inset:0;z-index:200;background:rgba(5,10,18,.92);backdrop-filter:blur(10px);display:flex;align-items:center;justify-content:center;padding:1.5rem;opacity:0;pointer-events:none;transition:opacity .28s;}
 .lb-overlay.open{opacity:1;pointer-events:all;}
-.lb-box{background:var(--card);border:1px solid rgba(201,169,110,.2);border-radius:16px;max-width:500px;width:100%;overflow:hidden;transform:scale(.95);transition:transform .25s;}
-.lb-overlay.open .lb-box{transform:scale(1);}
+.lb-box{background:var(--card);border:1px solid rgba(201,169,110,.2);border-radius:16px;max-width:500px;width:100%;overflow:hidden;transform:scale(.9) translateY(16px);transition:transform .35s cubic-bezier(.34,1.56,.64,1);}
+.lb-overlay.open .lb-box{transform:scale(1) translateY(0);}
 .lb-img{width:100%;aspect-ratio:3/4;background:var(--surface);display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative;overflow:hidden;}
 .lb-img img{width:100%;height:100%;object-fit:contain;}
 .lb-info{padding:1.1rem 1.3rem 1.3rem;}
 .lb-unit{font-size:.65rem;letter-spacing:.15em;text-transform:uppercase;margin-bottom:5px;}
 .lb-title{font-family:'Cormorant Garamond',serif;font-size:1.4rem;color:var(--champagne);margin-bottom:6px;}
 .lb-char{font-size:.82rem;color:var(--soft);margin-bottom:10px;}
-.lb-artist{font-size:.82rem;color:var(--muted);margin-bottom:12px;}
+.lb-artist{font-size:.82rem;color:var(--muted);margin-bottom:10px;}
 .lb-artist a{color:var(--gold);text-decoration:none;}
-.lb-btns{display:flex;gap:8px;flex-wrap:wrap;}
+.lb-btns{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
 .lb-btn{padding:7px 16px;border-radius:18px;font-size:.78rem;text-decoration:none;border:1px solid;transition:all .2s;font-family:'Noto Sans SC',sans-serif;}
 .lb-btn-gold{color:var(--gold);border-color:rgba(201,169,110,.4);background:rgba(201,169,110,.08);}
 .lb-btn-gold:hover{background:rgba(201,169,110,.2);}
-.lb-close{position:absolute;top:1rem;right:1rem;background:rgba(13,27,42,.7);border:1px solid rgba(201,169,110,.3);color:var(--champagne);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:210;}
-.lb-close:hover{background:rgba(201,169,110,.2);}
+.lb-close{position:absolute;top:1rem;right:1rem;background:rgba(13,27,42,.7);border:1px solid rgba(201,169,110,.3);color:var(--champagne);border-radius:50%;width:34px;height:34px;cursor:pointer;font-size:1rem;display:flex;align-items:center;justify-content:center;z-index:210;transition:all .2s;}
+.lb-close:hover{background:rgba(201,169,110,.25);transform:scale(1.1) rotate(90deg);}
+
+/* Units */
 .units-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.4rem;}
-.unit-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:16px;padding:1.4rem;cursor:pointer;transition:all .28s;position:relative;overflow:hidden;}
-.unit-card:hover{transform:translateY(-4px);border-color:rgba(201,169,110,.28);}
+.unit-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:16px;padding:1.4rem;cursor:pointer;transition:transform .32s cubic-bezier(.34,1.56,.64,1),border-color .25s,box-shadow .25s;position:relative;overflow:hidden;}
+.unit-card:hover{transform:translateY(-5px) scale(1.01);border-color:rgba(201,169,110,.3);box-shadow:0 12px 32px rgba(0,0,0,.4);}
 .unit-top{position:absolute;top:0;left:0;right:0;height:3px;}
 .unit-em{font-size:2.2rem;margin-bottom:10px;}
 .unit-nm{font-family:'Cormorant Garamond',serif;font-size:1.35rem;margin-bottom:5px;}
 .unit-members{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:10px;}
-.mem-tag{font-size:.68rem;color:var(--soft);background:rgba(255,255,255,.05);padding:2px 8px;border-radius:8px;}
+.mem-tag{font-size:.68rem;color:var(--soft);background:rgba(255,255,255,.05);padding:2px 8px;border-radius:8px;transition:background .2s;}
+.mem-tag:hover{background:rgba(255,255,255,.1);}
 .unit-cnt{font-size:.73rem;color:var(--muted);}
+
+/* Characters */
 .char-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem;}
-.char-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:1.1rem;text-align:center;cursor:pointer;transition:all .25s;}
-.char-card:hover{transform:translateY(-3px);border-color:rgba(201,169,110,.3);}
+.char-card{background:var(--card);border:1px solid rgba(201,169,110,.1);border-radius:12px;padding:1.1rem;text-align:center;cursor:pointer;transition:transform .3s cubic-bezier(.34,1.56,.64,1),border-color .22s;}
+.char-card:hover{transform:translateY(-5px) scale(1.04);border-color:rgba(201,169,110,.32);}
 .char-em{font-size:2rem;margin-bottom:8px;}
 .char-nm{font-size:.82rem;color:var(--champagne);margin-bottom:3px;}
 .char-unit{font-size:.68rem;color:var(--muted);}
+
+/* About */
 .about-prose{max-width:680px;line-height:1.95;font-size:.93rem;color:var(--soft);}
 .about-prose h2{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--champagne);margin:2.2rem 0 .9rem;}
 .about-prose h2:first-child{margin-top:0;}
@@ -100,30 +162,23 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .about-prose strong{color:var(--champagne);}
 .info-card{background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.18);border-radius:12px;padding:1.1rem 1.4rem;margin:1.3rem 0;}
 .bili-btn{display:inline-flex;align-items:center;gap:8px;background:rgba(0,174,236,.12);border:1px solid rgba(0,174,236,.28);color:#7dd3fc;padding:8px 16px;border-radius:20px;font-size:.83rem;text-decoration:none;transition:all .2s;margin-top:.5rem;}
-.bili-btn:hover{background:rgba(0,174,236,.22);}
+.bili-btn:hover{background:rgba(0,174,236,.22);transform:translateY(-1px);}
 .disc-sec{background:rgba(232,164,184,.05);border:1px solid rgba(232,164,184,.18);border-left:3px solid var(--rose);border-radius:0 12px 12px 0;padding:1.1rem 1.4rem;margin-bottom:1.3rem;}
 .disc-sec h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;color:var(--rose);margin-bottom:.65rem;font-weight:400;}
 .disc-sec p{font-size:.88rem;color:var(--soft);line-height:1.8;}
-/* Gallery tabs */
-.tab-row{display:flex;gap:4px;margin-bottom:1.5rem;border-bottom:1px solid rgba(201,169,110,.15);padding-bottom:0;}
-.tab-btn{background:none;border:none;cursor:pointer;font-family:'Noto Sans SC',sans-serif;font-size:.85rem;padding:8px 20px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s;letter-spacing:.03em;}
-.tab-btn:hover{color:var(--soft);}
-.tab-btn.active{color:var(--champagne);border-bottom-color:var(--gold);}
-.tab-panel{display:none;}.tab-panel.active{display:block;}
-/* CP pairing tag */
-.pairing-tag{font-size:.68rem;color:var(--rose);letter-spacing:.05em;margin-bottom:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
-/* CP disclaimer banner */
-.cp-notice{background:rgba(232,164,184,.07);border:1px solid rgba(232,164,184,.2);border-radius:10px;padding:.8rem 1.1rem;margin-bottom:1.5rem;font-size:.82rem;color:var(--soft);display:flex;align-items:center;gap:8px;}
+
+/* CTAs */
 .cta-row{display:flex;flex-wrap:wrap;gap:10px;margin:1.5rem 0;}
-.cta{padding:9px 20px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .2s;font-family:'Noto Sans SC',sans-serif;letter-spacing:.03em;border:1px solid;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.cta{padding:9px 20px;border-radius:20px;font-size:.82rem;cursor:pointer;transition:all .25s;font-family:'Noto Sans SC',sans-serif;letter-spacing:.03em;border:1px solid;text-decoration:none;display:inline-flex;align-items:center;gap:6px;}
+.cta:hover{transform:translateY(-2px);}
 .cta-g{background:rgba(201,169,110,.12);color:var(--gold);border-color:rgba(201,169,110,.35);}
 .cta-g:hover{background:rgba(201,169,110,.22);}
 .cta-r{background:rgba(232,164,184,.09);color:var(--rose);border-color:rgba(232,164,184,.28);}
 .cta-r:hover{background:rgba(232,164,184,.18);}
 .cta-b{background:rgba(0,174,236,.09);color:#7dd3fc;border-color:rgba(0,174,236,.28);}
 .cta-b:hover{background:rgba(0,174,236,.18);}
-.empty{text-align:center;padding:3.5rem 1rem;color:var(--muted);}
-.empty .ei{font-size:2.5rem;margin-bottom:.8rem;opacity:.4;}
+
+/* Stats, announcement, misc */
 .stats-bar{display:flex;flex-wrap:wrap;gap:1.5rem;justify-content:center;margin-bottom:2.5rem;}
 .stat{text-align:center;}
 .stat-n{font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--gold);line-height:1;}
@@ -131,10 +186,15 @@ main{position:relative;z-index:1;max-width:1200px;margin:0 auto;padding:2.5rem 1
 .announcement{background:rgba(201,169,110,.07);border:1px solid rgba(201,169,110,.2);border-radius:12px;padding:1rem 1.3rem;margin-bottom:2rem;display:flex;align-items:flex-start;gap:10px;}
 .ann-icon{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
 .ann-text{font-size:.85rem;color:var(--soft);line-height:1.7;}
+.empty{text-align:center;padding:3.5rem 1rem;color:var(--muted);}
+.empty .ei{font-size:2.5rem;margin-bottom:.8rem;opacity:.4;}
+
+/* Footer */
 footer{position:relative;z-index:1;border-top:1px solid rgba(201,169,110,.13);text-align:center;padding:2.2rem 1.5rem;color:var(--muted);font-size:.78rem;line-height:2.1;}
 footer a{color:var(--gold);text-decoration:none;}
 footer a:hover{text-decoration:underline;}
 .foot-logo{font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--champagne);margin-bottom:.6rem;}
+
 @media(max-width:700px){
   .header-inner{flex-wrap:wrap;height:auto;padding:.6rem 1rem;}
   nav{order:3;width:100%;justify-content:center;}
@@ -161,6 +221,7 @@ footer a:hover{text-decoration:underline;}
       <div class="lb-char" id="lb-char"></div>
       <div class="lb-artist" id="lb-by"></div>
       <div class="lb-btns" id="lb-btns"></div>
+      <div style="margin-top:10px;" id="lb-like-wrap"></div>
     </div>
   </div>
 </div>
@@ -195,10 +256,7 @@ footer a:hover{text-decoration:underline;}
     <div class="divider"></div>
   </div>
   <div class="stats-bar" id="stats-bar"></div>
-  <div class="announcement">
-    <span class="ann-icon">📢</span>
-    <div class="ann-text" id="t-ann"></div>
-  </div>
+  <div class="announcement"><span class="ann-icon">📢</span><div class="ann-text" id="t-ann"></div></div>
   <div class="search-wrap">
     <span class="search-icon">🔍</span>
     <input type="text" id="search-input" placeholder="搜索…" oninput="doSearch(this.value)">
@@ -218,8 +276,13 @@ footer a:hover{text-decoration:underline;}
   </div>
   <div class="sec-hd"><h2 class="sec-title" id="t-recent">近期新增</h2><div class="sec-line"></div></div>
   <div class="art-grid" id="home-grid"></div>
+  <div class="load-more-wrap" id="home-lm" style="display:none;">
+    <button class="load-more-btn" onclick="loadMoreHome()" id="home-lm-btn">載入更多 ↓</button>
+  </div>
   <div class="sec-hd"><h2 class="sec-title" id="t-picks">✦ 咸魚推薦</h2><div class="sec-line"></div></div>
   <div class="art-grid" id="picks-grid"></div>
+  <div class="sec-hd"><h2 class="sec-title" id="t-popular">❤ 最多人喜歡</h2><div class="sec-line"></div></div>
+  <div class="art-grid" id="popular-grid"></div>
   <div class="cta-row">
     <a href="https://space.bilibili.com/" target="_blank" class="cta cta-g">✉ <span id="t-cs">推薦一幅作品</span></a>
     <a href="https://space.bilibili.com/" target="_blank" class="cta cta-r">💬 <span id="t-cr">請求更多角色作品</span></a>
@@ -234,23 +297,12 @@ footer a:hover{text-decoration:underline;}
     <h1 class="hero-title" style="font-size:clamp(1.8rem,5vw,3.2rem);" id="t-gtitle">作品庫</h1>
     <p class="hero-desc" id="t-gdesc"></p>
   </div>
-
-  <!-- Tabs -->
   <div class="tab-row">
-    <button class="tab-btn active" id="tab-all-btn" onclick="switchGTab('all')">
-      <span id="t-tab-all">全部作品</span>
-    </button>
-    <button class="tab-btn" id="tab-cp-btn" onclick="switchGTab('cp')">
-      <span id="t-tab-cp">❤ CP 作品</span>
-    </button>
+    <button class="tab-btn active" id="tab-all-btn" onclick="switchGTab('all')"><span id="t-tab-all">全部作品</span></button>
+    <button class="tab-btn" id="tab-cp-btn" onclick="switchGTab('cp')"><span id="t-tab-cp">❤ CP 作品</span></button>
   </div>
-
-  <!-- All artworks tab -->
   <div class="tab-panel active" id="tab-all">
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="gsearch" placeholder="搜索…" oninput="doGSearch(this.value)">
-    </div>
+    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="gsearch" placeholder="搜索…" oninput="doGSearch(this.value)"></div>
     <div class="chips" id="gunit-chips">
       <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all"           onclick="filterGUnit('all',this)">全部</button>
       <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
@@ -265,19 +317,16 @@ footer a:hover{text-decoration:underline;}
       <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"             onclick="filterGUnit('Akatsuki',this)" id="gchip-aka">Akatsuki</button>
     </div>
     <div class="art-grid" id="gallery-grid"></div>
-  </div>
-
-  <!-- CP tab -->
-  <div class="tab-panel" id="tab-cp">
-    <div class="cp-notice">⚠️ <span id="t-cp-notice">部分作品含有 CP / 配對內容，請注意。所有 CP 作品均來自允許轉載的繪師。</span></div>
-    <div class="search-wrap">
-      <span class="search-icon">🔍</span>
-      <input type="text" id="cpsearch" placeholder="搜索配對名稱…" oninput="doCPSearch(this.value)">
+    <div class="load-more-wrap" id="gallery-lm" style="display:none;">
+      <button class="load-more-btn" onclick="loadMoreGallery()" id="gallery-lm-btn">載入更多 ↓</button>
     </div>
+  </div>
+  <div class="tab-panel" id="tab-cp">
+    <div class="cp-notice">⚠️ <span id="t-cp-notice">部分作品含有 CP / 配對內容，請注意。</span></div>
+    <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="cpsearch" placeholder="搜索配對名稱…" oninput="doCPSearch(this.value)"></div>
     <div id="pairing-tags-row" style="display:flex;flex-wrap:wrap;gap:6px;margin-bottom:1.5rem;"></div>
     <div class="art-grid" id="cp-grid"></div>
   </div>
-
 </main></div>
 
 <!-- PAGE: UNITS -->
@@ -407,13 +456,7 @@ footer a:hover{text-decoration:underline;}
   </div>
   <div style="margin-top:7px;font-size:.7rem;color:#374151;" id="t-fcopy">© 2025 EnsembleFans · 站點更新通知請關注B站動態</div>
 </footer>
-
 <script>
-// ═══════════════════════════════════════════════════
-// UNITS — internal key is always English name
-// name: {tw, cn, en} for display
-// members: {tw, cn, en} for display
-// ═══════════════════════════════════════════════════
 const UNITS = [
   { key:'Crazy:B',        name:{tw:'Crazy:B',      cn:'Crazy:B',      en:'Crazy:B'},        color:'#FFD400', emblem:'🎲', members:{tw:['HiMERU','天城燐音','椎名丹希','櫻河琥珀'],       cn:['HiMERU','天城燐音','椎名丹希','樱河琥珀'],       en:['HiMERU','Amagi Rinne','Shiina Niki','Owkawa Kohaku']} },
   { key:'ALKALOID',       name:{tw:'ALKALOID',     cn:'ALKALOID',     en:'ALKALOID'},       color:'#2BB7CA', emblem:'⚗️', members:{tw:['天城一彩','白鳥藍良','禮瀨真宵','風早巽'],       cn:['天城一彩','白鸟蓝良','礼濑真宵','风早巽'],       en:['Amagi Kazusa','Shiratori Aira','Reise Mayoi','Kazahaya Tatsumi']} },
@@ -492,7 +535,23 @@ const ARTWORKS = [
   { id:12, image_url:'', thumb:'🌊', title:'Blue Ocean',     unit:'Ra*bits',        char:'紫之創',    artist:'@wave_art',    url:'https://x.com',     platform:'twitter',   editor:false, cp:false },
   { id:13, image_url:'2fb9eca40153fc4e3f246773c7378288.jpg', thumb:'🍞', title:{tw:'麵包尼', cn:'面包尼', en:'Bread Niki'}, unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://pin.it/3Gled9ofT', platform:'pinterest', editor:true, cp:false },
   { id:14, image_url:'48ea1663c06485ac92f049ed99e5eaf2.jpg', thumb:'🤓', title:'Glasses Niki', unit:'Crazy:B', char:'椎名丹希', artist:null, url:'https://www.pinterest.com/pin/1058557087429714796/', platform:'pinterest', editor:false, cp:false },
-  { id:15, image_url:'', thumb:'💕', title:{tw:'星光之約', cn:'星光之约', en:'Starlit Promise'}, unit:'', char:'', artist:null, url:null, platform:null, editor:false, cp:true, pairing:{tw:'HiMERU × 椎名丹希', cn:'HiMERU × 椎名丹希', en:'HiMERU × Shiina Niki'} },
+  { id:15, image_url:'', thumb:'💕', title:{tw:'星光之約', cn:'星光之约', en:'Starlit Promise'}, unit:'Crazy:B', char:'HiMERU', artist:null, url:null, platform:null, editor:false, cp:true, pairing:{tw:'HiMERU × 椎名丹希', cn:'HiMERU × 椎名丹希', en:'HiMERU × Shiina Niki'} },
+];
+
+// ═══════════════════════════════════════════════════
+// ARTISTS
+// ═══════════════════════════════════════════════════
+const ARTISTS = [
+  { name:'@hanami_art',  platform:'Pixiv',     url:'https://pixiv.net', avatar:'🌸' },
+  { name:'@tsuki_draw',  platform:'X/Twitter', url:'https://x.com',    avatar:'🌙' },
+  { name:'@sora_illust', platform:'Pixiv',     url:'https://pixiv.net', avatar:'☁️' },
+  { name:'@mochi_fan',   platform:'X/Twitter', url:'https://x.com',    avatar:'🍡' },
+  { name:'@castle_ink',  platform:'Pixiv',     url:'https://pixiv.net', avatar:'🏰' },
+  { name:'@ryusei_p',    platform:'X/Twitter', url:'https://x.com',    avatar:'⭐' },
+  { name:'@eichi_fan',   platform:'Pixiv',     url:'https://pixiv.net', avatar:'👑' },
+  { name:'@drama_brush', platform:'Pixiv',     url:'https://pixiv.net', avatar:'🎭' },
+  { name:'@luna_p',      platform:'Pixiv',     url:'https://pixiv.net', avatar:'🌙' },
+  { name:'@wave_art',    platform:'X/Twitter', url:'https://x.com',    avatar:'🌊' },
 ];
 
 // ═══════════════════════════════════════════════════
@@ -520,7 +579,7 @@ const T = {
     unknown:'畫師：不明',viewOrig:'查看原圖',cpWarn:'CP',
     ftxt:'本站為非商業性質的同人愛好者網站，所有作品版權歸原創者所有。',
     fbili:'B站：下辈子当咸鱼',fcontact:'聯繫站長申請下架',fcopy:'© 2025 EnsembleFans · 站點更新通知請關注B站動態',
-    statArt:'幅作品',statUnit:'個團體'
+    statArt:'幅作品',statUnit:'個團體',statArtist:'位畫師',
   },
   'zh-CN':{
     navHome:'首页',navGallery:'作品库',navUnits:'偶像团体',navChars:'角色',navAbout:'关于',navDisclaimer:'版权',navXianyu:'关于咸鱼',
@@ -543,7 +602,7 @@ const T = {
     unknown:'画师：不明',viewOrig:'查看原图',cpWarn:'CP',
     ftxt:'本站为非商业性质的同人爱好者网站，所有作品版权归原创者所有。',
     fbili:'B站：下辈子当咸鱼',fcontact:'联系站长申请下架',fcopy:'© 2025 EnsembleFans · 站点更新通知请关注B站动态',
-    statArt:'幅作品',statUnit:'个团体',
+    statArt:'幅作品',statUnit:'个团体',statArtist:'位画师',
   },
   'en':{
     navHome:'Home',navGallery:'Gallery',navUnits:'Units',navChars:'Characters',navAbout:'About',navDisclaimer:'Disclaimer',navXianyu:'About Me',
@@ -566,14 +625,20 @@ const T = {
     unknown:'Artist: Unknown',viewOrig:'View original',cpWarn:'CP',
     ftxt:'A non-commercial fan gallery. All artworks belong to their respective creators.',
     fbili:'Bilibili: 下辈子当咸鱼',fcontact:'Request removal',fcopy:'© 2025 EnsembleFans · Updates posted on Bilibili',
-    statArt:'artworks',statUnit:'units'
+    statArt:'artworks',statUnit:'units',statArtist:'artists',
   }
 };
 
-// ═══════════════════════════════════════════════════
-// APP LOGIC
-// ═══════════════════════════════════════════════════
-let lang='zh-TW', unitFilter='all', gUnitFilter='all';
+</script>
+
+<script>
+// ════════════════════════════════════════
+// APP STATE
+// ════════════════════════════════════════
+let lang='zh-TW', unitFilter='all', gUnitFilter='all', cpPairingFilter='';
+let homeArts=[], galleryArts=[], homeShown=12, galleryShown=16;
+const PAGE=12;
+
 function $(id){return document.getElementById(id);}
 function setTxt(id,v){const e=$(id);if(e)e.textContent=v;}
 function setHTML(id,v){const e=$(id);if(e)e.innerHTML=v;}
@@ -581,92 +646,167 @@ function lk(){return lang==='zh-CN'?'cn':lang==='en'?'en':'tw';}
 function uname(u){return typeof u.name==='object'?u.name[lk()]:u.name;}
 function cname(c){return typeof c.name==='object'?c.name[lk()]:c.name;}
 
-function setLang(l){
-  lang=l;
-  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
-  $('lang-'+l).classList.add('active');
-  applyLang();
+// ════════════════════════════════════════
+// LIKES (localStorage)
+// ════════════════════════════════════════
+function getLikes(){try{return JSON.parse(localStorage.getItem('ef_likes')||'{}');}catch{return{};}}
+function isLiked(id){return !!getLikes()[id];}
+
+function toggleLike(id,e){
+  e.stopPropagation();
+  const likes=getLikes();
+  const wasLiked=!!likes[id];
+  if(wasLiked){delete likes[id];}else{likes[id]=1;}
+  localStorage.setItem('ef_likes',JSON.stringify(likes));
+  // Update all like buttons for this id
+  document.querySelectorAll(`.like-btn[data-id="${id}"]`).forEach(btn=>{
+    const icon=btn.querySelector('.like-icon');
+    const cnt=btn.querySelector('.like-count');
+    if(!wasLiked){
+      btn.classList.add('liked');
+      if(icon){icon.textContent='♥';icon.style.animation='none';requestAnimationFrame(()=>icon.style.animation='heartPop .35s ease');}
+      if(cnt) cnt.textContent='1';
+      const h=document.createElement('span');h.className='float-heart';h.textContent='♥';
+      btn.appendChild(h);setTimeout(()=>h.remove(),700);
+      playLikeSound();
+    }else{
+      btn.classList.remove('liked');
+      if(icon){icon.textContent='♡';}
+      if(cnt) cnt.textContent='0';
+    }
+  });
+  // update lightbox like button
+  const lbw=$('lb-like-wrap');
+  if(lbw&&lbw.dataset.id==id) renderLBLike(id);
+  renderPopular();
 }
 
-function applyLang(){
-  const t=T[lang];
-  setTxt('nav-home',t.navHome);setTxt('nav-gallery',t.navGallery);setTxt('nav-units',t.navUnits);
-  setTxt('nav-chars',t.navChars);setTxt('nav-about',t.navAbout);
-  setTxt('nav-disclaimer',t.navDisclaimer);setTxt('nav-xianyu',t.navXianyu);
-  setTxt('t-tab-all',t.tabAll);setTxt('t-tab-cp',t.tabCP);setTxt('t-cp-notice',t.cpNotice);
-  setTxt('t-eye',t.eye);
-  setHTML('t-htitle',t.htitle+'<br><em>'+t.hsub+'</em>');
-  setTxt('t-hdesc',t.hdesc);setTxt('t-ann',t.ann);
-  $('search-input').placeholder=t.search;
-  setTxt('chip-all',t.chipAll);
-  setTxt('t-recent',t.recent);setTxt('t-picks',t.picks);
-  setTxt('t-cs',t.cs);setTxt('t-cr',t.cr);setTxt('t-cb',t.cb);
-  setTxt('t-gtitle',t.gtitle);setTxt('t-gdesc',t.gdesc);
-  setTxt('t-utitle',t.utitle);setTxt('t-udesc',t.udesc);
-  setTxt('t-ctitle',t.ctitle);setTxt('t-cdesc',t.cdesc);
-  setTxt('t-atitle',t.atitle);setTxt('t-adesc',t.adesc);
-  setTxt('t-abtitle',t.abtitle);setHTML('t-abcontent',t.abcontent);
-  setTxt('t-clabel',t.clabel);setTxt('t-blabel',t.blabel);
-  setTxt('t-xytitle',t.xytitle);
-  setTxt('t-dtitle',t.dtitle);setHTML('t-dcontent',t.dcontent);
-  setTxt('t-ftxt',t.ftxt);setTxt('t-fbili',t.fbili);setTxt('t-fcontact',t.fcontact);setTxt('t-fcopy',t.fcopy);
-  // Update RYUSEITAI and Akatsuki chip labels
-  const l=lk();
-  const ryu=UNITS.find(u=>u.key==='RYUSEITAI');
-  const aka=UNITS.find(u=>u.key==='Akatsuki');
-  ['chip-ryu','gchip-ryu'].forEach(id=>{const e=$(id);if(e&&ryu)e.textContent=ryu.name[l];});
-  ['chip-aka','gchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
-  renderStats();renderHomeGrid();renderPicks();renderGalleryGrid();renderUnits();renderChars();
+function playLikeSound(){
+  try{
+    const ctx=new(window.AudioContext||window.webkitAudioContext)();
+    const o=ctx.createOscillator(),g=ctx.createGain();
+    o.connect(g);g.connect(ctx.destination);
+    o.frequency.setValueAtTime(880,ctx.currentTime);
+    o.frequency.exponentialRampToValueAtTime(1320,ctx.currentTime+.08);
+    g.gain.setValueAtTime(.07,ctx.currentTime);
+    g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+.22);
+    o.start();o.stop(ctx.currentTime+.22);
+  }catch(e){}
 }
 
-function renderStats(){
-  const t=T[lang];
-  $('stats-bar').innerHTML=`<div class="stat"><div class="stat-n">${ARTWORKS.length}</div><div class="stat-l">${t.statArt}</div></div><div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div>`;
+function likeBtnHTML(id,small){
+  const liked=isLiked(id);
+  const sz=small?'.75rem':'1rem';
+  return `<button class="like-btn${liked?' liked':''}" data-id="${id}" onclick="toggleLike(${id},event)" style="font-size:${sz}">
+    <span class="like-icon">${liked?'♥':'♡'}</span>
+    <span class="like-count">${liked?1:0}</span>
+  </button>`;
 }
 
-function card(art, showPairing=false){
-  const t=T[lang];
-  const l=lk();
+function renderLBLike(id){
+  const w=$('lb-like-wrap');if(!w)return;
+  w.dataset.id=id;w.innerHTML=likeBtnHTML(id,false);
+}
+
+// ════════════════════════════════════════
+// CARD RENDERER
+// ════════════════════════════════════════
+function card(art,showPairing){
+  const t=T[lang],l=lk();
   const u=UNITS.find(x=>x.key===art.unit);
   const col=u?u.color:'#888';
   const unitLabel=u?uname(u):art.unit;
   const artTitle=typeof art.title==='object'?art.title[l]:art.title;
-  const artChar=typeof art.char==='object'?art.char[l]:art.char;
   const pick=art.editor?`<span class="pick-badge">${lang==='en'?'Pick':'推薦'}</span>`:'';
   const cpb=art.cp?`<span class="cp-badge">${t.cpWarn}</span>`:'';
   const thumb=art.image_url?`<img src="${art.image_url}" alt="${artTitle}" loading="lazy">`:`<span class="thumb-em">${art.thumb}</span>`;
   const by=art.artist?`<a href="${art.url||'#'}" target="_blank" rel="noopener">${art.artist}</a>`:`<span>${t.unknown}</span>`;
-  const pairingStr=art.pairing?(typeof art.pairing==='object'?art.pairing[l]:art.pairing):null;
-  const pairingHTML=showPairing&&pairingStr?`<div class="pairing-tag">♡ ${pairingStr}</div>`:'';
-  return `<div class="art-card" onclick="openLB(${art.id})">
+  const pStr=art.pairing?(typeof art.pairing==='object'?art.pairing[l]:art.pairing):null;
+  const pHTML=showPairing&&pStr?`<div class="pairing-tag">♡ ${pStr}</div>`:'';
+  return `<div class="art-card card-anim" onclick="openLB(${art.id})">
     <div class="art-thumb">${pick}${cpb}${thumb}</div>
     <div class="art-info">
       <div class="art-unit" style="color:${col}">${unitLabel}</div>
-      ${pairingHTML}
+      ${pHTML}
       <div class="art-ttl">${artTitle}</div>
-      <div class="art-by">🖌 ${by}</div>
+      <div class="like-row">
+        <div class="art-by">🖌 ${by}</div>
+        ${likeBtnHTML(art.id,true)}
+      </div>
     </div>
   </div>`;
 }
 
-function renderHomeGrid(q=''){
-  let arts=unitFilter==='all'?ARTWORKS:ARTWORKS.filter(a=>a.unit===unitFilter);
-  arts=arts.filter(a=>!a.cp); // no CP on homepage
-  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>{const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;const ch=typeof a.char==='object'?Object.values(a.char).join(' '):(a.char||'');return ttl.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||ch.toLowerCase().includes(lq);});}
-  $('home-grid').innerHTML=arts.length?arts.map(a=>card(a)).join(''):`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
+function stagger(gridId){
+  document.querySelectorAll(`#${gridId} .art-card`).forEach((c,i)=>{c.style.animationDelay=`${i*0.04}s`;});
 }
-function renderPicks(){$('picks-grid').innerHTML=ARTWORKS.filter(a=>a.editor&&!a.cp).map(a=>card(a)).join('');}
+
+// ════════════════════════════════════════
+// GRID RENDERERS
+// ════════════════════════════════════════
+function filterArts(arts,q){
+  if(!q) return arts;
+  const lq=q.toLowerCase();
+  return arts.filter(a=>{
+    const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;
+    const ch=typeof a.char==='object'?Object.values(a.char).join(' '):(a.char||'');
+    return ttl.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||ch.toLowerCase().includes(lq);
+  });
+}
+
+function renderHomeGrid(q=''){
+  let arts=ARTWORKS.filter(a=>!a.cp);
+  if(unitFilter!=='all') arts=arts.filter(a=>a.unit===unitFilter);
+  arts=filterArts(arts,q);
+  homeArts=arts; homeShown=PAGE;
+  $('home-grid').innerHTML=arts.slice(0,homeShown).map(a=>card(a,false)).join('')||`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
+  stagger('home-grid');
+  const lm=$('home-lm'); if(lm) lm.style.display=arts.length>homeShown?'block':'none';
+}
+function loadMoreHome(){
+  homeShown+=PAGE;
+  $('home-grid').innerHTML=homeArts.slice(0,homeShown).map(a=>card(a,false)).join('');
+  stagger('home-grid');
+  const lm=$('home-lm'); if(lm) lm.style.display=homeArts.length>homeShown?'block':'none';
+}
+
+function renderPicks(){
+  $('picks-grid').innerHTML=ARTWORKS.filter(a=>a.editor&&!a.cp).map(a=>card(a,false)).join('');
+  stagger('picks-grid');
+}
+
+function renderPopular(){
+  const likes=getLikes();
+  const liked=ARTWORKS.filter(a=>likes[a.id]&&!a.cp).sort((a,b)=>(likes[b.id]||0)-(likes[a.id]||0)).slice(0,8);
+  const pg=$('popular-grid'); if(!pg) return;
+  if(!liked.length){
+    const msgs={tw:'點擊愛心收藏喜歡的作品！',cn:'点击爱心收藏喜欢的作品！',en:'Like some artworks to see them here!'};
+    pg.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="ei">♡</div><p style="font-size:.82rem">${msgs[lk()]}</p></div>`;
+  }else{
+    pg.innerHTML=liked.map(a=>card(a,false)).join('');stagger('popular-grid');
+  }
+}
+
 function renderGalleryGrid(q=''){
-  let arts=gUnitFilter==='all'?ARTWORKS:ARTWORKS.filter(a=>a.unit===gUnitFilter);
-  arts=arts.filter(a=>!a.cp); // "all artworks" tab = no CP
-  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>{const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;const ch=typeof a.char==='object'?Object.values(a.char).join(' '):(a.char||'');return ttl.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||a.unit.toLowerCase().includes(lq)||ch.toLowerCase().includes(lq);});}
-  $('gallery-grid').innerHTML=arts.length?arts.map(a=>card(a)).join(''):`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
+  let arts=ARTWORKS.filter(a=>!a.cp);
+  if(gUnitFilter!=='all') arts=arts.filter(a=>a.unit===gUnitFilter);
+  arts=filterArts(arts,q);
+  galleryArts=arts; galleryShown=16;
+  $('gallery-grid').innerHTML=arts.slice(0,galleryShown).map(a=>card(a,false)).join('')||`<div class="empty"><div class="ei">🔍</div><p>No results.</p></div>`;
+  stagger('gallery-grid');
+  const lm=$('gallery-lm'); if(lm) lm.style.display=arts.length>galleryShown?'block':'none';
+}
+function loadMoreGallery(){
+  galleryShown+=16;
+  $('gallery-grid').innerHTML=galleryArts.slice(0,galleryShown).map(a=>card(a,false)).join('');
+  stagger('gallery-grid');
+  const lm=$('gallery-lm'); if(lm) lm.style.display=galleryArts.length>galleryShown?'block':'none';
 }
 
 function renderUnits(){
-  const t=T[lang];const l=lk();
+  const t=T[lang],l=lk();
   $('units-grid').innerHTML=UNITS.map(u=>{
-    const cnt=ARTWORKS.filter(a=>a.unit===u.key&&!a.cp).length; // exclude CP from count
+    const cnt=ARTWORKS.filter(a=>a.unit===u.key&&!a.cp).length;
     const members=Array.isArray(u.members)?u.members:u.members[l];
     return `<div class="unit-card" onclick="filterUnit('${u.key}',null);showPage('home');">
       <div class="unit-top" style="background:${u.color}"></div>
@@ -683,95 +823,55 @@ function renderChars(){
   $('chars-grid').innerHTML=CHARS.map(c=>{
     const u=UNITS.find(x=>x.key===c.unit);
     const col=u?u.color:'#888';
-    const cn=cname(c);
-    const un=u?uname(u):c.unit;
+    const cn=cname(c), un=u?uname(u):c.unit;
     const cnt=ARTWORKS.filter(a=>!a.cp&&(typeof a.char==='object'?Object.values(a.char).includes(cn):a.char===cn)).length;
-    return `<div class="char-card" onclick="filterByChar('${cn}','${c.unit}')">
+    return `<div class="char-card" onclick="filterByChar('${cn.replace(/'/g,"\\'")}','${c.unit}')">
       <div class="char-em">${c.em}</div>
       <div class="char-nm">${cn}</div>
       <div class="char-unit" style="color:${col}">${un}</div>
-      ${cnt>0?`<div style="font-size:.65rem;color:var(--muted);margin-top:3px;">✦ ${cnt}</div>`:''}
+      ${cnt?`<div style="font-size:.65rem;color:var(--muted);margin-top:3px">✦ ${cnt}</div>`:''}
     </div>`;
   }).join('');
 }
 
-function filterByChar(name,unit){
-  unitFilter=unit;
-  document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
-  const chip=document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`);
-  if(chip){chip.classList.add('active');chip.style.background=chip.style.borderColor;chip.style.color='#0d1b2a';}
-  showPage('home');
-  $('search-input').value='';
-  renderHomeGrid();
+// ════════════════════════════════════════
+// CP
+// ════════════════════════════════════════
+function renderCPGrid(q=''){
+  let arts=ARTWORKS.filter(a=>a.cp);
+  if(cpPairingFilter){const f=cpPairingFilter.toLowerCase();arts=arts.filter(a=>{const p=a.pairing?(typeof a.pairing==='object'?Object.values(a.pairing).join(' '):a.pairing):'';return p.toLowerCase().includes(f);});}
+  if(q){const lq=q.toLowerCase();arts=arts.filter(a=>{const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;const p=a.pairing?(typeof a.pairing==='object'?Object.values(a.pairing).join(' '):a.pairing):'';return ttl.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||p.toLowerCase().includes(lq);});}
+  $('cp-grid').innerHTML=arts.length?arts.map(a=>card(a,true)).join(''):`<div class="empty"><div class="ei">🌸</div><p>No CP artworks yet.</p></div>`;
+  stagger('cp-grid');renderPairingTags();
 }
 
-// Gallery tab switcher
+function renderPairingTags(){
+  const l=lk(),seen=new Set(),tags=[];
+  ARTWORKS.filter(a=>a.cp&&a.pairing).forEach(a=>{const p=typeof a.pairing==='object'?a.pairing[l]:a.pairing;if(p&&!seen.has(p)){seen.add(p);tags.push(p);}});
+  const row=$('pairing-tags-row');if(!row)return;
+  row.innerHTML=tags.map(p=>{const act=cpPairingFilter===p;return `<button onclick="filterCPPairing('${p.replace(/'/g,"\\'")}',this)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(232,164,184,${act?.5:.25});background:rgba(232,164,184,${act?.18:.06});color:var(--rose);cursor:pointer;font-family:'Noto Sans SC',sans-serif;transition:all .2s;">${p}</button>`;}).join('');
+  if(cpPairingFilter) row.innerHTML+=`<button onclick="filterCPPairing('',null)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(138,154,181,.25);background:none;color:var(--muted);cursor:pointer;font-family:'Noto Sans SC',sans-serif;">✕ 清除</button>`;
+}
+function filterCPPairing(p){cpPairingFilter=p;renderCPGrid($('cpsearch').value);}
+function doCPSearch(q){renderCPGrid(q);}
+
 let gTab='all';
 function switchGTab(tab){
   gTab=tab;
   document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
   document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
-  $('tab-'+tab+'-btn').classList.add('active');
-  $('tab-'+tab).classList.add('active');
-  if(tab==='cp') renderCPGrid(); else renderGalleryGrid();
+  $('tab-'+tab+'-btn').classList.add('active');$('tab-'+tab).classList.add('active');
+  if(tab==='cp')renderCPGrid();else renderGalleryGrid();
 }
 
-// CP state
-let cpUnitFilter='all', cpPairingFilter='';
-
-function renderCPGrid(q=''){
-  const l=lk();
-  let arts=ARTWORKS.filter(a=>a.cp);
-  if(cpPairingFilter){
-    const f=cpPairingFilter.toLowerCase();
-    arts=arts.filter(a=>{
-      const p=a.pairing?(typeof a.pairing==='object'?Object.values(a.pairing).join(' '):a.pairing):'';
-      return p.toLowerCase().includes(f);
-    });
-  }
-  if(q){
-    const lq=q.toLowerCase();
-    arts=arts.filter(a=>{
-      const ttl=typeof a.title==='object'?Object.values(a.title).join(' '):a.title;
-      const p=a.pairing?(typeof a.pairing==='object'?Object.values(a.pairing).join(' '):a.pairing):'';
-      return ttl.toLowerCase().includes(lq)||(a.artist&&a.artist.toLowerCase().includes(lq))||p.toLowerCase().includes(lq);
-    });
-  }
-  $('cp-grid').innerHTML=arts.length?arts.map(a=>card(a,true)).join(''):`<div class="empty"><div class="ei">🌸</div><p>No CP artworks here yet.</p></div>`;
-  renderPairingTags();
-}
-
-function renderPairingTags(){
-  const l=lk();
-  const seen=new Set();
-  const tags=[];
-  ARTWORKS.filter(a=>a.cp&&a.pairing).forEach(a=>{
-    const p=typeof a.pairing==='object'?a.pairing[l]:a.pairing;
-    if(p&&!seen.has(p)){seen.add(p);tags.push(p);}
-  });
-  const row=$('pairing-tags-row');
-  if(!row)return;
-  row.innerHTML=tags.map(p=>{
-    const active=cpPairingFilter===p;
-    return `<button onclick="filterCPPairing('${p.replace(/'/g,"\\'")}',this)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(232,164,184,${active?.5:.25});background:rgba(232,164,184,${active?.18:.06});color:var(--rose);cursor:pointer;font-family:'Noto Sans SC',sans-serif;transition:all .2s;">${p}</button>`;
-  }).join('');
-  if(cpPairingFilter){
-    row.innerHTML+=`<button onclick="filterCPPairing('',null)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(138,154,181,.25);background:none;color:var(--muted);cursor:pointer;font-family:'Noto Sans SC',sans-serif;">✕ 清除</button>`;
-  }
-}
-
-function filterCPPairing(pairing,btn){
-  cpPairingFilter=pairing;
-  renderCPGrid($('cpsearch').value);
-}
-
-function doCPSearch(q){renderCPGrid(q);}
-
+// ════════════════════════════════════════
+// FILTERS & SEARCH
+// ════════════════════════════════════════
 function filterUnit(unit,btn){
   unitFilter=unit;
   document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
-  const target=btn||document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`);
-  if(target){target.classList.add('active');target.style.background=target.style.borderColor;target.style.color='#0d1b2a';}
+  const t=btn||document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`);
+  if(t){t.classList.add('active');t.style.background=t.style.borderColor;t.style.color='#0d1b2a';}
   renderHomeGrid($('search-input').value);
 }
 function filterGUnit(unit,btn){
@@ -780,32 +880,44 @@ function filterGUnit(unit,btn){
   if(btn){btn.classList.add('active');btn.style.background=btn.style.borderColor;btn.style.color='#0d1b2a';}
   renderGalleryGrid($('gsearch').value);
 }
+function filterByChar(name,unit){
+  unitFilter=unit;
+  document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
+  const chip=document.querySelector(`#unit-chips .chip[data-unit="${unit}"]`);
+  if(chip){chip.classList.add('active');chip.style.background=chip.style.borderColor;chip.style.color='#0d1b2a';}
+  showPage('home');$('search-input').value='';renderHomeGrid();
+}
 function doSearch(q){renderHomeGrid(q);}
 function doGSearch(q){renderGalleryGrid(q);}
 
+// ════════════════════════════════════════
+// LIGHTBOX
+// ════════════════════════════════════════
 function openLB(id){
   const art=ARTWORKS.find(a=>a.id===id);if(!art)return;
-  const t=T[lang];const l=lk();
+  const t=T[lang],l=lk();
   const u=UNITS.find(x=>x.key===art.unit);
   const col=u?u.color:'#888';
   const artTitle=typeof art.title==='object'?art.title[l]:art.title;
-  const artChar=typeof art.char==='object'?art.char[l]:art.char;
+  const artChar=typeof art.char==='object'?art.char[l]:(art.char||'');
   $('lb-img').innerHTML=art.image_url?`<img src="${art.image_url}" alt="${artTitle}">`:`<span style="font-size:5rem">${art.thumb}</span>`;
   $('lb-unit').innerHTML=`<span style="color:${col}">${u?uname(u):art.unit}</span>`;
   $('lb-ttl').textContent=artTitle;
-  // Hide char for CP artworks (multiple characters)
-  const charEl=$('lb-char');
-  if(art.cp){charEl.textContent='';charEl.style.display='none';}
-  else{charEl.style.display='';charEl.textContent=artChar;}
+  const ch=$('lb-char');
+  if(art.cp||!artChar){ch.style.display='none';ch.textContent='';}
+  else{ch.style.display='';ch.textContent=artChar;}
   $('lb-by').innerHTML=art.artist&&art.url?`🖌 <a href="${art.url}" target="_blank" rel="noopener">${art.artist}</a>`:`🖌 ${t.unknown}`;
   $('lb-btns').innerHTML=art.url?`<a href="${art.url}" target="_blank" rel="noopener" class="lb-btn lb-btn-gold">↗ ${t.viewOrig}</a>`:'';
-  $('lb').classList.add('open');
-  document.body.style.overflow='hidden';
+  renderLBLike(id);
+  $('lb').classList.add('open');document.body.style.overflow='hidden';
 }
 function closeLightbox(){$('lb').classList.remove('open');document.body.style.overflow='';}
 function closeLB(e){if(e.target===$('lb'))closeLightbox();}
 document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();});
 
+// ════════════════════════════════════════
+// NAVIGATION
+// ════════════════════════════════════════
 function showPage(name){
   document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
   const pg=$('page-'+name);if(pg)pg.classList.add('active');
@@ -814,14 +926,54 @@ function showPage(name){
   window.scrollTo(0,0);
 }
 
-function xyLang(l){
-  ['tw','cn','en'].forEach(x=>{
-    $('xy-'+x).style.display=x===l?'block':'none';
-    $('xy-btn-'+x).style.background=x===l?'rgba(201,169,110,0.25)':'none';
-  });
+// ════════════════════════════════════════
+// LANGUAGE
+// ════════════════════════════════════════
+function setLang(l){
+  lang=l;
+  document.querySelectorAll('.lang-btn').forEach(b=>b.classList.remove('active'));
+  $('lang-'+l).classList.add('active');
+  applyLang();
 }
 
-document.addEventListener('DOMContentLoaded',()=>{applyLang();});
+function applyLang(){
+  const t=T[lang],l=lk();
+  setTxt('nav-home',t.navHome);setTxt('nav-gallery',t.navGallery);setTxt('nav-units',t.navUnits);
+  setTxt('nav-chars',t.navChars);setTxt('nav-about',t.navAbout);
+  setTxt('nav-disclaimer',t.navDisclaimer);setTxt('nav-xianyu',t.navXianyu);
+  setTxt('t-tab-all',t.tabAll);setTxt('t-tab-cp',t.tabCP);setTxt('t-cp-notice',t.cpNotice);
+  setTxt('t-eye',t.eye);setHTML('t-htitle',t.htitle+'<br><em>'+t.hsub+'</em>');
+  setTxt('t-hdesc',t.hdesc);setTxt('t-ann',t.ann);
+  $('search-input').placeholder=t.search;setTxt('chip-all',t.chipAll);
+  setTxt('t-recent',t.recent);setTxt('t-picks',t.picks);
+  const popLabel={tw:'❤ 最多人喜歡',cn:'❤ 最多人喜欢',en:'❤ Most Liked'};
+  setTxt('t-popular',popLabel[l]);
+  setTxt('t-cs',t.cs);setTxt('t-cr',t.cr);setTxt('t-cb',t.cb);
+  setTxt('t-gtitle',t.gtitle);setTxt('t-gdesc',t.gdesc);
+  setTxt('t-utitle',t.utitle);setTxt('t-udesc',t.udesc);
+  setTxt('t-ctitle',t.ctitle);setTxt('t-cdesc',t.cdesc);
+  setTxt('t-abtitle',t.abtitle);setHTML('t-abcontent',t.abcontent);
+  setTxt('t-clabel',t.clabel);setTxt('t-blabel',t.blabel);setTxt('t-xytitle',t.xytitle);
+  setTxt('t-dtitle',t.dtitle);setHTML('t-dcontent',t.dcontent);
+  setTxt('t-ftxt',t.ftxt);setTxt('t-fbili',t.fbili);setTxt('t-fcontact',t.fcontact);setTxt('t-fcopy',t.fcopy);
+  // load more button labels
+  const lmLabel={tw:'載入更多 ↓',cn:'加载更多 ↓',en:'Load more ↓'};
+  const lmb=$('home-lm-btn');if(lmb)lmb.textContent=lmLabel[l];
+  const glmb=$('gallery-lm-btn');if(glmb)glmb.textContent=lmLabel[l];
+  // RYUSEITAI & Akatsuki chip labels
+  const ryu=UNITS.find(u=>u.key==='RYUSEITAI'),aka=UNITS.find(u=>u.key==='Akatsuki');
+  ['chip-ryu','gchip-ryu'].forEach(id=>{const e=$(id);if(e&&ryu)e.textContent=ryu.name[l];});
+  ['chip-aka','gchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
+  // stats
+  $('stats-bar').innerHTML=`<div class="stat"><div class="stat-n">${ARTWORKS.filter(a=>!a.cp).length}</div><div class="stat-l">${t.statArt}</div></div><div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div>`;
+  renderHomeGrid();renderPicks();renderPopular();renderGalleryGrid();renderUnits();renderChars();
+}
+
+function xyLang(l){
+  ['tw','cn','en'].forEach(x=>{$('xy-'+x).style.display=x===l?'block':'none';$('xy-btn-'+x).style.background=x===l?'rgba(201,169,110,0.25)':'none';});
+}
+
+document.addEventListener('DOMContentLoaded',()=>applyLang());
 </script>
 </body>
 </html>
