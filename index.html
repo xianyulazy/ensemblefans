@@ -899,7 +899,12 @@ function renderPairingTags(){
   row.innerHTML=tags.map(p=>{const act=cpPairingFilter===p;return `<button onclick="filterCPPairing('${p.replace(/'/g,"\\'")}',this)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(232,164,184,${act?.5:.25});background:rgba(232,164,184,${act?.18:.06});color:var(--rose);cursor:pointer;font-family:'Noto Sans SC',sans-serif;transition:all .2s;">${p}</button>`;}).join('');
   if(cpPairingFilter){const clr=lang==='en'?'Clear':lang==='zh-CN'?'清除':'清除';row.innerHTML+=`<button onclick="filterCPPairing('',null)" style="padding:4px 12px;border-radius:14px;font-size:.72rem;border:1px solid rgba(138,154,181,.25);background:none;color:var(--muted);cursor:pointer;font-family:'Noto Sans SC',sans-serif;">✕ ${clr}</button>`;}
 }
-function filterCPPairing(p){cpPairingFilter=p;renderCPGrid($('cpsearch').value);}
+function filterCPPairing(p){
+  // Store the artwork id instead of the display string so language switching works
+  cpPairingFilter=p;
+  renderCPGrid($('cpsearch').value);
+  renderPairingTags(); // re-render tags to update active state
+}
 function doCPSearch(q){renderCPGrid(q);}
 
 let gTab='all';
@@ -1015,6 +1020,7 @@ function applyLang(){
   // stats
   $('stats-bar').innerHTML=`<div class="stat"><div class="stat-n">${ARTWORKS.filter(a=>!a.cp).length}</div><div class="stat-l">${t.statArt}</div></div><div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div>`;
   renderHomeGrid();renderPicks();renderPopular();renderGalleryGrid();renderUnits();renderChars();
+if(gTab==='cp') renderCPGrid();
 }
 
 function xyLang(l){
