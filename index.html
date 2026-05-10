@@ -647,35 +647,78 @@ function uname(u){return typeof u.name==='object'?u.name[lk()]:u.name;}
 function cname(c){return typeof c.name==='object'?c.name[lk()]:c.name;}
 
 // ════════════════════════════════════════
-// LIKES (localStorage)
+// LIKES — Supabase (public) + localStorage (personal)
 // ════════════════════════════════════════
-function getLikes(){try{return JSON.parse(localStorage.getItem('ef_likes')||'{}');}catch{return{};}}
-function isLiked(id){return !!getLikes()[id];}
+const SB_URL = 'https://bclqqobclijzukzmdbrc.supabase.co';
+const SB_KEY = 'sb_publishable_N9zsN41DO4agRaZlAwFX4w_AlAlW0nf';
+const SB_HEADERS = {'Content-Type':'application/json','apikey':SB_KEY,'Authorization':'Bearer '+SB_KEY};
 
-function toggleLike(id,e){
+// publicCounts: {artworkId: count} — loaded from Supabase
+let publicCounts = {};
+
+async function loadPublicCounts(){
+  try{
+    const r = await fetch(`${SB_URL}/rest/v1/likes?select=artwork_id,count`, {headers:SB_HEADERS});
+    const data = await r.json();
+    if(Array.isArray(data)){
+      publicCounts = {};
+      data.forEach(row => publicCounts[row.artwork_id] = row.count);
+    }
+  }catch(e){ console.warn('Could not load likes from Supabase', e); }
+  // re-render any visible like counts
+  document.querySelectorAll('.like-count').forEach(el=>{
+    const id = el.closest('.like-btn')?.dataset.id;
+    if(id) el.textContent = publicCounts[id] || 0;
+  });
+  renderPopular();
+}
+
+async function sbUpsertLike(id, delta){
+  const current = publicCounts[id] || 0;
+  const newCount = Math.max(0, current + delta);
+  publicCounts[id] = newCount;
+  try{
+    await fetch(`${SB_URL}/rest/v1/likes`, {
+      method: 'POST',
+      headers: {...SB_HEADERS, 'Prefer': 'resolution=merge-duplicates'},
+      body: JSON.stringify({artwork_id: id, count: newCount})
+    });
+  }catch(e){ console.warn('Could not save like', e); }
+}
+
+// localStorage: tracks which artworks THIS visitor liked
+function getMyLikes(){try{return JSON.parse(localStorage.getItem('ef_my_likes')||'{}');}catch{return{};}}
+function isLiked(id){return !!getMyLikes()[id];}
+
+async function toggleLike(id,e){
   e.stopPropagation();
-  const likes=getLikes();
-  const wasLiked=!!likes[id];
-  if(wasLiked){delete likes[id];}else{likes[id]=1;}
-  localStorage.setItem('ef_likes',JSON.stringify(likes));
-  // Update all like buttons for this id
+  const myLikes = getMyLikes();
+  const wasLiked = !!myLikes[id];
+  if(wasLiked){ delete myLikes[id]; }
+  else{ myLikes[id] = 1; }
+  localStorage.setItem('ef_my_likes', JSON.stringify(myLikes));
+
+  // Update Supabase count
+  await sbUpsertLike(id, wasLiked ? -1 : 1);
+
+  // Update all like buttons for this id on the page
   document.querySelectorAll(`.like-btn[data-id="${id}"]`).forEach(btn=>{
-    const icon=btn.querySelector('.like-icon');
-    const cnt=btn.querySelector('.like-count');
+    const icon = btn.querySelector('.like-icon');
+    const cnt  = btn.querySelector('.like-count');
     if(!wasLiked){
       btn.classList.add('liked');
       if(icon){icon.textContent='♥';icon.style.animation='none';requestAnimationFrame(()=>icon.style.animation='heartPop .35s ease');}
-      if(cnt) cnt.textContent='1';
+      if(cnt) cnt.textContent = publicCounts[id] || 1;
       const h=document.createElement('span');h.className='float-heart';h.textContent='♥';
       btn.appendChild(h);setTimeout(()=>h.remove(),700);
       playLikeSound();
     }else{
       btn.classList.remove('liked');
-      if(icon){icon.textContent='♡';}
-      if(cnt) cnt.textContent='0';
+      if(icon) icon.textContent='♡';
+      if(cnt) cnt.textContent = publicCounts[id] || 0;
     }
   });
-  // update lightbox like button
+
   const lbw=$('lb-like-wrap');
   if(lbw&&lbw.dataset.id==id) renderLBLike(id);
   renderPopular();
@@ -695,11 +738,12 @@ function playLikeSound(){
 }
 
 function likeBtnHTML(id,small){
-  const liked=isLiked(id);
-  const sz=small?'.75rem':'1rem';
+  const liked = isLiked(id);
+  const count = publicCounts[id] || 0;
+  const sz = small?'.75rem':'1rem';
   return `<button class="like-btn${liked?' liked':''}" data-id="${id}" onclick="toggleLike(${id},event)" style="font-size:${sz}">
     <span class="like-icon">${liked?'♥':'♡'}</span>
-    <span class="like-count">${liked?1:0}</span>
+    <span class="like-count">${count}</span>
   </button>`;
 }
 
@@ -776,14 +820,17 @@ function renderPicks(){
 }
 
 function renderPopular(){
-  const likes=getLikes();
-  const liked=ARTWORKS.filter(a=>likes[a.id]&&!a.cp).sort((a,b)=>(likes[b.id]||0)-(likes[a.id]||0)).slice(0,8);
-  const pg=$('popular-grid'); if(!pg) return;
-  if(!liked.length){
-    const msgs={tw:'點擊愛心收藏喜歡的作品！',cn:'点击爱心收藏喜欢的作品！',en:'Like some artworks to see them here!'};
+  // Sort by public like count, show top 8 non-CP artworks with at least 1 like
+  const sorted = ARTWORKS
+    .filter(a => !a.cp && (publicCounts[a.id] || 0) > 0)
+    .sort((a,b) => (publicCounts[b.id]||0) - (publicCounts[a.id]||0))
+    .slice(0,8);
+  const pg=$('popular-grid');if(!pg)return;
+  if(!sorted.length){
+    const msgs={tw:'成為第一個點讚的人！',cn:'成为第一个点赞的人！',en:'Be the first to like an artwork!'};
     pg.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="ei">♡</div><p style="font-size:.82rem">${msgs[lk()]}</p></div>`;
   }else{
-    pg.innerHTML=liked.map(a=>card(a,false)).join('');stagger('popular-grid');
+    pg.innerHTML=sorted.map(a=>card(a,false)).join('');stagger('popular-grid');
   }
 }
 
@@ -973,7 +1020,7 @@ function xyLang(l){
   ['tw','cn','en'].forEach(x=>{$('xy-'+x).style.display=x===l?'block':'none';$('xy-btn-'+x).style.background=x===l?'rgba(201,169,110,0.25)':'none';});
 }
 
-document.addEventListener('DOMContentLoaded',()=>applyLang());
+document.addEventListener('DOMContentLoaded',()=>{ applyLang(); loadPublicCounts(); });
 </script>
 </body>
 </html>
