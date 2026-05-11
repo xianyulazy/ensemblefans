@@ -926,7 +926,7 @@ function filterArts(arts,q){
 }
 
 function renderHomeGrid(q=''){
-  let arts=ARTWORKS.filter(a=>!a.cp);
+  let arts=[...ARTWORKS].reverse().filter(a=>!a.cp);
   if(unitFilter!=='all') arts=arts.filter(a=>a.unit===unitFilter);
   arts=filterArts(arts,q);
   homeArts=arts; homeShown=PAGE;
@@ -972,7 +972,7 @@ function renderPopular(){
 }
 
 function renderGalleryGrid(q=''){
-  let arts=ARTWORKS.filter(a=>!a.cp);
+  let arts=[...ARTWORKS].reverse().filter(a=>!a.cp);
   if(gUnitFilter!=='all') arts=arts.filter(a=>a.unit===gUnitFilter);
   arts=filterArts(arts,q);
   galleryArts=arts; galleryShown=16;
