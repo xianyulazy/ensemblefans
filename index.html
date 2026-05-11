@@ -283,6 +283,9 @@ footer a:hover{text-decoration:underline;}
   <div class="art-grid" id="picks-grid"></div>
   <div class="sec-hd"><h2 class="sec-title" id="t-popular">❤ 最多人喜歡</h2><div class="sec-line"></div></div>
   <div class="art-grid" id="popular-grid"></div>
+
+  <div class="sec-hd"><h2 class="sec-title" id="t-mylikes">🔖 我的收藏</h2><div class="sec-line"></div></div>
+  <div class="art-grid" id="mylikes-grid"></div>
   <div class="cta-row">
     <a href="https://space.bilibili.com/3546752013568583?spm_id_from=333.40164.0.0" target="_blank" class="cta cta-g">✉ <span id="t-cs">推薦一幅作品</span></a>
     <a href="https://space.bilibili.com/3546752013568583?spm_id_from=333.40164.0.0" target="_blank" class="cta cta-r">💬 <span id="t-cr">請求更多角色作品</span></a>
@@ -565,7 +568,7 @@ const T = {
     eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'璀璨星辰',hsub:'偶像二創畫廊',
     hdesc:'歡迎來到由咸魚精心整理的 Ensemble Stars! 同人美術作品集。這裡收錄來自世界各地繪師創作的美麗作品，所有作品均已標注原創者並連結原始發布頁面。',
     ann:'本站持續更新中，作品陸續添加。如有喜歡的角色或繪師，歡迎透過 B 站私信告訴咸魚！',
-    search:'搜索角色、繪師、偶像團體…',chipAll:'全部',recent:'近期新增',picks:'✦ 咸魚推薦',
+    search:'搜索角色、繪師、偶像團體…',chipAll:'全部',recent:'近期新增',picks:'✦ 咸魚推薦',mylikes:'🔖 我的收藏',
     cs:'推薦一幅作品',cr:'請求更多角色作品',cb:'B站：下辈子当咸鱼',
     gtitle:'作品庫',gdesc:'瀏覽全部收錄作品',
     utitle:'偶像團體',udesc:'點擊任意團體，篩選相關作品。',artCount:'幅作品',
@@ -588,7 +591,7 @@ const T = {
     eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'璀璨星辰',hsub:'偶像同人画廊',
     hdesc:'欢迎来到由咸鱼整理的 Ensemble Stars! 同人美术作品集。收录了来自世界各地绘师创作的精美作品，每幅作品均标注原创者并链接到原始发布页面。',
     ann:'本站持续更新中，作品陆续添加。如有喜欢的角色或绘师，欢迎通过 B 站私信告诉咸鱼！',
-    search:'搜索角色、绘师、偶像团体…',chipAll:'全部',recent:'最近新增',picks:'✦ 咸鱼推荐',
+    search:'搜索角色、绘师、偶像团体…',chipAll:'全部',recent:'最近新增',picks:'✦ 咸鱼推荐',mylikes:'🔖 我的收藏',
     cs:'推荐一幅作品',cr:'请求更多角色作品',cb:'B站：下辈子当咸鱼',
     gtitle:'作品库',gdesc:'浏览全部收录作品',
     utitle:'偶像团体',udesc:'点击任意团体，筛选相关作品。',artCount:'幅作品',
@@ -611,7 +614,7 @@ const T = {
     eye:'✦ Ensemble Stars! Fan Gallery ✦',htitle:'Shining Stars',hsub:'Fan Art Gallery',
     hdesc:'A curated collection of Ensemble Stars! fan artworks maintained by Xianyu (咸魚). Every piece credits the original artist and links to its source. Built out of love — non-commercial.',
     ann:'This gallery is constantly growing! Feel free to send artwork recommendations or character requests via Bilibili DM.',
-    search:'Search characters, artists, units…',chipAll:'All',recent:'Recently Added',picks:"✦ Curator's Picks",
+    search:'Search characters, artists, units…',chipAll:'All',recent:'Recently Added',picks:"✦ Curator's Picks",mylikes:'🔖 My Collection',
     cs:'Recommend an artwork',cr:'Request a character',cb:'Bilibili: 下辈子当咸鱼',
     gtitle:'Gallery',gdesc:'Browse all artworks',
     utitle:'Idol Units',udesc:'Click any unit to filter artworks.',artCount:'artworks',
@@ -670,7 +673,7 @@ async function loadPublicCounts(){
     const id = el.closest('.like-btn')?.dataset.id;
     if(id) el.textContent = publicCounts[id] || 0;
   });
-  renderPopular();
+  renderPopular();renderMyLikes();
 }
 
 async function sbUpsertLike(id, delta){
@@ -818,7 +821,17 @@ function renderPicks(){
   $('picks-grid').innerHTML=ARTWORKS.filter(a=>a.editor&&!a.cp).map(a=>card(a,false)).join('');
   stagger('picks-grid');
 }
-
+function renderMyLikes(){
+  const myLikes=getMyLikes();
+  const liked=ARTWORKS.filter(a=>myLikes[a.id]&&!a.cp);
+  const pg=$('mylikes-grid');if(!pg)return;
+  if(!liked.length){
+    const msgs={tw:'點擊愛心收藏喜歡的作品，就會顯示在這裡！',cn:'点击爱心收藏喜欢的作品，就会显示在这里！',en:'Like some artworks and they\'ll appear here!'};
+    pg.innerHTML=`<div class="empty" style="grid-column:1/-1"><div class="ei">🔖</div><p style="font-size:.82rem">${msgs[lk()]}</p></div>`;
+  }else{
+    pg.innerHTML=liked.map(a=>card(a,false)).join('');stagger('mylikes-grid');
+  }
+}
 function renderPopular(){
   // Sort by public like count, show top 8 non-CP artworks with at least 1 like
   const sorted = ARTWORKS
@@ -997,7 +1010,7 @@ function applyLang(){
   setTxt('t-eye',t.eye);setHTML('t-htitle',t.htitle+'<br><em>'+t.hsub+'</em>');
   setTxt('t-hdesc',t.hdesc);setTxt('t-ann',t.ann);
   $('search-input').placeholder=t.search;setTxt('chip-all',t.chipAll);
-  setTxt('t-recent',t.recent);setTxt('t-picks',t.picks);
+  setTxt('t-recent',t.recent);setTxt('t-picks',t.picks);setTxt('t-mylikes',t.mylikes);
   const popLabel={tw:'❤ 最多人喜歡',cn:'❤ 最多人喜欢',en:'❤ Most Liked'};
   setTxt('t-popular',popLabel[l]);
   setTxt('t-cs',t.cs);setTxt('t-cr',t.cr);setTxt('t-cb',t.cb);
@@ -1021,7 +1034,7 @@ function applyLang(){
   ['chip-aka','gchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
   // stats
   $('stats-bar').innerHTML=`<div class="stat"><div class="stat-n">${ARTWORKS.filter(a=>!a.cp).length}</div><div class="stat-l">${t.statArt}</div></div><div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div>`;
-  renderHomeGrid();renderPicks();renderPopular();renderGalleryGrid();renderUnits();renderChars();
+  renderHomeGrid();renderPicks();renderPopular();renderMyLikes();renderGalleryGrid();renderUnits();renderChars();
 if(gTab==='cp') renderCPGrid();
 }
 
