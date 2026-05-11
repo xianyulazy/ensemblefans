@@ -340,6 +340,18 @@ footer a:hover{text-decoration:underline;}
     <p class="hero-desc" id="t-udesc"></p>
   </div>
   <div class="units-grid" id="units-grid"></div>
+
+  <div class="sec-hd" style="margin-top:2.5rem;"><h2 class="sec-title" id="t-circles-title">✦ 圈子</h2><div class="sec-line"></div></div>
+  <div class="units-grid" id="circles-grid"></div>
+
+  <div class="sec-hd" style="margin-top:2rem;"><h2 class="sec-title" id="t-shuffle-title">✦ Shuffle Units</h2><div class="sec-line"></div></div>
+  <div class="units-grid" id="shuffle-grid"></div>
+
+  <div class="sec-hd" style="margin-top:2rem;"><h2 class="sec-title" id="t-clubs-title">✦ 學生社團</h2><div class="sec-line"></div></div>
+  <div class="units-grid" id="clubs-grid"></div>
+
+  <div class="sec-hd" style="margin-top:2rem;"><h2 class="sec-title" id="t-dorms-title">✦ 宿舍</h2><div class="sec-line"></div></div>
+  <div class="units-grid" id="dorms-grid"></div>
 </main></div>
 
 <!-- PAGE: CHARACTERS -->
@@ -518,7 +530,111 @@ const CHARS = [
   { name:{tw:'久遠舞珠',  cn:'久远舞珠',  en:'Kuon Maju'},          unit:'Mellow Dear Us', em:'🍫' },
   { name:{tw:'甘樂千歲',  cn:'甘乐千岁',  en:'Kanra Chisato'},      unit:'Mellow Dear Us', em:'🍫' },
 ];
+// ═══════════════════════════════════════════════════
+// SPECIAL UNITS — circles, shuffle units, clubs, dorms
+// These are separate from main units and shown on their own section
+// category: 'circle' | 'shuffle' | 'club' | 'dorm'
+// ═══════════════════════════════════════════════════
+const SPECIAL_UNITS = [
+  // ── CIRCLES ──
+  { key:'BIBLION', category:'circle',
+    name:{tw:'BIBLION', cn:'BIBLION', en:'BIBLION'}, emblem:'📚', color:'#8b9dc3',
+    members:{tw:['亂凪砂','白鷺薰','進之之','周防桃李','蒼葉積'],cn:['乱凪砂','白鹭薰','进之之','周防桃李','苍叶积'],en:['Nagisa Ran','Kaoru Hakaze','Hajime Shino','Tsukasa Suou','Tsumugi Aoba']}},
+  { key:'Manga Club', category:'circle',
+    name:{tw:'漫画部', cn:'漫画部', en:'Manga Club'}, emblem:'🎭', color:'#c9956e',
+    members:{tw:['姫宮桃李','伊佐佐真緒','高峯翠','漣純','蓮巳敬人'],cn:['姫宮桃李','伊佐佐真緒','高峯翠','涟纯','莲巳敬人'],en:['Tori Himemiya','Mao Isara','Midori Takamine','Jun Sazanami','Keito Hasumi']}},
+  { key:'ASOBI Club', category:'circle',
+    name:{tw:'ASOBI部', cn:'ASOBI部', en:'ASOBI Club'}, emblem:'🎮', color:'#6ec9a0',
+    members:{tw:['仙石忍','漣純','青井柚太','天城燐音','春川宙'],cn:['仙石忍','涟纯','青井柚太','天城燐音','春川宙'],en:['Shinobu Sengoku','Jun Sazanami','Yuta Aoi','Rinne Amagi','Sora Harukawa']}},
+  { key:'Band BB', category:'circle',
+    name:{tw:'BB樂團', cn:'BB乐团', en:'Band "BB"'}, emblem:'🎸', color:'#c96e6e',
+    members:{tw:['伊佐佐真緒','蒼井陽向','青井柚太','朔間零','鬼龍紅郎'],cn:['伊佐佐真緒','蒼井陽向','青井柚太','朔間零','鬼龙红郎'],en:['Mao Isara','Hinata Aoi','Yuta Aoi','Rei Sakuma','Koga Kiryu']}},
+  { key:'ANIMALS', category:'circle',
+    name:{tw:'ANIMALS', cn:'ANIMALS', en:'ANIMALS'}, emblem:'🐾', color:'#c9a96e',
+    members:{tw:['日々樹渉','明星スバル','鬼龍紅郎','真白友也','仁兔成鳴'],cn:['日々樹渉','明星スバル','鬼龙红郎','真白友也','仁兔成鸣'],en:['Wataru Hibiki','Subaru Akehoshi','Koga Kiryu','Tomoya Mashiro','Nazuna Nito']}},
+  { key:'OCEANS', category:'circle',
+    name:{tw:'OCEANS', cn:'OCEANS', en:'OCEANS'}, emblem:'🌊', color:'#6ea8c9',
+    members:{tw:['深海奏汰','仙石忍','白鷺薰','神崎颯馬','瀨名泉'],cn:['深海奏汰','仙石忍','白鹭薰','神崎飒马','濑名泉'],en:['Kanata Shinkai','Shinobu Sengoku','Kaoru Hakaze','Souma Kanzaki','Izumi Sena']}},
+  { key:'CRAFTMONSTER', category:'circle',
+    name:{tw:'CRAFTMONSTER', cn:'CRAFTMONSTER', en:'CRAFTMONSTER'}, emblem:'🔧', color:'#9c6ec9',
+    members:{tw:['氷鷹北斗','遊木民','逆先夏目','天城燐音','朔間凛月'],cn:['氷鷹北斗','遊木民','逆先夏目','天城燐音','朔间凛月'],en:['Hokuto Hidaka','Makoto Yuuki','Shu Itsuki','Rinne Amagi','Ritsu Sakuma']}},
+  { key:'Dramatica', category:'circle',
+    name:{tw:'Dramatica', cn:'Dramatica', en:'Dramatica'}, emblem:'🎪', color:'#c96e8e',
+    members:{tw:['日々樹渉','氷鷹北斗','亂凪砂','逆先夏目','真白友也','蓮巳敬人','月永Leo','鳴上嵐','逆先夏目'],cn:['日々樹渉','氷鷹北斗','乱凪砂','逆先夏目','真白友也','莲巳敬人','月永Leo','鸣上岚','逆先夏目'],en:['Wataru Hibiki','Hokuto Hidaka','Nagisa Ran','Shu Itsuki','Tomoya Mashiro','Keito Hasumi','Leo Tsukinaga','Arashi Narukami','Natsume Sakasaki']}},
+  { key:'Ibara Lecture', category:'circle',
+    name:{tw:'茨の講義', cn:'茨的讲义', en:'Ibara Lecture'}, emblem:'📖', color:'#6e9c6e',
+    members:{tw:['南雲鐵虎','齋宮宗','HiMERU','逆先夏目','春川宙'],cn:['南云铁虎','斎宮宗','HiMERU','逆先夏目','春川宙'],en:['Tetora Nagumo','Ibara Saegusa','HiMERU','Natsume Sakasaki','Sora Harukawa']}},
+  { key:'Keito Lecture', category:'circle',
+    name:{tw:'敬人の講義', cn:'敬人的讲义', en:'Keito Lecture'}, emblem:'📖', color:'#6e8e9c',
+    members:{tw:['伏見弓弦','天城一彩','白鳥藍良','影片美伽','蓮巳敬人'],cn:['伏见弓弦','天城一彩','白鸟蓝良','影片美伽','莲巳敬人'],en:['Yuzuru Fushimi','Hiiro Amagi','Aira Shiratori','Mika Kagehira','Keito Hasumi']}},
+  { key:'Gardenia', category:'circle',
+    name:{tw:'Gardenia', cn:'Gardenia', en:'Gardenia'}, emblem:'🌸', color:'#c96ea8',
+    members:{tw:['高峯翠','風早巽','蒼井陽向','進之之','逆先夏目'],cn:['高峯翠','风早巽','蒼井陽向','进之之','逆先夏目'],en:['Midori Takamine','Tatsumi Kazehaya','Hinata Aoi','Hajime Shino','Natsume Sakasaki']}},
+  { key:'Mystery Researchers', category:'circle',
+    name:{tw:'謎の研究者', cn:'谜之研究者', en:'Mystery Researchers'}, emblem:'🔍', color:'#8b6ec9',
+    members:{tw:['遊木民','深海奏汰','朔間零','仁兔成鳴','蒼葉積'],cn:['遊木民','深海奏汰','朔間零','仁兔成鸣','苍叶积'],en:['Makoto Yuuki','Kanata Shinkai','Rei Sakuma','Nazuna Nito','Tsumugi Aoba']}},
+  { key:"Niki's Kitchen", category:'circle',
+    name:{tw:'尼基廚房', cn:'尼基厨房', en:"Niki's Kitchen"}, emblem:'🍳', color:'#c9b86e',
+    members:{tw:['伏見弓弦','齋宮宗','椎名丹希','神崎颯馬','瀨名泉'],cn:['伏见弓弦','斎宮宗','椎名丹希','神崎飒马','濑名泉'],en:['Yuzuru Fushimi','Ibara Saegusa','Niki Shiina','Souma Kanzaki','Izumi Sena']}},
+  { key:'Overnight Outdoors Party', category:'circle',
+    name:{tw:'露營派對', cn:'露营派对', en:'Overnight Outdoors Party'}, emblem:'⛺', color:'#6e9c8b',
+    members:{tw:['綾瀬麻緒','椎名丹希','天満光','鬼龍紅郎','月永Leo'],cn:['绫瀬麻緒','椎名丹希','天満光','鬼龙红郎','月永Leo'],en:['Mayoi Ayase','Niki Shiina','Mitsuru Tenma','Koga Kiryu','Leo Tsukinaga']}},
+  { key:'Pretty 5', category:'circle',
+    name:{tw:'Pretty 5', cn:'Pretty 5', en:'Pretty 5'}, emblem:'💄', color:'#f4a0c0',
+    members:{tw:['姫宮桃李','白鳥藍良','巴日和','影片美伽','鳴上嵐'],cn:['姫宮桃李','白鸟蓝良','巴日和','影片美伽','鸣上岚'],en:['Tori Himemiya','Aira Shiratori','Hiyori Tomoe','Mika Kagehira','Arashi Narukami']}},
+  { key:'SHIN', category:'circle',
+    name:{tw:'SHIN', cn:'SHIN', en:'SHIN'}, emblem:'⚡', color:'#6e6ec9',
+    members:{tw:['南雲鐵虎','守澤千秋','天城一彩','鬼龍紅郎','三毛縞斑'],cn:['南云铁虎','守泽千秋','天城一彩','鬼龙红郎','三毛縞斑'],en:['Tetora Nagumo','Chiaki Morisawa','Hiiro Amagi','Koga Kiryu','Madara Mikejima']}},
+  { key:'Sports Survivors', category:'circle',
+    name:{tw:'體育倖存者', cn:'体育幸存者', en:'Sports Survivors'}, emblem:'⚽', color:'#6ec96e',
+    members:{tw:['天祥院英智','明星スバル','守澤千秋','乙桐柊','天満光'],cn:['天祥院英智','明星スバル','守泽千秋','乙桐柊','天満光'],en:['Eichi Tenshouin','Subaru Akehoshi','Chiaki Morisawa','Adonis Otogari','Mitsuru Tenma']}},
+  { key:'Sweets Fan Club', category:'circle',
+    name:{tw:'甜點粉絲團', cn:'甜点粉丝团', en:'Sweets Fan Club'}, emblem:'🍰', color:'#f4c0a0',
+    members:{tw:['綾瀬麻緒','HiMERU','櫻河琥珀','周防桃李'],cn:['绫瀬麻緒','HiMERU','樱河琥珀','周防桃李'],en:['Mayoi Ayase','HiMERU','Kohaku Oukawa','Tsukasa Suou']}},
+  { key:'FLAVOR', category:'circle',
+    name:{tw:'FLAVOR', cn:'FLAVOR', en:'FLAVOR'}, emblem:'🌿', color:'#a0c9a0',
+    members:{tw:['天祥院英智','風早巽','巴日和','進之之','朔間凛月'],cn:['天祥院英智','风早巽','巴日和','进之之','朔间凛月'],en:['Eichi Tenshouin','Tatsumi Kazehaya','Hiyori Tomoe','Hajime Shino','Ritsu Sakuma']}},
+  { key:'Kaori', category:'circle',
+    name:{tw:'香り', cn:'香气', en:'Kaori'}, emblem:'🌺', color:'#c9a0f4',
+    members:{tw:['櫻河琥珀','乙桐柊','神崎颯馬','周防桃李','三毛縞斑'],cn:['樱河琥珀','乙桐柊','神崎飒马','周防桃李','三毛縞斑'],en:['Kohaku Oukawa','Adonis Otogari','Souma Kanzaki','Tsukasa Suou','Madara Mikejima']}},
 
+  // ── SHUFFLE UNITS ──
+  { key:'Branco', category:'shuffle',
+    name:{tw:'Branco', cn:'Branco', en:'Branco'}, emblem:'🤍', color:'#e8e8e8',
+    members:{tw:['姫宮桃李','白鳥藍良','進之之','春川宙'],cn:['姫宮桃李','白鸟蓝良','进之之','春川宙'],en:['Tori Himemiya','Aira Shiratori','Hajime Shino','Sora Harukawa']}},
+
+  // ── STUDENT CLUBS ──
+  { key:'Archery Club', category:'club',
+    name:{tw:'弓道部', cn:'弓道部', en:'Archery Club'}, emblem:'🏹', color:'#c9a96e',
+    members:{tw:['蓮巳敬人','月永Leo','伏見弓弦','周防桃李'],cn:['莲巳敬人','月永Leo','伏见弓弦','周防桃李'],en:['Keito Hasumi','Leo Tsukinaga','Yuzuru Fushimi','Tsukasa Suou']}},
+  { key:'Basketball Club', category:'club',
+    name:{tw:'籃球部', cn:'篮球部', en:'Basketball Club'}, emblem:'🏀', color:'#c97a3a', members:{tw:[],cn:[],en:[]}},
+  { key:'Game Research Club', category:'club',
+    name:{tw:'遊戲研究部', cn:'游戏研究部', en:'Game Research Club'}, emblem:'🕹️', color:'#6e9c6e', members:{tw:[],cn:[],en:[]}},
+  { key:'Handicraft Club', category:'club',
+    name:{tw:'手工藝部', cn:'手工艺部', en:'Handicraft Club'}, emblem:'🧵', color:'#c96ea8', members:{tw:[],cn:[],en:[]}},
+  { key:'Karate Club', category:'club',
+    name:{tw:'空手道部', cn:'空手道部', en:'Karate Club'}, emblem:'🥋', color:'#c96e6e', members:{tw:[],cn:[],en:[]}},
+  { key:'Light Music Club', category:'club',
+    name:{tw:'輕音樂部', cn:'轻音乐部', en:'Light Music Club'}, emblem:'🎵', color:'#6ea8c9', members:{tw:[],cn:[],en:[]}},
+  { key:'Marine Life Club', category:'club',
+    name:{tw:'海洋生物部', cn:'海洋生物部', en:'Marine Life Club'}, emblem:'🐠', color:'#6ec9c9', members:{tw:[],cn:[],en:[]}},
+  { key:'Ninja Association', category:'club',
+    name:{tw:'忍者研究會', cn:'忍者研究会', en:'Ninja Association'}, emblem:'🥷', color:'#6e6e6e', members:{tw:[],cn:[],en:[]}},
+  { key:'Tea Club', category:'club',
+    name:{tw:'茶道部', cn:'茶道部', en:'Tea Club'}, emblem:'🍵', color:'#a0c9a0', members:{tw:[],cn:[],en:[]}},
+  { key:'Tennis Club', category:'club',
+    name:{tw:'網球部', cn:'网球部', en:'Tennis Club'}, emblem:'🎾', color:'#c9c96e', members:{tw:[],cn:[],en:[]}},
+  { key:'Theater Club', category:'club',
+    name:{tw:'戲劇部', cn:'戏剧部', en:'Theater Club'}, emblem:'🎭', color:'#9c6ec9', members:{tw:[],cn:[],en:[]}},
+  { key:'Track & Field', category:'club',
+    name:{tw:'田徑部', cn:'田径部', en:'Track & Field'}, emblem:'🏃', color:'#c9a96e', members:{tw:[],cn:[],en:[]}},
+
+  // ── DORMS ──
+  { key:'Dorm 1', category:'dorm',
+    name:{tw:'宿舍1', cn:'宿舍1', en:'Dorm 1'}, emblem:'🏠', color:'#8ba8c9',
+    members:{tw:['蒼井陽向','天城一彩','椎名丹希'],cn:['蒼井陽向','天城一彩','椎名丹希'],en:['Hinata Aoi','Hiiro Amagi','Niki Shiina']}},
+];
 // ═══════════════════════════════════════════════════
 // ARTWORKS — unit field must match a UNITS key above
 // title & char can be string or {tw, cn, en}
@@ -571,7 +687,7 @@ const T = {
     search:'搜索角色、繪師、偶像團體…',chipAll:'全部',recent:'近期新增',picks:'✦ 咸魚推薦',mylikes:'🔖 我的收藏',
     cs:'推薦一幅作品',cr:'請求更多角色作品',cb:'B站：下辈子当咸鱼',
     gtitle:'作品庫',gdesc:'瀏覽全部收錄作品',
-    utitle:'偶像團體',udesc:'點擊任意團體，篩選相關作品。',artCount:'幅作品',
+    utitle:'偶像團體',udesc:'點擊任意團體，篩選相關作品。',circlesTitle:'✦ 圈子',shuffleTitle:'✦ Shuffle Units',clubsTitle:'✦ 學生社團',dormsTitle:'✦ 宿舍',artCount:'幅作品',
     ctitle:'角色',cdesc:'點擊角色，查看相關作品。',
     atitle:'畫師牆',adesc:'感謝所有允許收錄作品的創作者。點擊名字即可前往其主頁。',
     abtitle:'關於本站',
@@ -594,7 +710,7 @@ const T = {
     search:'搜索角色、绘师、偶像团体…',chipAll:'全部',recent:'最近新增',picks:'✦ 咸鱼推荐',mylikes:'🔖 我的收藏',
     cs:'推荐一幅作品',cr:'请求更多角色作品',cb:'B站：下辈子当咸鱼',
     gtitle:'作品库',gdesc:'浏览全部收录作品',
-    utitle:'偶像团体',udesc:'点击任意团体，筛选相关作品。',artCount:'幅作品',
+    utitle:'偶像团体',udesc:'点击任意团体，筛选相关作品。',circlesTitle:'✦ 圈子',shuffleTitle:'✦ Shuffle Units',clubsTitle:'✦ 学生社团',dormsTitle:'✦ 宿舍',artCount:'幅作品',
     ctitle:'角色',cdesc:'点击角色，查看相关作品。',
     atitle:'画师墙',adesc:'感谢所有允许收录作品的创作者。点击名字即可前往其主页。',
     abtitle:'关于本站',
@@ -617,7 +733,7 @@ const T = {
     search:'Search characters, artists, units…',chipAll:'All',recent:'Recently Added',picks:"✦ Curator's Picks",mylikes:'🔖 My Collection',
     cs:'Recommend an artwork',cr:'Request a character',cb:'Bilibili: 下辈子当咸鱼',
     gtitle:'Gallery',gdesc:'Browse all artworks',
-    utitle:'Idol Units',udesc:'Click any unit to filter artworks.',artCount:'artworks',
+    utitle:'Idol Units',udesc:'Click any unit to filter artworks.',circlesTitle:'✦ Circles',shuffleTitle:'✦ Shuffle Units',clubsTitle:'✦ Student Clubs',dormsTitle:'✦ Dorms',artCount:'artworks',
     ctitle:'Characters',cdesc:'Click a character to view their artworks.',
     atitle:'Artist Wall',adesc:'Every credited artist featured in this gallery. Click a name to visit their profile.',
     abtitle:'About',
@@ -862,7 +978,22 @@ function loadMoreGallery(){
   stagger('gallery-grid');
   const lm=$('gallery-lm'); if(lm) lm.style.display=galleryArts.length>galleryShown?'block':'none';
 }
-
+function renderSpecialGrid(gridId, category){
+  const t=T[lang],l=lk();
+  const units=SPECIAL_UNITS.filter(u=>u.category===category);
+  const el=document.getElementById(gridId);if(!el)return;
+  el.innerHTML=units.map(u=>{
+    const members=Array.isArray(u.members)?u.members:(u.members[l]||[]);
+    const cnt=ARTWORKS.filter(a=>a.unit===u.key&&!a.cp).length;
+    return `<div class="unit-card" onclick="filterSpecialUnit('${u.key}',null);showPage('home');">
+      <div class="unit-top" style="background:${u.color}"></div>
+      <div class="unit-em">${u.emblem}</div>
+      <div class="unit-nm" style="color:${u.color}">${typeof u.name==='object'?u.name[l]:u.name}</div>
+      <div class="unit-members">${members.length?members.map(m=>`<span class="mem-tag">${m}</span>`).join(''):'<span style="font-size:.7rem;color:var(--muted);">TBA</span>'}</div>
+      ${cnt?`<div class="unit-cnt">✦ ${cnt} ${t.artCount}</div>`:''}
+    </div>`;
+  }).join('');
+}
 function renderUnits(){
   const t=T[lang],l=lk();
   $('units-grid').innerHTML=UNITS.map(u=>{
@@ -932,6 +1063,15 @@ function switchGTab(tab){
 // ════════════════════════════════════════
 // FILTERS & SEARCH
 // ════════════════════════════════════════
+function filterSpecialUnit(unit,btn){
+  // Special units use their own filter — show on home page
+  unitFilter=unit;
+  document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
+  // deactivate all chips since special units aren't in the chip list
+  const allChip=$('chip-all');
+  // Don't activate any chip — just filter
+  renderHomeGrid();
+}
 function filterUnit(unit,btn){
   unitFilter=unit;
   document.querySelectorAll('#unit-chips .chip').forEach(c=>{c.classList.remove('active');c.style.background='rgba(255,255,255,0.08)';c.style.color=c.style.borderColor;});
@@ -1016,6 +1156,8 @@ function applyLang(){
   setTxt('t-cs',t.cs);setTxt('t-cr',t.cr);setTxt('t-cb',t.cb);
   setTxt('t-gtitle',t.gtitle);setTxt('t-gdesc',t.gdesc);
   setTxt('t-utitle',t.utitle);setTxt('t-udesc',t.udesc);
+  setTxt('t-circles-title',t.circlesTitle);setTxt('t-shuffle-title',t.shuffleTitle);
+  setTxt('t-clubs-title',t.clubsTitle);setTxt('t-dorms-title',t.dormsTitle);
   setTxt('t-ctitle',t.ctitle);setTxt('t-cdesc',t.cdesc);
   setTxt('t-abtitle',t.abtitle);setHTML('t-abcontent',t.abcontent);
   setTxt('t-clabel',t.clabel);setTxt('t-blabel',t.blabel);setTxt('t-xytitle',t.xytitle);
@@ -1034,7 +1176,11 @@ function applyLang(){
   ['chip-aka','gchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
   // stats
   $('stats-bar').innerHTML=`<div class="stat"><div class="stat-n">${ARTWORKS.filter(a=>!a.cp).length}</div><div class="stat-l">${t.statArt}</div></div><div class="stat"><div class="stat-n">${UNITS.length}</div><div class="stat-l">${t.statUnit}</div></div>`;
-  renderHomeGrid();renderPicks();renderPopular();renderMyLikes();renderGalleryGrid();renderUnits();renderChars();
+  renderHomeGrid();renderPicks();renderPopular();renderGalleryGrid();renderUnits();renderChars();
+  renderSpecialGrid('circles-grid','circle');
+  renderSpecialGrid('shuffle-grid','shuffle');
+  renderSpecialGrid('clubs-grid','club');
+  renderSpecialGrid('dorms-grid','dorm');
 if(gTab==='cp') renderCPGrid();
 }
 
