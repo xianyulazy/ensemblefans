@@ -304,7 +304,7 @@ footer a:hover{text-decoration:underline;}
   <div class="tab-panel active" id="tab-all">
     <div class="search-wrap"><span class="search-icon">🔍</span><input type="text" id="gsearch" placeholder="搜索…" oninput="doGSearch(this.value)"></div>
     <div class="chips" id="gunit-chips">
-      <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all"           onclick="filterGUnit('all',this)">全部</button>
+      <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all" id="gchip-all"          onclick="filterGUnit('all',this)">全部</button>
       <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
       <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"             onclick="filterGUnit('ALKALOID',this)">ALKALOID</button>
       <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"             onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
@@ -1012,9 +1012,11 @@ function applyLang(){
   const lmLabel={tw:'載入更多 ↓',cn:'加载更多 ↓',en:'Load more ↓'};
   const lmb=$('home-lm-btn');if(lmb)lmb.textContent=lmLabel[l];
   const cps=$('cpsearch');if(cps)cps.placeholder=lang==='en'?'Search pairings…':lang==='zh-CN'?'搜索配对名称…':'搜索配對名稱…';
+  const gs=$('gsearch');if(gs)gs.placeholder=lang==='en'?'Search…':lang==='zh-CN'?'搜索…':'搜索…';
   const glmb=$('gallery-lm-btn');if(glmb)glmb.textContent=lmLabel[l];
   // RYUSEITAI & Akatsuki chip labels
   const ryu=UNITS.find(u=>u.key==='RYUSEITAI'),aka=UNITS.find(u=>u.key==='Akatsuki');
+  const gca=$('gchip-all');if(gca)gca.textContent=t.chipAll;
   ['chip-ryu','gchip-ryu'].forEach(id=>{const e=$(id);if(e&&ryu)e.textContent=ryu.name[l];});
   ['chip-aka','gchip-aka'].forEach(id=>{const e=$(id);if(e&&aka)e.textContent=aka.name[l];});
   // stats
