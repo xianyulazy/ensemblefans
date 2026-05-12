@@ -265,13 +265,14 @@ footer a:hover{text-decoration:underline;}
     <button class="chip active" id="chip-all" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all" onclick="filterUnit('all',this)">全部</button>
     <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"           onclick="filterUnit('fine',this)">fine</button>
     <button class="chip" style="color:#FF8B0D;border-color:#FF8B0D;" data-unit="Trickstar"      onclick="filterUnit('Trickstar',this)">Trickstar</button>
-    <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"        onclick="filterUnit('Crazy:B',this)">Crazy:B</button>
+    <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"      onclick="filterUnit('RYUSEITAI',this)" id="chip-ryu">RYUSEITAI</button>
     <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"       onclick="filterUnit('ALKALOID',this)">ALKALOID</button>
-    <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"       onclick="filterUnit('Valkyrie',this)">Valkyrie</button>
     <button class="chip" style="color:#a09080;border-color:#a09080;" data-unit="Eden"           onclick="filterUnit('Eden',this)">Eden</button>
+    <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"       onclick="filterUnit('Valkyrie',this)">Valkyrie</button>
+    <button class="chip" style="color:#FF3B9A;border-color:#1AAFFF;" data-unit="2wink"        onclick="filterUnit('2wink',this)">2wink</button>
+    <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"        onclick="filterUnit('Crazy:B',this)">Crazy:B</button>
     <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"        onclick="filterUnit('Ra*bits',this)">Ra*bits</button>
     <button class="chip" style="color:#6080cc;border-color:#6080cc;" data-unit="Knights"        onclick="filterUnit('Knights',this)">Knights</button>
-    <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"      onclick="filterUnit('RYUSEITAI',this)" id="chip-ryu">RYUSEITAI</button>
     <button class="chip" style="color:#b08060;border-color:#b08060;" data-unit="Mellow Dear Us" onclick="filterUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
     <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"       onclick="filterUnit('Akatsuki',this)" id="chip-aka">Akatsuki</button>
   </div>
@@ -311,13 +312,14 @@ footer a:hover{text-decoration:underline;}
       <button class="chip active" style="color:#f5d77a;border-color:#f5d77a;" data-unit="all" id="gchip-all"          onclick="filterGUnit('all',this)">全部</button>
       <button class="chip" style="color:#FFD7A0;border-color:#FFD7A0;" data-unit="fine"                 onclick="filterGUnit('fine',this)">fine</button>
       <button class="chip" style="color:#FF8B0D;border-color:#FF8B0D;" data-unit="Trickstar"            onclick="filterGUnit('Trickstar',this)">Trickstar</button>
-      <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
+      <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"            onclick="filterGUnit('RYUSEITAI',this)" id="gchip-ryu">RYUSEITAI</button>
       <button class="chip" style="color:#2BB7CA;border-color:#2BB7CA;" data-unit="ALKALOID"             onclick="filterGUnit('ALKALOID',this)">ALKALOID</button>
-      <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"             onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
       <button class="chip" style="color:#a09080;border-color:#a09080;" data-unit="Eden"                 onclick="filterGUnit('Eden',this)">Eden</button>
+      <button class="chip" style="color:#c06080;border-color:#c06080;" data-unit="Valkyrie"             onclick="filterGUnit('Valkyrie',this)">Valkyrie</button>
+      <button class="chip" style="color:#FF3B9A;border-color:#1AAFFF;" data-unit="2wink"              onclick="filterGUnit('2wink',this)">2wink</button>
+      <button class="chip" style="color:#FFD400;border-color:#FFD400;" data-unit="Crazy:B"              onclick="filterGUnit('Crazy:B',this)">Crazy:B</button>
       <button class="chip" style="color:#68C0F4;border-color:#68C0F4;" data-unit="Ra*bits"              onclick="filterGUnit('Ra*bits',this)">Ra*bits</button>
       <button class="chip" style="color:#6080cc;border-color:#6080cc;" data-unit="Knights"              onclick="filterGUnit('Knights',this)">Knights</button>
-      <button class="chip" style="color:#9070cc;border-color:#9070cc;" data-unit="RYUSEITAI"            onclick="filterGUnit('RYUSEITAI',this)" id="gchip-ryu">RYUSEITAI</button>
       <button class="chip" style="color:#b08060;border-color:#b08060;" data-unit="Mellow Dear Us"       onclick="filterGUnit('Mellow Dear Us',this)">Mellow Dear Us</button>
       <button class="chip" style="color:#e08080;border-color:#e08080;" data-unit="Akatsuki"             onclick="filterGUnit('Akatsuki',this)" id="gchip-aka">Akatsuki</button>
     </div>
@@ -478,14 +480,15 @@ footer a:hover{text-decoration:underline;}
 const UNITS = [
   { key:'fine',           name:{tw:'fine',         cn:'fine',         en:'fine'},           color:'#FFD7A0', emblem:'👑', members:{tw:['天祥院英智','日日樹涉','姬宮桃李','伏見弓弦'],       cn:['天祥院英智','日日树涉','姬宫桃李','伏见弓弦'],       en:['Eichi Tenshouin','Wataru Hibiki','Tori Himemiya','Yuzuru Fushimi']} },
   { key:'Trickstar',      name:{tw:'Trickstar',    cn:'Trickstar',    en:'Trickstar'},      color:'#FF8B0D', emblem:'🌟', members:{tw:['冰鷹北斗','明星昴流','遊木真','衣更真緒'],       cn:['冰鹰北斗','明星昴流','游木真','衣更真绪'],       en:['Hokuto Hidaka','Subaru Akehoshi','Makoto Yuuki','Mao Isara']} },
-  { key:'Crazy:B',        name:{tw:'Crazy:B',      cn:'Crazy:B',      en:'Crazy:B'},        color:'#FFD400', emblem:'🎲', members:{tw:['HiMERU','天城燐音','椎名丹希','櫻河琥珀'],       cn:['HiMERU','天城燐音','椎名丹希','樱河琥珀'],       en:['HiMERU','Amagi Rinne','Shiina Niki','Owkawa Kohaku']} },
+  { key:'RYUSEITAI',      name:{tw:'流星隊',        cn:'流星队',       en:'RYUSEITAI'},      color:'#9070cc', emblem:'☄️', members:{tw:['守澤千秋','深海奏汰','仙石忍','南雲鐵虎','高峯翠'], cn:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'], en:['Morisawa Chiaki','Shinkai Kanata','Sengoku Shinobu','Nagumo Tetora','Takamine Midori']} },
   { key:'ALKALOID',       name:{tw:'ALKALOID',     cn:'ALKALOID',     en:'ALKALOID'},       color:'#2BB7CA', emblem:'⚗️', members:{tw:['天城一彩','白鳥藍良','禮瀨真宵','風早巽'],       cn:['天城一彩','白鸟蓝良','礼濑真宵','风早巽'],       en:['Amagi Kazusa','Shiratori Aira','Reise Mayoi','Kazahaya Tatsumi']} },
+  { key:'Crazy:B',        name:{tw:'Crazy:B',      cn:'Crazy:B',      en:'Crazy:B'},        color:'#FFD400', emblem:'🎲', members:{tw:['HiMERU','天城燐音','椎名丹希','櫻河琥珀'],       cn:['HiMERU','天城燐音','椎名丹希','樱河琥珀'],       en:['HiMERU','Amagi Rinne','Shiina Niki','Owkawa Kohaku']} },
   { key:'Valkyrie',       name:{tw:'Valkyrie',     cn:'Valkyrie',     en:'Valkyrie'},       color:'#c06080', emblem:'⚔️', members:{tw:['齋宮宗','影片美伽'],                             cn:['斎宮宗','影片美伽'],                             en:['Saegusa Ibara','Mikaze Ai']} },
+  { key:'2wink',          name:{tw:'2wink',        cn:'2wink',        en:'2wink'},          color:'#FF3B9A', emblem:'♓', members:{tw:['葵日向','葵裕太'],                             cn:['葵日向','葵裕太'],                             en:['Hinata Aoi','Yuta Aoi']} },
   { key:'Eden',           name:{tw:'Eden',         cn:'Eden',         en:'Eden'},           color:'#a09080', emblem:'🌿', members:{tw:['亂凪砂','巴日和','七種茨','漣純'],               cn:['乱凪砂','巴日和','七种茨','涟纯'],               en:['Ran Nagisa','Tomoe Hiyori','Nanakusa Ibara','Sazanami Jun']} },
   { key:'Ra*bits',        name:{tw:'Ra*bits',      cn:'Ra*bits',      en:'Ra*bits'},        color:'#68C0F4', emblem:'🐰', members:{tw:['真白友也','仁兔成鳴','天満光','紫之創'],         cn:['真白友也','仁兔成鸣','天満光','紫之创'],         en:['Mashiro Tomoya','Nito Nazuna','Tenma Mitsuru','Momoiro Yuta']} },
   { key:'Knights',        name:{tw:'Knights',      cn:'Knights',      en:'Knights'},        color:'#6080cc', emblem:'♞',  members:{tw:['月永雷歐','瀨名泉','朱櫻司','鳴上嵐','朔間凛月'], cn:['月永雷欧','濑名泉','朱樱司','鸣上岚','朔间凛月'], en:['Tsukishiro Leo','Sena Izumi','Sakuma Ritsu','Narukami Arashi','Sakuma Rinne']} },
-  { key:'RYUSEITAI',      name:{tw:'流星隊',        cn:'流星队',        en:'RYUSEITAI'},      color:'#9070cc', emblem:'☄️', members:{tw:['守澤千秋','深海奏汰','仙石忍','南雲鐵虎','高峯翠'], cn:['守泽千秋','深海奏汰','仙石忍','南云铁虎','高峯翠'], en:['Morisawa Chiaki','Shinkai Kanata','Sengoku Shinobu','Nagumo Tetora','Takamine Midori']} },
-  { key:'Akatsuki',       name:{tw:'紅月',          cn:'红月',          en:'Akatsuki'},       color:'#e08080', emblem:'🌙', members:{tw:['蓮巳敬人','鬼龍紅郎','神崎颯馬'],               cn:['莲巳敬人','鬼龙红郎','神崎飒马'],               en:['Hasumi Keito','Kiryu Koga','Kanzaki Souma']} },
+  { key:'Akatsuki',       name:{tw:'紅月',          cn:'红月',         en:'Akatsuki'},       color:'#e08080', emblem:'🌙', members:{tw:['蓮巳敬人','鬼龍紅郎','神崎颯馬'],               cn:['莲巳敬人','鬼龙红郎','神崎飒马'],               en:['Hasumi Keito','Kiryu Koga','Kanzaki Souma']} },
   { key:'Mellow Dear Us', name:{tw:'Mellow Dear Us',cn:'Mellow Dear Us',en:'Mellow Dear Us'},color:'#b08060', emblem:'🍫', members:{tw:['小鹿爵斯','圓果望見','久遠舞珠','甘樂千歲'],   cn:['小鹿爵斯','圆果望见','久远舞珠','甘乐千岁'],   en:['Ojika Juss','Marugame Miken','Kuon Maju','Kanra Chisato']} },
 ];
 
@@ -502,20 +505,27 @@ const CHARS = [
   { name:{tw:'明星昴流',    cn:'明星昴流',    en:'Subaru Akehoshi'},    unit:'Trickstar',      em:'🌟' },
   { name:{tw:'遊木真',      cn:'游木真',      en:'Makoto Yuuki'},       unit:'Trickstar',      em:'🌟' },
   { name:{tw:'衣更真緒',    cn:'衣更真绪',    en:'Mao Isara'},          unit:'Trickstar',      em:'🌟' },
+  { name:{tw:'守澤千秋',    cn:'守泽千秋',    en:'Morisawa Chiaki'},    unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'深海奏汰',    cn:'深海奏汰',    en:'Shinkai Kanata'},     unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'仙石忍',      cn:'仙石忍',      en:'Sengoku Shinobu'},    unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'南雲鐵虎',    cn:'南云铁虎',    en:'Nagumo Tetora'},      unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'高峯翠',      cn:'高峯翠',      en:'Takamine Midori'},    unit:'RYUSEITAI',      em:'☄️' },
+  { name:{tw:'天城一彩',    cn:'天城一彩',    en:'Amagi Kazusa'},      unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'白鳥藍良',    cn:'白鸟蓝良',  en:'Shiratori Aira'},    unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'禮瀨真宵',    cn:'礼濑真宵',  en:'Reise Mayoi'},       unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'風早巽',      cn:'风早巽',    en:'Kazahaya Tatsumi'},   unit:'ALKALOID',       em:'⚗️' },
+  { name:{tw:'亂凪砂',      cn:'乱凪砂',    en:'Ran Nagisa'},         unit:'Eden',           em:'🌿' },
+  { name:{tw:'巴日和',      cn:'巴日和',    en:'Tomoe Hiyori'},       unit:'Eden',           em:'🌿' },
+  { name:{tw:'七種茨',      cn:'七种茨',    en:'Nanakusa Ibara'},     unit:'Eden',           em:'🌿' },
+  { name:{tw:'漣純',        cn:'涟纯',      en:'Sazanami Jun'},       unit:'Eden',           em:'🌿' },
+  { name:{tw:'齋宮宗',      cn:'斎宮宗',    en:'Saegusa Ibara'},      unit:'Valkyrie',       em:'⚔️' },
+  { name:{tw:'影片美伽',    cn:'影片美伽',  en:'Mikaze Ai'},          unit:'Valkyrie',       em:'⚔️' },
+  { name:{tw:'葵日向',      cn:'葵日向',    en:'Hinata Aoi'},         unit:'2wink',          em:'♓' },
+  { name:{tw:'葵裕太',      cn:'葵裕太',    en:'Yuta Aoi'},           unit:'2wink',          em:'♓' },
   { name:{tw:'HiMERU',    cn:'HiMERU',    en:'HiMERU'},           unit:'Crazy:B',        em:'🎲' },
   { name:{tw:'天城燐音',  cn:'天城燐音',  en:'Rinne Amagi'},       unit:'Crazy:B',        em:'🎲' },
   { name:{tw:'椎名丹希',  cn:'椎名丹希',  en:'Niki Shiina'},       unit:'Crazy:B',        em:'🎲' },
   { name:{tw:'櫻河琥珀',  cn:'樱河琥珀',  en:'Kohaku Owkawa'},     unit:'Crazy:B',        em:'🎲' },
-  { name:{tw:'天城一彩',  cn:'天城一彩',  en:'Amagi Kazusa'},      unit:'ALKALOID',       em:'⚗️' },
-  { name:{tw:'白鳥藍良',  cn:'白鸟蓝良',  en:'Shiratori Aira'},    unit:'ALKALOID',       em:'⚗️' },
-  { name:{tw:'禮瀨真宵',  cn:'礼濑真宵',  en:'Reise Mayoi'},       unit:'ALKALOID',       em:'⚗️' },
-  { name:{tw:'風早巽',    cn:'风早巽',    en:'Kazahaya Tatsumi'},   unit:'ALKALOID',       em:'⚗️' },
-  { name:{tw:'齋宮宗',    cn:'斎宮宗',    en:'Saegusa Ibara'},      unit:'Valkyrie',       em:'⚔️' },
-  { name:{tw:'影片美伽',  cn:'影片美伽',  en:'Mikaze Ai'},          unit:'Valkyrie',       em:'⚔️' },
-  { name:{tw:'亂凪砂',    cn:'乱凪砂',    en:'Ran Nagisa'},         unit:'Eden',           em:'🌿' },
-  { name:{tw:'巴日和',    cn:'巴日和',    en:'Tomoe Hiyori'},       unit:'Eden',           em:'🌿' },
-  { name:{tw:'七種茨',    cn:'七种茨',    en:'Nanakusa Ibara'},     unit:'Eden',           em:'🌿' },
-  { name:{tw:'漣純',      cn:'涟纯',      en:'Sazanami Jun'},       unit:'Eden',           em:'🌿' },
   { name:{tw:'真白友也',  cn:'真白友也',  en:'Mashiro Tomoya'},     unit:'Ra*bits',        em:'🐰' },
   { name:{tw:'仁兔成鳴',  cn:'仁兔成鸣',  en:'Nito Nazuna'},        unit:'Ra*bits',        em:'🐰' },
   { name:{tw:'天満光',    cn:'天満光',    en:'Tenma Mitsuru'},      unit:'Ra*bits',        em:'🐰' },
@@ -525,11 +535,6 @@ const CHARS = [
   { name:{tw:'朱櫻司',    cn:'朱樱司',    en:'Sakuma Ritsu'},       unit:'Knights',        em:'♞'  },
   { name:{tw:'鳴上嵐',    cn:'鸣上岚',    en:'Narukami Arashi'},    unit:'Knights',        em:'♞'  },
   { name:{tw:'朔間凛月',  cn:'朔间凛月',  en:'Sakuma Rinne'},       unit:'Knights',        em:'♞'  },
-  { name:{tw:'守澤千秋',  cn:'守泽千秋',  en:'Morisawa Chiaki'},    unit:'RYUSEITAI',      em:'☄️' },
-  { name:{tw:'深海奏汰',  cn:'深海奏汰',  en:'Shinkai Kanata'},     unit:'RYUSEITAI',      em:'☄️' },
-  { name:{tw:'仙石忍',    cn:'仙石忍',    en:'Sengoku Shinobu'},    unit:'RYUSEITAI',      em:'☄️' },
-  { name:{tw:'南雲鐵虎',  cn:'南云铁虎',  en:'Nagumo Tetora'},      unit:'RYUSEITAI',      em:'☄️' },
-  { name:{tw:'高峯翠',    cn:'高峯翠',    en:'Takamine Midori'},    unit:'RYUSEITAI',      em:'☄️' },
   { name:{tw:'蓮巳敬人',  cn:'莲巳敬人',  en:'Hasumi Keito'},       unit:'Akatsuki',       em:'🌙' },
   { name:{tw:'鬼龍紅郎',  cn:'鬼龙红郎',  en:'Kiryu Koga'},         unit:'Akatsuki',       em:'🌙' },
   { name:{tw:'神崎颯馬',  cn:'神崎飒马',  en:'Kanzaki Souma'},      unit:'Akatsuki',       em:'🌙' },
